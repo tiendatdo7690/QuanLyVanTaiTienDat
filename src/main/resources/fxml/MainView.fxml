@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiendat.demo.Controller.ControllerMainView">
+   <children>
+      <SplitPane dividerPositions="0.14858096828046743" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <items>
+            <VBox alignment="TOP_CENTER" fillWidth="false" maxWidth="175.0" minWidth="175.0" prefHeight="300.0" prefWidth="175.0" spacing="5.0">
+               <children>
+                  <JFXButton fx:id="btn_ThongKe1" buttonType="RAISED" onAction="#addThongKe" prefHeight="70.0" prefWidth="175.0" text="Xe">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@/img/thongke.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="btn_QuanLyHang1" onAction="#addQuanLyCongViec" prefHeight="70.0" prefWidth="175.0" text="Hàng">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@/img/CongViec_Icon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="btn_QuanLyPhuongTien1" onAction="#addQuanLyNgayNghiPhep" prefHeight="70.0" prefWidth="175.0" text="Chủ Hàng">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@/img/NgayNghi_icon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="btn_QuanLyNhanSu1" onAction="#addQuanLyNhanVien" prefHeight="70.0" prefWidth="175.0" text="Tài Xế">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@/img/NhanVien_icon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+               </children>
+               <padding>
+                  <Insets left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </VBox>
+            <JFXTabPane fx:id="tabpane_Main" tabClosingPolicy="ALL_TABS" />
+         </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
