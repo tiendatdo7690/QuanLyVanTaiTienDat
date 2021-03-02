@@ -16,12 +16,12 @@ public class CangHa  extends Cang{
     public CangHa() {
     }
 
-    public CangHa(Long id, String ten, String diaChi, String soDienThoai, String eMail, String loai, boolean trangThai) {
-        super(id, ten, diaChi, soDienThoai, eMail, loai, trangThai);
+    public CangHa(Long id, String ten, String diaChi, String soDienThoai, String eMail, boolean trangThai) {
+        super(id, ten, diaChi, soDienThoai, eMail, trangThai);
     }
 
-    public CangHa(Long id, String ten, String diaChi, String soDienThoai, String eMail, String loai, boolean trangThai, Set<ContHang> contHangHaSet) {
-        super(id, ten, diaChi, soDienThoai, eMail, loai, trangThai);
+    public CangHa(Long id, String ten, String diaChi, String soDienThoai, String eMail, boolean trangThai, Set<ContHang> contHangHaSet) {
+        super(id, ten, diaChi, soDienThoai, eMail, trangThai);
         this.contHangHaSet = contHangHaSet;
     }
 

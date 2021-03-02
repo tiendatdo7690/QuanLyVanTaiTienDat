@@ -33,9 +33,9 @@ public class Xe implements Serializable {
     @Column(name = "hieuXe", length = 255)
     private String hieuXe;
 
-    @ManyToOne(fetch = FetchType.LAZY,
-            cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
-    @JoinColumn(name = "taiXe_id" , foreignKey= @ForeignKey(name = "Fk_taiXe_xe"), nullable = true)
+    @OneToOne(fetch = FetchType.LAZY,
+            cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH},
+            mappedBy = "xe")
     private TaiXe taiXe;
 
     @OneToMany(fetch = FetchType.LAZY,

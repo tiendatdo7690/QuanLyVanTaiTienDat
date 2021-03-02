@@ -18,7 +18,9 @@ public class TabPaneService {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public void addTab(ConfigurableApplicationContext springContext, TabPane tabpane, TabService tabservice, String tenfilefx, Object e) throws IOException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
+	public void addTab(ConfigurableApplicationContext springContext, TabPane tabpane, TabService tabservice,
+					   String tenfilefx, Object e) throws IOException, IllegalAccessException, IllegalArgumentException,
+			InvocationTargetException, NoSuchMethodException, SecurityException {
 		// TODO Auto-generated method stub
 		Tab tab = tabservice.getTab();
 		
@@ -52,5 +54,17 @@ public class TabPaneService {
 				System.out.println("tao tab cu");
 				tabpane.getSelectionModel().select(tab);
 		}
+	}
+	public void addContentInTab(ConfigurableApplicationContext springContext, AnchorPane rootTab, String tenfilefx) throws IOException {
+
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(tenfilefx));
+		fxmlLoader.setControllerFactory(springContext::getBean);
+		Node root = fxmlLoader.load();
+
+		rootTab.getChildren().add(root);
+		AnchorPane.setRightAnchor(root, 0.0);
+		AnchorPane.setLeftAnchor(root, 0.0);
+		AnchorPane.setBottomAnchor(root, 0.0);
+		AnchorPane.setTopAnchor(root, 0.0);
 	}
 }

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="TOP_CENTER" spacing="10.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiendat.demo.Controller.ControllerChuHang.ThemChuyenHangController">
+   <children>
+      <Label text="Thêm Chuyến Hàng" />
+      <GridPane hgap="10.0" vgap="10.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.0" minWidth="10.0" prefWidth="104.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="496.0" minWidth="10.0" prefWidth="496.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="Tên Chuyến Hàng" />
+            <Label text="Địa Chỉ Nơi Đến" GridPane.rowIndex="1" />
+            <JFXTextField GridPane.columnIndex="1" />
+            <JFXTextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <JFXButton text="Thêm" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+         </children>
+      </GridPane>
+      <Label text="Bảng Chuyến Hàng" />
+      <TableView>
+        <columns>
+          <TableColumn prefWidth="117.0" text="Tên Chuyến Hàng" />
+          <TableColumn prefWidth="105.0" text="Địa Chỉ Đến" />
+            <TableColumn prefWidth="93.0" text="Thêm Tiền TX" />
+            <TableColumn prefWidth="102.0" text="Thêm Giá Cước" />
+            <TableColumn prefWidth="93.0" text="Thêm Loại CV" />
+        </columns>
+      </TableView>
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</VBox>

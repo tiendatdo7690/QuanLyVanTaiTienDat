@@ -20,14 +20,15 @@ public class ChiPhiContHang implements Serializable {
     @Column(name = "tien")
     private Long tien;
 
-    @Type(type="org.hibernate.type.StringNVarcharType")
-    @Column(name = "ten", length = 255)
-    private String ten;
-
     @ManyToOne(fetch = FetchType.LAZY,
             cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
     @JoinColumn(name = "contHang_id" , foreignKey= @ForeignKey(name = "Fk_ChiPhiContHang_contHang"), nullable = true)
     private ContHang contHang;
+
+    @ManyToOne(fetch = FetchType.LAZY,
+            cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
+    @JoinColumn(name = "LoaiChiPhiContHang_id" , foreignKey= @ForeignKey(name = "Fk_ChiPhiContHang_LoaiChiPhiContHang"), nullable = true)
+    private LoaiChiPhiContHang loaiChiPhiContHang;
 
     public ChiPhiContHang() {
     }
@@ -48,13 +49,6 @@ public class ChiPhiContHang implements Serializable {
         this.tien = tien;
     }
 
-    public String getTen() {
-        return ten;
-    }
-
-    public void setTen(String ten) {
-        this.ten = ten;
-    }
 
     public ContHang getContHang() {
         return contHang;
@@ -62,5 +56,13 @@ public class ChiPhiContHang implements Serializable {
 
     public void setContHang(ContHang contHang) {
         this.contHang = contHang;
+    }
+
+    public LoaiChiPhiContHang getLoaiChiPhiContHang() {
+        return loaiChiPhiContHang;
+    }
+
+    public void setLoaiChiPhiContHang(LoaiChiPhiContHang loaiChiPhiContHang) {
+        this.loaiChiPhiContHang = loaiChiPhiContHang;
     }
 }

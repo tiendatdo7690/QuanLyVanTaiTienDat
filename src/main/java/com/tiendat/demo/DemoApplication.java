@@ -5,7 +5,6 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -26,7 +25,7 @@ public class DemoApplication extends Application{
         System.setProperty("java.awt.headless", "false");
         springContext = SpringApplication.run(DemoApplication.class);
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/MainViewTest.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/MainViewWithDrawer.fxml"));
         fxmlLoader.setControllerFactory(springContext::getBean);
         rootNode = fxmlLoader.load();
     }

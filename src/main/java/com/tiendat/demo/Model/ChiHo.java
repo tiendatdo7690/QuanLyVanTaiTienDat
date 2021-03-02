@@ -17,10 +17,6 @@ public class ChiHo implements Serializable {
     @Column(name = "id", unique = true, nullable = false)
     private Long id;
 
-    @Type(type="org.hibernate.type.StringNVarcharType")
-    @Column(name = "ten", length = 255)
-    private String ten;
-
     @Column(name = "tien")
     private Long tien;
 
@@ -28,6 +24,11 @@ public class ChiHo implements Serializable {
             cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
     @JoinColumn(name = "contHang_id" , foreignKey= @ForeignKey(name = "Fk_ChiHo_contHang"), nullable = true)
     private ContHang contHang;
+
+    @ManyToOne(fetch = FetchType.LAZY,
+            cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
+    @JoinColumn(name = "LoaiChiHo_id" , foreignKey= @ForeignKey(name = "Fk_ChiHo_LoaiChiHo"), nullable = true)
+    private LoaiChiHo loaiChiHo;
 
     public ChiHo() {
     }
@@ -38,14 +39,6 @@ public class ChiHo implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getTen() {
-        return ten;
-    }
-
-    public void setTen(String ten) {
-        this.ten = ten;
     }
 
     public Long getTien() {
@@ -62,5 +55,13 @@ public class ChiHo implements Serializable {
 
     public void setContHang(ContHang contHang) {
         this.contHang = contHang;
+    }
+
+    public LoaiChiHo getLoaiChiHo() {
+        return loaiChiHo;
+    }
+
+    public void setLoaiChiHo(LoaiChiHo loaiChiHo) {
+        this.loaiChiHo = loaiChiHo;
     }
 }

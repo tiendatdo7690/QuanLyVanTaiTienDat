@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:id="id_VBox" prefHeight="900.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/10.0.1"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiendat.demo.Controller.ControllerMainViewDrawer">
+   <children>
+      <HBox spacing="20.0">
+         <children>
+            <JFXButton fx:id="id_QuanLyXe" onAction="#openMenuQuanLyXe" text="Quản Lý Xe" />
+            <JFXButton onAction="#openMenuQuanLyTaiXe" text="Quan Lý Tài Xế" />
+            <JFXButton onAction="#openMenuQuanLyHang" text="Quản Lý Hàng" />
+            <JFXButton onAction="#openMenuQuanLyChuHang" text="Quản Lý Chủ Hàng" />
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </HBox>
+   </children>
+</VBox>

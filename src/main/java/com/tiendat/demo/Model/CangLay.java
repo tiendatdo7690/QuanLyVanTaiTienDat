@@ -17,8 +17,8 @@ public class CangLay extends Cang{
     public CangLay() {
     }
 
-    public CangLay(Long id, String ten, String diaChi, String soDienThoai, String eMail, String loai, boolean trangThai) {
-        super(id, ten, diaChi, soDienThoai, eMail, loai, trangThai);
+    public CangLay(Long id, String ten, String diaChi, String soDienThoai, String eMail, boolean trangThai) {
+        super(id, ten, diaChi, soDienThoai, eMail, trangThai);
     }
 
     public Set<ContHang> getContHangHashSet() {

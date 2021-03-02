@@ -35,9 +35,10 @@ public class TaiXe implements Serializable {
     @Column(name = "trangThai")
     private boolean trangThai;
 
-    @ManyToOne(fetch = FetchType.LAZY,
+    @OneToOne(fetch = FetchType.LAZY,
             cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
-    @JoinColumn(name = "xe_id" , foreignKey= @ForeignKey(name = "Fk_xe_TaiXe"), nullable = true)
+    @JoinColumn(name = "xe_id" , foreignKey= @ForeignKey(name = "Fk_xe_TaiXe"),
+            referencedColumnName = "id", nullable = true)
     private Xe xe;
 
     @OneToMany(fetch = FetchType.LAZY,
@@ -53,7 +54,7 @@ public class TaiXe implements Serializable {
     @OneToMany(fetch = FetchType.LAZY,
             cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH},
             mappedBy = "taiXe")
-    private Set<ContHang> contHangHashSet = new HashSet<ContHang>(0);
+    private Set<CongViec> congViecSet = new HashSet<CongViec>(0);
 
     public TaiXe() {
     }
@@ -122,11 +123,11 @@ public class TaiXe implements Serializable {
         this.luongCoBanTaiXeSet = luongCoBanTaiXeSet;
     }
 
-    public Set<ContHang> getContHangHashSet() {
-        return contHangHashSet;
+    public Set<CongViec> getCongViecSet() {
+        return congViecSet;
     }
 
-    public void setContHangHashSet(Set<ContHang> contHangHashSet) {
-        this.contHangHashSet = contHangHashSet;
+    public void setCongViecSet(Set<CongViec> congViecSet) {
+        this.congViecSet = congViecSet;
     }
 }

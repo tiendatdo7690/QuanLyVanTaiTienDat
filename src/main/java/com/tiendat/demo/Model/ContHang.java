@@ -28,14 +28,12 @@ public class ContHang implements Serializable {
     @Column(name = "soSeal", length = 255)
     private String soSeal;
 
-    @Type(type="org.hibernate.type.StringNVarcharType")
-    @Column(name = "loaiHang", length = 255)
-    private String loaiHang;
-
     @ManyToOne(fetch = FetchType.LAZY,
             cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
-    @JoinColumn(name = "chuyenHang_id" , foreignKey= @ForeignKey(name = "Fk_chuyenHang_contHang"), nullable = true)
-    private ChuyenHang chuyenHang;
+    @JoinColumn(name = "loaihang_id" , foreignKey= @ForeignKey(name = "Fk_loaihang_contHang"), nullable = true)
+    private LoaiHang loaiHang;
+
+
 
     @Type(type="org.hibernate.type.DateType")
     @Column(name = "ngayKetThuc")
@@ -56,10 +54,10 @@ public class ContHang implements Serializable {
     @JoinColumn(name = "xe_id" , foreignKey= @ForeignKey(name = "Fk_xe_contHang"), nullable = true)
     private Xe xe;
 
-    @ManyToOne(fetch = FetchType.LAZY,
-            cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
-    @JoinColumn(name = "taiXe_id" , foreignKey= @ForeignKey(name = "Fk_taiXe_contHang"), nullable = true)
-    private TaiXe taiXe;
+    @OneToMany(fetch = FetchType.LAZY,
+            cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH},
+            mappedBy = "contHang")
+    private Set<CongViec> congViecSet = new HashSet<CongViec>(0);
 
     @OneToMany(fetch = FetchType.LAZY,
             cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH},
@@ -106,20 +104,12 @@ public class ContHang implements Serializable {
         this.soSeal = soSeal;
     }
 
-    public String getLoaiHang() {
+    public LoaiHang getLoaiHang() {
         return loaiHang;
     }
 
-    public void setLoaiHang(String loaiHang) {
+    public void setLoaiHang(LoaiHang loaiHang) {
         this.loaiHang = loaiHang;
-    }
-
-    public ChuyenHang getChuyenHang() {
-        return chuyenHang;
-    }
-
-    public void setChuyenHang(ChuyenHang chuyenHang) {
-        this.chuyenHang = chuyenHang;
     }
 
     public Cang getCangLay() {
@@ -146,14 +136,6 @@ public class ContHang implements Serializable {
         this.xe = xe;
     }
 
-    public TaiXe getTaiXe() {
-        return taiXe;
-    }
-
-    public void setTaiXe(TaiXe taiXe) {
-        this.taiXe = taiXe;
-    }
-
     public Set<ChiHo> getChiHoSet() {
         return chiHoSet;
     }
@@ -164,6 +146,14 @@ public class ContHang implements Serializable {
 
     public Set<ChiPhiContHang> getChiPhiContHangSets() {
         return chiPhiContHangSets;
+    }
+
+    public Set<CongViec> getCongViecSet() {
+        return congViecSet;
+    }
+
+    public void setCongViecSet(Set<CongViec> congViecSet) {
+        this.congViecSet = congViecSet;
     }
 
     public void setChiPhiContHangSets(Set<ChiPhiContHang> chiPhiContHangSets) {
