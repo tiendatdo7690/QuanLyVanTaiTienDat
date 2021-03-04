@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
 
-
+//test git
 @Entity
 @Table(name = "BangLuongTaiXe")
 public class BangLuongTaiXe implements Serializable {
