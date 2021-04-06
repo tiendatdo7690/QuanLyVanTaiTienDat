@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Pagination?>
@@ -31,7 +33,12 @@
             <Label text="Địa Chỉ" GridPane.rowIndex="2" />
             <Label text="EMail" GridPane.rowIndex="3" />
             <Label text="SĐT" GridPane.rowIndex="4" />
-            <JFXButton text="Thêm" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <JFXButton onAction="#ThemCang" text="Thêm" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <JFXTextField fx:id="id_tencang" GridPane.columnIndex="1" />
+            <JFXTextField fx:id="id_DiaChi" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <JFXTextField fx:id="id_Email" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <JFXTextField fx:id="id_Sdt" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <JFXComboBox fx:id="id_CBLoaiCang" prefHeight="25.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
       <Label text="Bảng Danh Sách Cảng" />

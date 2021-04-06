@@ -3,7 +3,7 @@ package com.tiendat.demo.Controller.ControllerChuHang;
 import com.jfoenix.controls.JFXTextField;
 import com.tiendat.demo.Model.ChuHang;
 import com.tiendat.demo.Respository.ChuHangRespository;
-import com.tiendat.demo.Respository.ChuHangRespositoryImplement;
+import com.tiendat.demo.ImplementRespository.ChuHangRespositoryImplement;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

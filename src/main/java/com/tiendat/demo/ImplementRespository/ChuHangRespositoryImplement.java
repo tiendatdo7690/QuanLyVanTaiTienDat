@@ -1,10 +1,11 @@
-package com.tiendat.demo.Respository;
+package com.tiendat.demo.ImplementRespository;
 
 import com.tiendat.demo.Model.ChuHang;
+import com.tiendat.demo.Respository.ChuHangRespository;
 
 import java.util.Optional;
 
-public class ChuHangRespositoryImplement implements ChuHangRespository{
+public class ChuHangRespositoryImplement implements ChuHangRespository {
     @Override
     public <S extends ChuHang> S save(S entity) {
         return null;

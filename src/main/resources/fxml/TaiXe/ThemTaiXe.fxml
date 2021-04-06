@@ -12,8 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<HBox xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.tiendat.demo.Controller.ControllerTaiXe.ThemTaiXeController">
+<HBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiendat.demo.Controller.ControllerTaiXe.ThemTaiXeController">
     <children>
         <VBox alignment="TOP_CENTER" prefHeight="700.0" prefWidth="500.0" spacing="20.0">
             <children>
@@ -35,14 +34,14 @@
                         <Label text="Tên" />
                         <Label text="Ngày Sinh" GridPane.rowIndex="1" />
                         <Label text="Quên Quán" GridPane.rowIndex="2" />
-                        <JFXButton text="Thêm" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                        <JFXTextField GridPane.columnIndex="1" />
-                        <JFXTextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <JFXTextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <JFXButton onAction="#ThemTaiXe" text="Thêm" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <JFXTextField fx:id="id_Ten" GridPane.columnIndex="1" />
+                        <JFXTextField fx:id="id_LuongCoBan" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <JFXTextField fx:id="id_QueQuan" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <Label text="Xe" GridPane.rowIndex="3" />
                   <Label text="Lương Cơ Bản" GridPane.rowIndex="4" />
-                  <JFXComboBox prefHeight="25.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <JFXDatePicker prefHeight="28.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <JFXComboBox fx:id="id_CBXe" prefHeight="25.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <JFXDatePicker fx:id="id_NgaySinh" prefHeight="28.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                     </children>
                 </GridPane>
             </children>
