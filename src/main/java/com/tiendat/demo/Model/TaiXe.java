@@ -38,7 +38,7 @@ public class TaiXe implements Serializable {
     @OneToOne(fetch = FetchType.LAZY,
             cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
     @JoinColumn(name = "xe_id" , foreignKey= @ForeignKey(name = "Fk_xe_TaiXe"),
-            referencedColumnName = "id", nullable = true)
+            referencedColumnName = "id", nullable = false, unique = true)
     private Xe xe;
 
     @OneToMany(fetch = FetchType.LAZY,
@@ -129,5 +129,10 @@ public class TaiXe implements Serializable {
 
     public void setCongViecSet(Set<CongViec> congViecSet) {
         this.congViecSet = congViecSet;
+    }
+
+    @Override
+    public String toString() {
+        return ten;
     }
 }

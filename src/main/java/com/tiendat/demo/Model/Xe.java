@@ -169,5 +169,8 @@ public class Xe implements Serializable {
         this.chiPhiXeKhacSet = chiPhiXeKhacSet;
     }
 
-
+    @Override
+    public String toString() {
+        return bienSo;
+    }
 }

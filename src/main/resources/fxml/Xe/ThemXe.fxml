@@ -10,8 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<HBox xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.tiendat.demo.Controller.ControllerXe.ThemXeController">
+<HBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiendat.demo.Controller.ControllerXe.ThemXeController">
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="700.0" prefWidth="500.0" spacing="20.0">
          <children>
@@ -31,10 +30,10 @@
                   <Label text="Biển Số" />
                   <Label text="Hiệu Xe" GridPane.rowIndex="1" />
                   <Label text="Năm Sản Xuất" GridPane.rowIndex="2" />
-                  <JFXButton text="Thêm" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <JFXTextField GridPane.columnIndex="1" />
-                  <JFXTextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <JFXTextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <JFXButton onAction="#ThemXe" text="Thêm" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <JFXTextField fx:id="id_BienSo" GridPane.columnIndex="1" />
+                  <JFXTextField fx:id="id_HieuXe" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <JFXTextField fx:id="id_NamSX" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
             </GridPane>
          </children>
