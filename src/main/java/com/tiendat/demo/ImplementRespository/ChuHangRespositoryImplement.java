@@ -3,6 +3,7 @@ package com.tiendat.demo.ImplementRespository;
 import com.tiendat.demo.Model.ChuHang;
 import com.tiendat.demo.Respository.ChuHangRespository;
 
+import java.util.List;
 import java.util.Optional;
 
 public class ChuHangRespositoryImplement implements ChuHangRespository {
@@ -59,5 +60,16 @@ public class ChuHangRespositoryImplement implements ChuHangRespository {
     @Override
     public void deleteAll() {
 
+    }
+
+
+    @Override
+    public List<ChuHang> findByTenOrMaSoThue(String ten, String mst) {
+        return null;
+    }
+
+    @Override
+    public List<ChuHang> findByTenLikeOrMaSoThueLike(String ten, String mst) {
+        return null;
     }
 }

@@ -3,14 +3,18 @@ package com.tiendat.demo.Controller.ControllerChuHang;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
-import com.tiendat.demo.NodeService.ComboBoxService;
-import com.tiendat.demo.NodeService.ObservableListImpl;
-import com.tiendat.demo.NodeService.TabPaneService;
+import com.tiendat.demo.ImplementRespository.ChuHangRespositoryImplement;
+import com.tiendat.demo.Model.ChuHang;
+import com.tiendat.demo.NodeService.*;
+import com.tiendat.demo.Respository.ChuHangRespository;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Pagination;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -18,10 +22,13 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 @Component
 public class TimKiemChuHangController implements Initializable {
+
+    public Pagination id_PaginationTimChuHang;
 
     @FXML
     private AnchorPane id_AnchaorPaneTabThemChuyenHang;
@@ -52,7 +59,23 @@ public class TimKiemChuHangController implements Initializable {
     @Autowired
     private ComboBoxService<String> comboBoxServiceLoaiTimKiem;
 
+//    private TableView<ChuHang> tableviewTimKiemChuHang;
+//    private TableColumn<ChuHang, String> cot_Ten;
+//    private TableColumn<ChuHang, Long> cot_GiaTien;
+//    private TableColumn<ChuHang, String> cot_MoTa;
+//    private TableColumn<ChuHang, Boolean> cot_TinhTrang;
+
+    @Autowired
+    private TableViewService<ChuHang> tableviewTimKiemChuHang;
+
+    @Autowired
+    private PaginationService timKiemChuHangPaginationService;
     ObservableList<String> observableList = FXCollections.observableArrayList();
+
+    @Autowired
+    private ChuHangRespository chuHangRespository = new ChuHangRespositoryImplement();
+
+
     public void LamMoi(){
 
     }
@@ -73,8 +96,25 @@ public class TimKiemChuHangController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        tableviewTimKiemChuHang.TaoCot("ten","Tên",String.class);
+
+        timKiemChuHangPaginationService.setPagination(id_PaginationTimChuHang);
+
+
+
     }
 
     public void SuaThongTin(ActionEvent actionEvent) {
+    }
+
+    public void TimChuHang(ActionEvent actionEvent) {
+
+        String chuoiTimChuHang = "%" + id_TFTimKiem.getText() + "%";
+
+        List<ChuHang> chuHangs = chuHangRespository.findByTenLikeOrMaSoThueLike(chuoiTimChuHang,chuoiTimChuHang);
+
+        timKiemChuHangPaginationService.taiDSPagination(chuHangs,tableviewTimKiemChuHang.getTableView(),20);
+        System.out.println(chuHangs);
     }
 }

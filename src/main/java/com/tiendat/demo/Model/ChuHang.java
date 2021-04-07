@@ -102,4 +102,9 @@ public class ChuHang implements Serializable {
     public void setCongNoBanHangSet(Set<CongNoBanHang> congNoBanHangSet) {
         this.congNoBanHangSet = congNoBanHangSet;
     }
+
+    @Override
+    public String toString() {
+        return ten;
+    }
 }
