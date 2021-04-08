@@ -59,14 +59,8 @@ public class TimKiemChuHangController implements Initializable {
     @Autowired
     private ComboBoxService<String> comboBoxServiceLoaiTimKiem;
 
-//    private TableView<ChuHang> tableviewTimKiemChuHang;
-//    private TableColumn<ChuHang, String> cot_Ten;
-//    private TableColumn<ChuHang, Long> cot_GiaTien;
-//    private TableColumn<ChuHang, String> cot_MoTa;
-//    private TableColumn<ChuHang, Boolean> cot_TinhTrang;
-
     @Autowired
-    private TableViewService<ChuHang> tableviewTimKiemChuHang;
+    private TableViewService<ChuHang,TimKiemChuHangController> tableviewTimKiemChuHang;
 
     @Autowired
     private PaginationService timKiemChuHangPaginationService;
@@ -75,6 +69,15 @@ public class TimKiemChuHangController implements Initializable {
     @Autowired
     private ChuHangRespository chuHangRespository = new ChuHangRespositoryImplement();
 
+    private ChuHang chuHang = null;
+
+    public ChuHang getChuHang() {
+        return chuHang;
+    }
+
+    public void setChuHang(ChuHang chuHang) {
+        this.chuHang = chuHang;
+    }
 
     public void LamMoi(){
 
@@ -85,7 +88,6 @@ public class TimKiemChuHangController implements Initializable {
 
 
         System.out.println(observableList.add("Tên"));
-       // observableList.add("Tên");
         observableList.add("Mã Số Thuế");
         System.out.println(observableList.size());
         comboBoxServiceLoaiTimKiem.LoadCombo(id_CBLoaiTimKiem,observableList);
@@ -97,14 +99,28 @@ public class TimKiemChuHangController implements Initializable {
             e.printStackTrace();
         }
 
-        tableviewTimKiemChuHang.TaoCot("ten","Tên",String.class);
+        if(tableviewTimKiemChuHang.getTableView().getColumns().size() == 0) {
 
+            tableviewTimKiemChuHang.setController(this);
+            tableviewTimKiemChuHang.TaoCot("ten", "Tên", String.class);
+            tableviewTimKiemChuHang.TaoCotXemThongTin();
+        }
         timKiemChuHangPaginationService.setPagination(id_PaginationTimChuHang);
 
 
 
     }
 
+    public void GanGiaTri(ChuHang chuHang){
+        System.out.printf("Gán giá trị");
+        this.chuHang = chuHang;
+
+        id_TFTenChuHang.setText(this.chuHang.getTen());
+        id_TFDiaChi.setText(this.chuHang.getDiaChi());
+        id_TFMST.setText(this.chuHang.getMaSoThue());
+        id_RadioHoatDong.setSelected(this.chuHang.isTrangThai());
+
+    }
     public void SuaThongTin(ActionEvent actionEvent) {
     }
 
@@ -114,6 +130,7 @@ public class TimKiemChuHangController implements Initializable {
 
         List<ChuHang> chuHangs = chuHangRespository.findByTenLikeOrMaSoThueLike(chuoiTimChuHang,chuoiTimChuHang);
 
+        tableviewTimKiemChuHang.getTableView().getItems().clear();
         timKiemChuHangPaginationService.taiDSPagination(chuHangs,tableviewTimKiemChuHang.getTableView(),20);
         System.out.println(chuHangs);
     }

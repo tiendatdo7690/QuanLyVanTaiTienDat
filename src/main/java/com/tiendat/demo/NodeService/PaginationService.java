@@ -25,6 +25,7 @@ public class PaginationService {
         this.pagination = pagination;
     }
 
+
     public void taiDSPagination(List list, TableView tableview, int sopt) {
 
         pagination.setPageCount(list.size()/sopt +1);

@@ -27,19 +27,19 @@
          <children>
             <Label text="Tên Chuyến Hàng" />
             <Label text="Địa Chỉ Nơi Đến" GridPane.rowIndex="1" />
-            <JFXTextField GridPane.columnIndex="1" />
-            <JFXTextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <JFXButton text="Thêm" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <JFXTextField fx:id="id_TenChuyenHang" GridPane.columnIndex="1" />
+            <JFXTextField fx:id="id_DiaChiDen" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <JFXButton onAction="#ThemChuyenHang" text="Thêm" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
       <Label text="Bảng Chuyến Hàng" />
-      <TableView>
+      <TableView fx:id="id_TblViewChuyenHang">
         <columns>
-          <TableColumn prefWidth="117.0" text="Tên Chuyến Hàng" />
-          <TableColumn prefWidth="105.0" text="Địa Chỉ Đến" />
-            <TableColumn prefWidth="93.0" text="Thêm Tiền TX" />
-            <TableColumn prefWidth="102.0" text="Thêm Giá Cước" />
-            <TableColumn prefWidth="93.0" text="Thêm Loại CV" />
+          <TableColumn fx:id="id_CotTen" prefWidth="117.0" text="Tên Chuyến Hàng" />
+          <TableColumn fx:id="id_CotDiaChi" prefWidth="105.0" text="Địa Chỉ Đến" />
+            <TableColumn fx:id="id_CotThemTienTx" prefWidth="93.0" text="Thêm Tiền TX" />
+            <TableColumn fx:id="id_CotTHemGiaCuoc" prefWidth="102.0" text="Thêm Giá Cước" />
+            <TableColumn fx:id="id_CotThemLoaiCv" prefWidth="93.0" text="Thêm Loại CV" />
         </columns>
       </TableView>
    </children>
