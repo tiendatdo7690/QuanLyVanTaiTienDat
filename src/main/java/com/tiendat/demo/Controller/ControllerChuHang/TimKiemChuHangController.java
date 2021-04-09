@@ -69,6 +69,9 @@ public class TimKiemChuHangController implements Initializable {
     @Autowired
     private ChuHangRespository chuHangRespository = new ChuHangRespositoryImplement();
 
+    @Autowired
+    private ThemChuyenHangController themChuyenHangController;
+
     private ChuHang chuHang = null;
 
     public ChuHang getChuHang() {
@@ -120,6 +123,7 @@ public class TimKiemChuHangController implements Initializable {
         id_TFMST.setText(this.chuHang.getMaSoThue());
         id_RadioHoatDong.setSelected(this.chuHang.isTrangThai());
 
+        themChuyenHangController.GanGiaTriSauKhiTimKiemChuHang(this.chuHang);
     }
     public void SuaThongTin(ActionEvent actionEvent) {
     }
@@ -132,6 +136,6 @@ public class TimKiemChuHangController implements Initializable {
 
         tableviewTimKiemChuHang.getTableView().getItems().clear();
         timKiemChuHangPaginationService.taiDSPagination(chuHangs,tableviewTimKiemChuHang.getTableView(),20);
-        System.out.println(chuHangs);
+
     }
 }

@@ -1,5 +1,6 @@
 package com.tiendat.demo.ImplementRespository;
 
+import com.tiendat.demo.Model.ChuHang;
 import com.tiendat.demo.Model.ChuyenHang;
 import com.tiendat.demo.Respository.IChuyenHangRespository;
 
@@ -66,7 +67,7 @@ public class ChuyenHangRespositoryImplement implements IChuyenHangRespository {
     }
 
     @Override
-    public List<ChuyenHang> findAllBy() {
+    public List<ChuyenHang> findByChuHang(ChuHang chuHang) {
         return null;
     }
 }

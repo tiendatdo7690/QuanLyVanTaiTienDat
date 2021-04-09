@@ -61,6 +61,14 @@ public class ChuyenHang implements Serializable {
         this.id = id;
     }
 
+    public boolean isTrangThai() {
+        return trangThai;
+    }
+
+    public void setTrangThai(boolean trangThai) {
+        this.trangThai = trangThai;
+    }
+
     public String getTenChuyenHang() {
         return tenChuyenHang;
     }

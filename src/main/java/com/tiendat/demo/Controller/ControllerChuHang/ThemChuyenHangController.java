@@ -14,6 +14,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.net.URL;
@@ -46,19 +47,26 @@ public class ThemChuyenHangController implements Initializable {
     @FXML
     private TableColumn<?, ?> id_CotThemLoaiCv;
 
-
-    @Autowired
-    private TimKiemChuHangController timKiemChuHangController;
     @Autowired
     private IChuyenHangRespository chuyenHangRespository = new ChuyenHangRespositoryImplement();
 
+    private ChuHang chuHang;
+
     private ObservableList<ChuyenHang> chuyenHangs;
+
+    public ChuHang getChuHang() {
+        return chuHang;
+    }
+
+    public void setChuHang(ChuHang chuHang) {
+        this.chuHang = chuHang;
+    }
 
     @FXML
     void ThemChuyenHang(ActionEvent event) {
 
-        ChuHang chuHang = timKiemChuHangController.getChuHang();
-        if(chuHang != null) {
+
+        if(this.chuHang != null) {
             String tenChuyenHang = id_TenChuyenHang.getText();
             String diaChi = id_DiaChiDen.getText();
 
@@ -66,6 +74,7 @@ public class ThemChuyenHangController implements Initializable {
             chuyenHang.setDiaChiNoiDen(diaChi);
             chuyenHang.setTenChuyenHang(tenChuyenHang);
             chuyenHang.setChuHang(chuHang);
+            chuyenHang.setTrangThai(true);
 
             chuyenHangRespository.save(chuyenHang);
 
@@ -83,7 +92,14 @@ public class ThemChuyenHangController implements Initializable {
 
         id_CotTen.setCellValueFactory(new PropertyValueFactory<ChuyenHang,String>("tenChuyenHang"));
         id_CotDiaChi.setCellValueFactory(new PropertyValueFactory<ChuyenHang,String>("diaChiNoiDen"));
-        chuyenHangs = FXCollections.observableArrayList(chuyenHangRespository.findAllBy());
+
+    }
+
+    public void GanGiaTriSauKhiTimKiemChuHang(ChuHang chuHang){
+        this.chuHang = chuHang;
+        chuyenHangs = FXCollections.observableArrayList(this.chuHang.getChuyenHangSet());
+        //chuyenHangs = FXCollections.observableArrayList(chuyenHangRespository.findByChuHang(this.chuHang));
+        System.out.println(this.chuHang);
         id_TblViewChuyenHang.setItems(chuyenHangs);
     }
 
