@@ -4,7 +4,7 @@ import com.jfoenix.controls.JFXTextField;
 import com.tiendat.demo.ImplementRespository.ChuyenHangRespositoryImplement;
 import com.tiendat.demo.Model.ChuHang;
 import com.tiendat.demo.Model.ChuyenHang;
-import com.tiendat.demo.Respository.IChuyenHangRespository;
+import com.tiendat.demo.Respository.ChuyenHangRespository;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,7 +14,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.net.URL;
@@ -48,7 +47,7 @@ public class ThemChuyenHangController implements Initializable {
     private TableColumn<?, ?> id_CotThemLoaiCv;
 
     @Autowired
-    private IChuyenHangRespository chuyenHangRespository = new ChuyenHangRespositoryImplement();
+    private ChuyenHangRespository chuyenHangRespository = new ChuyenHangRespositoryImplement();
 
     private ChuHang chuHang;
 

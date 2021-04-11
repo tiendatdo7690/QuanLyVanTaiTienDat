@@ -104,4 +104,8 @@ public abstract class Cang implements Serializable {
     }
 
 
+    @Override
+    public String toString() {
+        return ten;
+    }
 }

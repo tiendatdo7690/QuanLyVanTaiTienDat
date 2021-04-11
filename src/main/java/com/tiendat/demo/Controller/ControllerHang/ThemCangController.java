@@ -41,6 +41,7 @@ public class ThemCangController implements Initializable {
 
     @Autowired
     private CangRespository cangRespository;
+
     public void LamMoi(){
 
     }
@@ -98,6 +99,7 @@ public class ThemCangController implements Initializable {
         observableList.add("Cảng Lấy");
         observableList.add("Cảng Hạ");
 
-        stringComboBoxService.LoadCombo(id_CBLoaiCang,observableList);
+        stringComboBoxService.setComboBox(id_CBLoaiCang);
+        stringComboBoxService.LoadCombo(observableList);
     }
 }

@@ -1,11 +1,11 @@
 package com.tiendat.demo.ImplementRespository;
 
 import com.tiendat.demo.Model.LuongCoBanTaiXe;
-import com.tiendat.demo.Respository.ILuongCoBanTXRespository;
+import com.tiendat.demo.Respository.LuongCoBanTXRespository;
 
 import java.util.Optional;
 
-public class LuongCoBanTxRespositoryImplement implements ILuongCoBanTXRespository {
+public class LuongCoBanTxRespositoryImplement implements LuongCoBanTXRespository {
     @Override
     public <S extends LuongCoBanTaiXe> S save(S entity) {
         return null;

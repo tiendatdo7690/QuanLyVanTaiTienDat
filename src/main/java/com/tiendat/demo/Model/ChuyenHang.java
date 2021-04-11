@@ -30,6 +30,9 @@ public class ChuyenHang implements Serializable {
     @Column(name = "trangThai")
     private boolean trangThai;
 
+    @Column(name = "id_CongViecNguyenChuyen")
+    private Long id_CongViecNguyenChuyen;
+
     @ManyToOne(fetch = FetchType.LAZY,
             cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
     @JoinColumn(name = "chuHang_id" , foreignKey= @ForeignKey(name = "Fk_chuHang_ChuyenHang"), nullable = true)
@@ -48,9 +51,17 @@ public class ChuyenHang implements Serializable {
     @OneToMany(fetch = FetchType.LAZY,
             cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH},
             mappedBy = "chuyenHang")
-    private Set<LoaiCongViec> loaiCongViecSet = new HashSet<LoaiCongViec>(0);
+    private Set<CongViec> congViecSet = new HashSet<CongViec>(0);
 
     public ChuyenHang() {
+    }
+
+    public Long getId_CongViecNguyenChuyen() {
+        return id_CongViecNguyenChuyen;
+    }
+
+    public void setId_CongViecNguyenChuyen(Long id_CongViecNguyenChuyen) {
+        this.id_CongViecNguyenChuyen = id_CongViecNguyenChuyen;
     }
 
     public Long getId() {
@@ -109,11 +120,16 @@ public class ChuyenHang implements Serializable {
         this.tienTaiXeSet = tienTaiXeSet;
     }
 
-    public Set<LoaiCongViec> getLoaiCongViecSet() {
-        return loaiCongViecSet;
+    public Set<CongViec> getCongViecSet() {
+        return congViecSet;
     }
 
-    public void setLoaiCongViecSet(Set<LoaiCongViec> loaiCongViecSet) {
-        this.loaiCongViecSet = loaiCongViecSet;
+    public void setCongViecSet(Set<CongViec> congViecSet) {
+        this.congViecSet = congViecSet;
+    }
+
+    @Override
+    public String toString() {
+        return tenChuyenHang;
     }
 }

@@ -72,4 +72,9 @@ public class ChuHangRespositoryImplement implements ChuHangRespository {
     public List<ChuHang> findByTenLikeOrMaSoThueLike(String ten, String mst) {
         return null;
     }
+
+    @Override
+    public List<ChuHang> findAllByTrangThaiTrue() {
+        return null;
+    }
 }

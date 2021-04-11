@@ -53,4 +53,9 @@ public class LoaiChiHo implements Serializable {
     public void setChiHoSet(Set<ChiHo> chiHoSet) {
         this.chiHoSet = chiHoSet;
     }
+
+    @Override
+    public String toString() {
+        return ten;
+    }
 }

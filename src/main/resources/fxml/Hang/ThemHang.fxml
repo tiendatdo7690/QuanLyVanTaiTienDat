@@ -13,9 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-      prefHeight="800.0" prefWidth="1200.0" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.tiendat.demo.Controller.ControllerHang.ThemHangController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiendat.demo.Controller.ControllerHang.ThemHangController">
    <children>
       <Label text="Thêm Hàng" />
       <HBox spacing="10.0">
@@ -33,30 +31,27 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                   <Label text="Số Cont" />
                   <Label text="Số Seal" GridPane.rowIndex="1" />
                   <Label text="Loại Hàng" GridPane.rowIndex="2" />
-                  <Label text="Chủ Hàng" GridPane.rowIndex="3" />
-                  <Label text="Cảng Lấy" GridPane.rowIndex="4" />
-                  <Label text="Cảng Hạ" GridPane.rowIndex="5" />
-                  <Label text="Xe" GridPane.rowIndex="6" />
-                  <JFXButton text="Thêm Cont Hàng" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                  <JFXTextField prefWidth="300.0" GridPane.columnIndex="1" />
-                  <JFXTextField prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <JFXComboBox prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <JFXComboBox prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <JFXComboBox prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <JFXComboBox prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                  <JFXComboBox prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <Label text="Cảng Lấy" GridPane.rowIndex="3" />
+                  <Label text="Cảng Hạ" GridPane.rowIndex="4" />
+                  <Label text="Xe" GridPane.rowIndex="5" />
+                  <JFXButton onAction="#ThemContHang" text="Thêm Cont Hàng" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <JFXTextField fx:id="id_SoCont" prefWidth="300.0" GridPane.columnIndex="1" />
+                  <JFXTextField fx:id="id_SoSeal" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <JFXComboBox fx:id="id_LoaiHang" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <JFXComboBox fx:id="id_CangLay" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <JFXComboBox fx:id="id_CangHa" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <JFXComboBox fx:id="id_Xe" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                </children>
             </GridPane>
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="300.0" spacing="10.0">
                <children>
                   <Label text="Chi Hộ" />
-                  <GridPane prefHeight="120.0" prefWidth="300.0">
+                  <GridPane prefHeight="160.0" prefWidth="300.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="94.0" minWidth="10.0" prefWidth="91.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="109.0" />
@@ -67,17 +62,17 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label text="Nội Dung" />
+                        <Label text="Loại Chi Hộ" />
                         <Label text="Số Tiền" GridPane.rowIndex="1" />
-                        <JFXButton text="Thêm Chi Hộ" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <JFXTextField GridPane.columnIndex="1" />
-                        <JFXTextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <JFXButton onAction="#ThemChiHo" text="Thêm Chi Hộ" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <JFXTextField fx:id="id_TienChiHo" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <JFXComboBox fx:id="id_LoaiChiHo" prefWidth="300.0" GridPane.columnIndex="1" />
                      </children>
                   </GridPane>
-                  <TableView>
+                  <TableView fx:id="id_TableChiHo">
                     <columns>
-                      <TableColumn prefWidth="101.0" text="Nội Dung" />
-                      <TableColumn prefWidth="112.0" text="Số Tiền" />
+                      <TableColumn fx:id="id_CotNoiDungChiHo" prefWidth="101.0" text="Nội Dung" />
+                      <TableColumn fx:id="id_CotTienChiHo" prefWidth="112.0" text="Số Tiền" />
                     </columns>
                   </TableView>
                </children>
@@ -88,7 +83,7 @@
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="300.0" spacing="10.0">
                <children>
                   <Label text="Chi Phí" />
-                  <GridPane prefHeight="120.0" prefWidth="300.0">
+                  <GridPane prefHeight="160.0" prefWidth="300.0">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="94.0" minWidth="10.0" prefWidth="91.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="109.0" />
@@ -102,14 +97,14 @@
                         <Label text="Nội Dung" />
                         <Label text="Số Tiền" GridPane.rowIndex="1" />
                         <JFXButton text="Thêm Chi Phí" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <JFXTextField GridPane.columnIndex="1" />
-                        <JFXTextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <JFXTextField fx:id="id_NoiDungChiPhi" GridPane.columnIndex="1" />
+                        <JFXTextField fx:id="id_SoTienChiPhi" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
-                  <TableView>
+                  <TableView fx:id="id_TableChiPhi">
                      <columns>
-                        <TableColumn prefWidth="101.0" text="Nội Dung" />
-                        <TableColumn prefWidth="112.0" text="Số Tiền" />
+                        <TableColumn fx:id="id_CotNoiDungChiPhi" prefWidth="101.0" text="Nội Dung" />
+                        <TableColumn fx:id="id_CotTienChiPhi" prefWidth="112.0" text="Số Tiền" />
                      </columns>
                   </TableView>
                </children>
@@ -120,31 +115,34 @@
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="350.0" spacing="10.0">
                <children>
                   <Label text="Công Việc" />
-                  <GridPane>
+                  <GridPane prefHeight="160.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="141.0" minWidth="10.0" prefWidth="114.0" />
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.0" minWidth="10.0" prefWidth="180.0" />
                     </columnConstraints>
                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label text="Chuyến Hàng" />
-                        <JFXComboBox prefWidth="300.0" GridPane.columnIndex="1" />
-                        <Label text="Tài Xế" GridPane.rowIndex="2" />
-                        <JFXComboBox prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Label layoutX="10.0" layoutY="17.0" text="Loại Chuyến Hàng" GridPane.rowIndex="1" />
-                        <JFXComboBox layoutX="157.0" layoutY="13.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <JFXButton text="Thêm Công Việc" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label text="Chuyến Hàng" GridPane.rowIndex="1" />
+                        <JFXComboBox fx:id="id_ChuyenHang" onAction="#LoadCBLoaiCongViec" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label text="Tài Xế" GridPane.rowIndex="3" />
+                        <JFXComboBox fx:id="id_TaiXe" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label layoutX="10.0" layoutY="17.0" text="Loại Công Việc" GridPane.rowIndex="2" />
+                        <JFXComboBox fx:id="id_LoaiCongViec" layoutX="157.0" layoutY="13.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <JFXButton onAction="#ThemCongViec" text="Thêm Công Việc" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label text="Chủ Hàng" />
+                        <JFXComboBox fx:id="id_ChuHang" onAction="#LoadCBChuyenHang" prefWidth="300.0" GridPane.columnIndex="1" />
                      </children>
                   </GridPane>
-                  <TableView>
+                  <TableView fx:id="id_TableCongViec">
                     <columns>
-                      <TableColumn prefWidth="109.0" text="Loại Chuyến Hàng" />
-                      <TableColumn prefWidth="81.0" text="Tài Xế" />
+                      <TableColumn fx:id="id_CotCongViec" prefWidth="109.0" text="Công Việc" />
+                      <TableColumn fx:id="id_CotTaiXe" prefWidth="81.0" text="Tài Xế" />
                     </columns>
                   </TableView>
                </children>

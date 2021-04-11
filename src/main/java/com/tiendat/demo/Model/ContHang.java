@@ -57,7 +57,7 @@ public class ContHang implements Serializable {
     @OneToMany(fetch = FetchType.LAZY,
             cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH},
             mappedBy = "contHang")
-    private Set<CongViec> congViecSet = new HashSet<CongViec>(0);
+    private Set<CongViec_TaiXe_ContHang> congViecTaiXeContHangSet = new HashSet<CongViec_TaiXe_ContHang>(0);
 
     @OneToMany(fetch = FetchType.LAZY,
             cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH},
@@ -148,12 +148,12 @@ public class ContHang implements Serializable {
         return chiPhiContHangSets;
     }
 
-    public Set<CongViec> getCongViecSet() {
-        return congViecSet;
+    public Set<CongViec_TaiXe_ContHang> getCongViecTaiXeContHangSet() {
+        return congViecTaiXeContHangSet;
     }
 
-    public void setCongViecSet(Set<CongViec> congViecSet) {
-        this.congViecSet = congViecSet;
+    public void setCongViecTaiXeContHangSet(Set<CongViec_TaiXe_ContHang> congViecTaiXeContHangSet) {
+        this.congViecTaiXeContHangSet = congViecTaiXeContHangSet;
     }
 
     public void setChiPhiContHangSets(Set<ChiPhiContHang> chiPhiContHangSets) {

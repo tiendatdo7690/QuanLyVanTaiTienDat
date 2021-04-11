@@ -1,28 +1,25 @@
 package com.tiendat.demo.ImplementRespository;
 
-import com.tiendat.demo.Model.ChuHang;
 import com.tiendat.demo.Model.ChuyenHang;
-import com.tiendat.demo.Respository.ChuyenHangRespository;
+import com.tiendat.demo.Model.CongViec;
+import com.tiendat.demo.Respository.LoaiCongViecRepository;
 
 import java.util.List;
 import java.util.Optional;
 
-public class ChuyenHangRespositoryImplement implements ChuyenHangRespository {
-    public ChuyenHangRespositoryImplement() {
-    }
-
+public class LoaiCongViecRepositoryImplement implements LoaiCongViecRepository {
     @Override
-    public <S extends ChuyenHang> S save(S s) {
+    public <S extends CongViec> S save(S entity) {
         return null;
     }
 
     @Override
-    public <S extends ChuyenHang> Iterable<S> saveAll(Iterable<S> iterable) {
+    public <S extends CongViec> Iterable<S> saveAll(Iterable<S> entities) {
         return null;
     }
 
     @Override
-    public Optional<ChuyenHang> findById(Long aLong) {
+    public Optional<CongViec> findById(Long aLong) {
         return Optional.empty();
     }
 
@@ -32,12 +29,12 @@ public class ChuyenHangRespositoryImplement implements ChuyenHangRespository {
     }
 
     @Override
-    public Iterable<ChuyenHang> findAll() {
+    public Iterable<CongViec> findAll() {
         return null;
     }
 
     @Override
-    public Iterable<ChuyenHang> findAllById(Iterable<Long> iterable) {
+    public Iterable<CongViec> findAllById(Iterable<Long> longs) {
         return null;
     }
 
@@ -52,12 +49,12 @@ public class ChuyenHangRespositoryImplement implements ChuyenHangRespository {
     }
 
     @Override
-    public void delete(ChuyenHang chuyenHang) {
+    public void delete(CongViec entity) {
 
     }
 
     @Override
-    public void deleteAll(Iterable<? extends ChuyenHang> iterable) {
+    public void deleteAll(Iterable<? extends CongViec> entities) {
 
     }
 
@@ -67,7 +64,7 @@ public class ChuyenHangRespositoryImplement implements ChuyenHangRespository {
     }
 
     @Override
-    public List<ChuyenHang> findByChuHang(ChuHang chuHang) {
+    public List<CongViec> findAllByChuyenHang(ChuyenHang chuyenHang) {
         return null;
     }
 }

@@ -64,4 +64,8 @@ public class ChiHo implements Serializable {
     public void setLoaiChiHo(LoaiChiHo loaiChiHo) {
         this.loaiChiHo = loaiChiHo;
     }
+
+    public String getNoiDung(){
+        return loaiChiHo.getTen();
+    }
 }

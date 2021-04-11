@@ -10,7 +10,7 @@ import com.tiendat.demo.Model.LuongCoBanTaiXe;
 import com.tiendat.demo.Model.TaiXe;
 import com.tiendat.demo.Model.Xe;
 import com.tiendat.demo.NodeService.ComboBoxService;
-import com.tiendat.demo.Respository.ILuongCoBanTXRespository;
+import com.tiendat.demo.Respository.LuongCoBanTXRespository;
 import com.tiendat.demo.Respository.TaiXeRepository;
 import com.tiendat.demo.Respository.XeRespository;
 import com.tiendat.demo.ThongBao.LoiChuongTrinh;
@@ -51,9 +51,8 @@ public class ThemTaiXeController implements Initializable {
     @Autowired
     private TaiXeRepository taiXeRepository = new TaiXeRespositoryImplement();
 
-    @Qualifier("ILuongCoBanTXRespository")
     @Autowired
-    private ILuongCoBanTXRespository luongCoBanTXRespository = new LuongCoBanTxRespositoryImplement();
+    private LuongCoBanTXRespository luongCoBanTXRespository = new LuongCoBanTxRespositoryImplement();
 
     @Autowired
     private XeRespository xeRespository = new XeRespositoryImplement();
@@ -72,7 +71,8 @@ public class ThemTaiXeController implements Initializable {
             System.out.println("Tài Xế của xe " + e.getBienSo() + " :" + e.getTaiXe());
         });
         xeObservableList = FXCollections.observableArrayList(xeRespository.timXeChuaCoTX());
-        xeComboBoxService.LoadCombo(id_CBXe,xeObservableList);
+        xeComboBoxService.setComboBox(id_CBXe);
+        xeComboBoxService.LoadCombo(xeObservableList);
     }
 
     public void ThemTaiXe(ActionEvent actionEvent) {
@@ -99,6 +99,7 @@ public class ThemTaiXeController implements Initializable {
         taiXe.setXe(xe);
         taiXe.setNgaySinh(ngaySinh);
         taiXe.setQueQuan(queQuan);
+        taiXe.setTrangThai(true);
 
         try {
             taiXe = taiXeRepository.save(taiXe);

@@ -54,4 +54,9 @@ public class LoaiHang implements Serializable {
     public void setContHangSet(Set<ContHang> contHangSet) {
         this.contHangSet = contHangSet;
     }
+
+    @Override
+    public String toString() {
+        return ten;
+    }
 }

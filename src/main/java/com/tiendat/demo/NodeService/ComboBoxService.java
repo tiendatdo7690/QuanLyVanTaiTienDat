@@ -15,16 +15,24 @@ import java.util.Set;
 @Service
 public class ComboBoxService<E> {
 
+    private JFXComboBox<E> comboBox;
 
-    public void LoadCombo(ComboBox<E> comboBox_E,ObservableList<E> listE) {
+    public JFXComboBox<E> getComboBox() {
+        return comboBox;
+    }
+
+    public void setComboBox(JFXComboBox<E> comboBox) {
+        this.comboBox = comboBox;
+    }
+
+    public void LoadCombo(ObservableList<E> listE) {
         // TODO Auto-generated method stub
 
         ObservableList<E> listNoiDen = listE;
 
-        System.out.println("Load CB");
-        comboBox_E.setItems(listNoiDen);
+        comboBox.setItems(listNoiDen);
 
-        comboBox_E.setCellFactory(new Callback<ListView<E>, ListCell<E>>(){
+        comboBox.setCellFactory(new Callback<ListView<E>, ListCell<E>>(){
 
             @Override
             public ListCell<E> call(ListView<E> p) {
@@ -49,17 +57,15 @@ public class ComboBoxService<E> {
         });
 
 
-        comboBox_E.getSelectionModel().selectFirst();
+        comboBox.getSelectionModel().selectFirst();
     }
 
-    public void LoadComboNoSelectFirts(ComboBox<E> comboBox_E,List<E> listE) {
+    public void LoadComboNoSelectFirts(ObservableList<E> listE) {
         // TODO Auto-generated method stub
 
-        ObservableList<E> listNoiDen = FXCollections.observableArrayList(listE);
+        comboBox.setItems(listE);
 
-        comboBox_E.setItems(listNoiDen);
-
-        comboBox_E.setCellFactory(new Callback<ListView<E>, ListCell<E>>(){
+        comboBox.setCellFactory(new Callback<ListView<E>, ListCell<E>>(){
 
             @Override
             public ListCell<E> call(ListView<E> p) {
@@ -84,12 +90,12 @@ public class ComboBoxService<E> {
         });
     }
 
-    public void LoadSetCombo(JFXComboBox<E> comboBox_E, Set<E> listE) {
+    public void LoadSetCombo(Set<E> listE) {
         ObservableList<E> listNoiDen = FXCollections.observableArrayList(listE);
 
-        comboBox_E.setItems(listNoiDen);
+        comboBox.setItems(listNoiDen);
 
-        comboBox_E.setCellFactory(new Callback<ListView<E>, ListCell<E>>(){
+        comboBox.setCellFactory(new Callback<ListView<E>, ListCell<E>>(){
 
             @Override
             public ListCell<E> call(ListView<E> p) {
@@ -113,7 +119,7 @@ public class ComboBoxService<E> {
             }
         });
 
-        comboBox_E.getSelectionModel().selectFirst();
+        comboBox.getSelectionModel().selectFirst();
 
     }
 }

@@ -6,6 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface IChuyenHangRespository extends CrudRepository<ChuyenHang, Long> {
+public interface ChuyenHangRespository extends CrudRepository<ChuyenHang, Long> {
     List<ChuyenHang> findByChuHang(ChuHang chuHang);
+
 }

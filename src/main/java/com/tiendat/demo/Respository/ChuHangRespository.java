@@ -10,4 +10,6 @@ public interface ChuHangRespository extends CrudRepository<ChuHang, Long> {
 	List<ChuHang> findByTenOrMaSoThue(String ten,String mst);
 
 	List<ChuHang> findByTenLikeOrMaSoThueLike(String ten,String mst);
+
+	List<ChuHang> findAllByTrangThaiTrue();
 }

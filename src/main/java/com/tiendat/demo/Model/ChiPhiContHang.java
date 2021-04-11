@@ -65,4 +65,8 @@ public class ChiPhiContHang implements Serializable {
     public void setLoaiChiPhiContHang(LoaiChiPhiContHang loaiChiPhiContHang) {
         this.loaiChiPhiContHang = loaiChiPhiContHang;
     }
+
+    public String getNoiDung(){
+        return loaiChiPhiContHang.getTen();
+    }
 }

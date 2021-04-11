@@ -1,5 +1,7 @@
 package com.tiendat.demo.Model;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -9,19 +11,18 @@ import java.util.Set;
 @Table(name = "LoaiCongViec")
 public class LoaiCongViec implements Serializable {
 
-    private static final long serialVersionUID = 4278937675314155055L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, nullable = false)
     private Long id;
 
-    @Column(name = "tiencong")
-    private Long tienCong;
+    @Type(type="org.hibernate.type.StringNVarcharType")
+    @Column(name = "ten", length = 255)
+    private String ten;
 
-    @ManyToOne(fetch = FetchType.LAZY,
-            cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
-    @JoinColumn(name = "ChuyenHang_Id" , foreignKey= @ForeignKey(name = "Fk_LoaiCongViec_ChuyenHang"), nullable = true)
-    private ChuyenHang chuyenHang;
+    @org.hibernate.annotations.Type(type="true_false")
+    @Column(name = "coPhaiNguyenChuyen")
+    private boolean coPhaiNguyenChuyen;
 
     @OneToMany(fetch = FetchType.LAZY,
             cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH},
@@ -39,20 +40,12 @@ public class LoaiCongViec implements Serializable {
         this.id = id;
     }
 
-    public Long getTienCong() {
-        return tienCong;
+    public String getTen() {
+        return ten;
     }
 
-    public void setTienCong(Long tienCong) {
-        this.tienCong = tienCong;
-    }
-
-    public ChuyenHang getChuyenHang() {
-        return chuyenHang;
-    }
-
-    public void setChuyenHang(ChuyenHang chuyenHang) {
-        this.chuyenHang = chuyenHang;
+    public void setTen(String ten) {
+        this.ten = ten;
     }
 
     public Set<CongViec> getCongViecSet() {

@@ -1,24 +1,24 @@
 package com.tiendat.demo.ImplementRespository;
 
-import com.tiendat.demo.Model.TaiXe;
-import com.tiendat.demo.Respository.TaiXeRepository;
+import com.tiendat.demo.Model.LoaiHang;
+import com.tiendat.demo.Respository.LoaiHangRespository;
 
 import java.util.List;
 import java.util.Optional;
 
-public class TaiXeRespositoryImplement implements TaiXeRepository {
+public class LoaiHangRespositoryImplement implements LoaiHangRespository {
     @Override
-    public <S extends TaiXe> S save(S entity) {
+    public <S extends LoaiHang> S save(S entity) {
         return null;
     }
 
     @Override
-    public <S extends TaiXe> Iterable<S> saveAll(Iterable<S> entities) {
+    public <S extends LoaiHang> Iterable<S> saveAll(Iterable<S> entities) {
         return null;
     }
 
     @Override
-    public Optional<TaiXe> findById(Long aLong) {
+    public Optional<LoaiHang> findById(Long aLong) {
         return Optional.empty();
     }
 
@@ -28,12 +28,12 @@ public class TaiXeRespositoryImplement implements TaiXeRepository {
     }
 
     @Override
-    public Iterable<TaiXe> findAll() {
+    public Iterable<LoaiHang> findAll() {
         return null;
     }
 
     @Override
-    public Iterable<TaiXe> findAllById(Iterable<Long> longs) {
+    public Iterable<LoaiHang> findAllById(Iterable<Long> longs) {
         return null;
     }
 
@@ -48,12 +48,12 @@ public class TaiXeRespositoryImplement implements TaiXeRepository {
     }
 
     @Override
-    public void delete(TaiXe entity) {
+    public void delete(LoaiHang entity) {
 
     }
 
     @Override
-    public void deleteAll(Iterable<? extends TaiXe> entities) {
+    public void deleteAll(Iterable<? extends LoaiHang> entities) {
 
     }
 
@@ -63,7 +63,7 @@ public class TaiXeRespositoryImplement implements TaiXeRepository {
     }
 
     @Override
-    public List<TaiXe> findAllByTrangThaiTrue() {
+    public List<LoaiHang> findAllBy() {
         return null;
     }
 }

@@ -68,6 +68,11 @@ public class XeRespositoryImplement implements XeRespository {
     }
 
     @Override
+    public List<Xe> findAllByTrangThaiTrue() {
+        return null;
+    }
+
+    @Override
     public List<Xe> timXeChuaCoTX() {
         return null;
     }

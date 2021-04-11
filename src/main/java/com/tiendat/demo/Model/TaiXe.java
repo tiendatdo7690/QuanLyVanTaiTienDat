@@ -54,7 +54,7 @@ public class TaiXe implements Serializable {
     @OneToMany(fetch = FetchType.LAZY,
             cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH},
             mappedBy = "taiXe")
-    private Set<CongViec> congViecSet = new HashSet<CongViec>(0);
+    private Set<CongViec_TaiXe_ContHang> congViecTaiXeContHangSet = new HashSet<CongViec_TaiXe_ContHang>(0);
 
     public TaiXe() {
     }
@@ -123,12 +123,12 @@ public class TaiXe implements Serializable {
         this.luongCoBanTaiXeSet = luongCoBanTaiXeSet;
     }
 
-    public Set<CongViec> getCongViecSet() {
-        return congViecSet;
+    public Set<CongViec_TaiXe_ContHang> getCongViecTaiXeContHangSet() {
+        return congViecTaiXeContHangSet;
     }
 
-    public void setCongViecSet(Set<CongViec> congViecSet) {
-        this.congViecSet = congViecSet;
+    public void setCongViecTaiXeContHangSet(Set<CongViec_TaiXe_ContHang> congViecTaiXeContHangSet) {
+        this.congViecTaiXeContHangSet = congViecTaiXeContHangSet;
     }
 
     @Override

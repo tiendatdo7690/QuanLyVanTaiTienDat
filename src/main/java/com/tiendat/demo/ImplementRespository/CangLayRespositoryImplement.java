@@ -1,24 +1,24 @@
 package com.tiendat.demo.ImplementRespository;
 
-import com.tiendat.demo.Model.TaiXe;
-import com.tiendat.demo.Respository.TaiXeRepository;
+import com.tiendat.demo.Model.CangLay;
+import com.tiendat.demo.Respository.CangLayRepository;
 
 import java.util.List;
 import java.util.Optional;
 
-public class TaiXeRespositoryImplement implements TaiXeRepository {
+public class CangLayRespositoryImplement implements CangLayRepository {
     @Override
-    public <S extends TaiXe> S save(S entity) {
+    public <S extends CangLay> S save(S entity) {
         return null;
     }
 
     @Override
-    public <S extends TaiXe> Iterable<S> saveAll(Iterable<S> entities) {
+    public <S extends CangLay> Iterable<S> saveAll(Iterable<S> entities) {
         return null;
     }
 
     @Override
-    public Optional<TaiXe> findById(Long aLong) {
+    public Optional<CangLay> findById(Long aLong) {
         return Optional.empty();
     }
 
@@ -28,12 +28,12 @@ public class TaiXeRespositoryImplement implements TaiXeRepository {
     }
 
     @Override
-    public Iterable<TaiXe> findAll() {
+    public Iterable<CangLay> findAll() {
         return null;
     }
 
     @Override
-    public Iterable<TaiXe> findAllById(Iterable<Long> longs) {
+    public Iterable<CangLay> findAllById(Iterable<Long> longs) {
         return null;
     }
 
@@ -48,12 +48,12 @@ public class TaiXeRespositoryImplement implements TaiXeRepository {
     }
 
     @Override
-    public void delete(TaiXe entity) {
+    public void delete(CangLay entity) {
 
     }
 
     @Override
-    public void deleteAll(Iterable<? extends TaiXe> entities) {
+    public void deleteAll(Iterable<? extends CangLay> entities) {
 
     }
 
@@ -63,7 +63,7 @@ public class TaiXeRespositoryImplement implements TaiXeRepository {
     }
 
     @Override
-    public List<TaiXe> findAllByTrangThaiTrue() {
+    public List<CangLay> findAllBy() {
         return null;
     }
 }

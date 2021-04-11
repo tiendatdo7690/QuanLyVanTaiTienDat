@@ -1,34 +1,51 @@
 package com.tiendat.demo.Model;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
+//11/4 thêm côt tên
 @Entity
 @Table(name = "CongViec")
 public class CongViec implements Serializable {
 
-    private static final long serialVersionUID = 6247028557353736502L;
+    private static final long serialVersionUID = 4278937675314155055L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, nullable = false)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY,
-            cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
-    @JoinColumn(name = "ContHang_Id" , foreignKey= @ForeignKey(name = "Fk_CongViec_ContHang"), nullable = true)
-    private ContHang contHang;
+    @Column(name = "tiencong")
+    private Long tienCong;
 
     @ManyToOne(fetch = FetchType.LAZY,
             cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
-    @JoinColumn(name = "TaiXe_Id" , foreignKey= @ForeignKey(name = "Fk_CongViec_TaiXe"), nullable = true)
-    private TaiXe taiXe;
-
-    @ManyToOne(fetch = FetchType.LAZY,
-            cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
-    @JoinColumn(name = "LoaiCongViec_Id" , foreignKey= @ForeignKey(name = "Fk_CongViec_LoaiCongViec"), nullable = true)
+    @JoinColumn(name = "LoaiCongViec_Id" , foreignKey= @ForeignKey(name = "Fk_LoaiCongViec_CongViec"), nullable = true)
     private LoaiCongViec loaiCongViec;
 
+    @ManyToOne(fetch = FetchType.LAZY,
+            cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
+    @JoinColumn(name = "ChuyenHang_Id" , foreignKey= @ForeignKey(name = "Fk_LoaiCongViec_ChuyenHang"), nullable = true)
+    private ChuyenHang chuyenHang;
+
+    @OneToMany(fetch = FetchType.LAZY,
+            cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH},
+            mappedBy = "congViec")
+    private Set<CongViec_TaiXe_ContHang> congViecTaiXeContHangSet = new HashSet<CongViec_TaiXe_ContHang>(0);
+
     public CongViec() {
+    }
+
+
+    public LoaiCongViec getLoaiCongViec() {
+        return loaiCongViec;
+    }
+
+    public void setLoaiCongViec(LoaiCongViec loaiCongViec) {
+        this.loaiCongViec = loaiCongViec;
     }
 
     public Long getId() {
@@ -39,27 +56,32 @@ public class CongViec implements Serializable {
         this.id = id;
     }
 
-    public ContHang getContHang() {
-        return contHang;
+    public Long getTienCong() {
+        return tienCong;
     }
 
-    public void setContHang(ContHang contHang) {
-        this.contHang = contHang;
+    public void setTienCong(Long tienCong) {
+        this.tienCong = tienCong;
     }
 
-    public TaiXe getTaiXe() {
-        return taiXe;
+    public ChuyenHang getChuyenHang() {
+        return chuyenHang;
     }
 
-    public void setTaiXe(TaiXe taiXe) {
-        this.taiXe = taiXe;
+    public void setChuyenHang(ChuyenHang chuyenHang) {
+        this.chuyenHang = chuyenHang;
     }
 
-    public LoaiCongViec getLoaiCongViec() {
-        return loaiCongViec;
+    public Set<CongViec_TaiXe_ContHang> getCongViecTaiXeContHangSet() {
+        return congViecTaiXeContHangSet;
     }
 
-    public void setLoaiCongViec(LoaiCongViec loaiCongViec) {
-        this.loaiCongViec = loaiCongViec;
+    public void setCongViecTaiXeContHangSet(Set<CongViec_TaiXe_ContHang> congViecTaiXeContHangSet) {
+        this.congViecTaiXeContHangSet = congViecTaiXeContHangSet;
+    }
+
+    @Override
+    public String toString() {
+        return loaiCongViec.getTen();
     }
 }

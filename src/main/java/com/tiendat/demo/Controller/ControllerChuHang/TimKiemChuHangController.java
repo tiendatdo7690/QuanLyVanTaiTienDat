@@ -93,7 +93,8 @@ public class TimKiemChuHangController implements Initializable {
         System.out.println(observableList.add("Tên"));
         observableList.add("Mã Số Thuế");
         System.out.println(observableList.size());
-        comboBoxServiceLoaiTimKiem.LoadCombo(id_CBLoaiTimKiem,observableList);
+        comboBoxServiceLoaiTimKiem.setComboBox(id_CBLoaiTimKiem);
+        comboBoxServiceLoaiTimKiem.LoadCombo(observableList);
         tabPaneService = new TabPaneService();
 
         try {
