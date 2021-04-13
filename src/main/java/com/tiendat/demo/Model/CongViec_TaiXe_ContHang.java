@@ -5,6 +5,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "CongViec_TaiXe_ContHang")
+@IdClass(CongViec_TaiXe_ContHangPK.class)
 public class CongViec_TaiXe_ContHang implements Serializable {
 
     private static final long serialVersionUID = 6247028557353736502L;
@@ -53,10 +54,6 @@ public class CongViec_TaiXe_ContHang implements Serializable {
 
     public void setCongViec(CongViec congViec) {
         this.congViec = congViec;
-    }
-
-    public String getNoiDung(){
-        return congViec.getLoaiCongViec().getTen();
     }
 
     public String getTenTaiXe(){

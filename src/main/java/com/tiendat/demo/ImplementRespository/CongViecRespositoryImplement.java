@@ -1,27 +1,25 @@
 package com.tiendat.demo.ImplementRespository;
 
 import com.tiendat.demo.Model.ChuyenHang;
+import com.tiendat.demo.Model.CongViec;
 import com.tiendat.demo.Model.LoaiCongViec;
-import com.tiendat.demo.Respository.LoaiCongViecRepository;
+import com.tiendat.demo.Respository.CongViecRespository;
 
-import java.util.List;
 import java.util.Optional;
 
-
-public class LoaiCongViecRepositoryImplement implements LoaiCongViecRepository {
-
+public class CongViecRespositoryImplement implements CongViecRespository {
     @Override
-    public <S extends LoaiCongViec> S save(S entity) {
+    public <S extends CongViec> S save(S entity) {
         return null;
     }
 
     @Override
-    public <S extends LoaiCongViec> Iterable<S> saveAll(Iterable<S> entities) {
+    public <S extends CongViec> Iterable<S> saveAll(Iterable<S> entities) {
         return null;
     }
 
     @Override
-    public Optional<LoaiCongViec> findById(Long aLong) {
+    public Optional<CongViec> findById(Long aLong) {
         return Optional.empty();
     }
 
@@ -31,12 +29,12 @@ public class LoaiCongViecRepositoryImplement implements LoaiCongViecRepository {
     }
 
     @Override
-    public Iterable<LoaiCongViec> findAll() {
+    public Iterable<CongViec> findAll() {
         return null;
     }
 
     @Override
-    public Iterable<LoaiCongViec> findAllById(Iterable<Long> longs) {
+    public Iterable<CongViec> findAllById(Iterable<Long> longs) {
         return null;
     }
 
@@ -51,12 +49,12 @@ public class LoaiCongViecRepositoryImplement implements LoaiCongViecRepository {
     }
 
     @Override
-    public void delete(LoaiCongViec entity) {
+    public void delete(CongViec entity) {
 
     }
 
     @Override
-    public void deleteAll(Iterable<? extends LoaiCongViec> entities) {
+    public void deleteAll(Iterable<? extends CongViec> entities) {
 
     }
 
@@ -66,7 +64,7 @@ public class LoaiCongViecRepositoryImplement implements LoaiCongViecRepository {
     }
 
     @Override
-    public List<LoaiCongViec> layDSLoaiCV_ChuyenHang(ChuyenHang chuyenHang) {
+    public CongViec layCVBangChuyenHangVaLoaiCV(ChuyenHang chuyenHang, LoaiCongViec loaiCV) {
         return null;
     }
 }

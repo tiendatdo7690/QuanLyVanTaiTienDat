@@ -12,6 +12,7 @@ public interface XeRespository extends CrudRepository<Xe, Long> {
     List<Xe> findAllBy();
 
     List<Xe> findAllByTrangThaiTrue();
+
     @Query(value = "select  x\n" +
             "from Xe x\n" +
             "where x.bienSo not in(\n" +

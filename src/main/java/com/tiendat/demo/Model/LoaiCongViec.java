@@ -21,13 +21,13 @@ public class LoaiCongViec implements Serializable {
     private String ten;
 
     @org.hibernate.annotations.Type(type="true_false")
-    @Column(name = "coPhaiNguyenChuyen")
-    private boolean coPhaiNguyenChuyen;
+    @Column(name = "nguyenChuyenHang")
+    private boolean nguyenChuyenHang;
 
     @OneToMany(fetch = FetchType.LAZY,
             cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH},
             mappedBy = "loaiCongViec")
-    private Set<CongViec> congViecSet = new HashSet<CongViec>(0);
+    private Set<LoaiCongViec_ChuyenHang> loaiCongViec_chuyenHangSet = new HashSet<LoaiCongViec_ChuyenHang>(0);
 
     public LoaiCongViec() {
     }
@@ -48,11 +48,24 @@ public class LoaiCongViec implements Serializable {
         this.ten = ten;
     }
 
-    public Set<CongViec> getCongViecSet() {
-        return congViecSet;
+    public Set<LoaiCongViec_ChuyenHang> getLoaiCongViec_chuyenHangSet() {
+        return loaiCongViec_chuyenHangSet;
     }
 
-    public void setCongViecSet(Set<CongViec> congViecSet) {
-        this.congViecSet = congViecSet;
+    public void setLoaiCongViec_chuyenHangSet(Set<LoaiCongViec_ChuyenHang> loaiCongViec_chuyenHangSet) {
+        this.loaiCongViec_chuyenHangSet = loaiCongViec_chuyenHangSet;
+    }
+
+    public boolean isNguyenChuyenHang() {
+        return nguyenChuyenHang;
+    }
+
+    public void setNguyenChuyenHang(boolean nguyenChuyenHang) {
+        this.nguyenChuyenHang = nguyenChuyenHang;
+    }
+
+    @Override
+    public String toString() {
+        return ten;
     }
 }

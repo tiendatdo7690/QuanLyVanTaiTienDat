@@ -21,15 +21,10 @@ public class CongViec implements Serializable {
     @Column(name = "tiencong")
     private Long tienCong;
 
-    @ManyToOne(fetch = FetchType.LAZY,
-            cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
-    @JoinColumn(name = "LoaiCongViec_Id" , foreignKey= @ForeignKey(name = "Fk_LoaiCongViec_CongViec"), nullable = true)
-    private LoaiCongViec loaiCongViec;
-
-    @ManyToOne(fetch = FetchType.LAZY,
-            cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
-    @JoinColumn(name = "ChuyenHang_Id" , foreignKey= @ForeignKey(name = "Fk_LoaiCongViec_ChuyenHang"), nullable = true)
-    private ChuyenHang chuyenHang;
+    @OneToMany(fetch = FetchType.LAZY,
+            cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH},
+            mappedBy = "congViec")
+    private Set<LoaiCongViec_ChuyenHang> loaiCongViec_chuyenHangSet = new HashSet<LoaiCongViec_ChuyenHang>(0);
 
     @OneToMany(fetch = FetchType.LAZY,
             cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH},
@@ -37,15 +32,6 @@ public class CongViec implements Serializable {
     private Set<CongViec_TaiXe_ContHang> congViecTaiXeContHangSet = new HashSet<CongViec_TaiXe_ContHang>(0);
 
     public CongViec() {
-    }
-
-
-    public LoaiCongViec getLoaiCongViec() {
-        return loaiCongViec;
-    }
-
-    public void setLoaiCongViec(LoaiCongViec loaiCongViec) {
-        this.loaiCongViec = loaiCongViec;
     }
 
     public Long getId() {
@@ -64,14 +50,6 @@ public class CongViec implements Serializable {
         this.tienCong = tienCong;
     }
 
-    public ChuyenHang getChuyenHang() {
-        return chuyenHang;
-    }
-
-    public void setChuyenHang(ChuyenHang chuyenHang) {
-        this.chuyenHang = chuyenHang;
-    }
-
     public Set<CongViec_TaiXe_ContHang> getCongViecTaiXeContHangSet() {
         return congViecTaiXeContHangSet;
     }
@@ -80,8 +58,11 @@ public class CongViec implements Serializable {
         this.congViecTaiXeContHangSet = congViecTaiXeContHangSet;
     }
 
-    @Override
-    public String toString() {
-        return loaiCongViec.getTen();
+    public Set<LoaiCongViec_ChuyenHang> getLoaiCongViec_chuyenHangSet() {
+        return loaiCongViec_chuyenHangSet;
+    }
+
+    public void setLoaiCongViec_chuyenHangSet(Set<LoaiCongViec_ChuyenHang> loaiCongViec_chuyenHangSet) {
+        this.loaiCongViec_chuyenHangSet = loaiCongViec_chuyenHangSet;
     }
 }

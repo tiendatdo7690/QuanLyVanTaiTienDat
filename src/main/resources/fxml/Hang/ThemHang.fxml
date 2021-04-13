@@ -94,11 +94,11 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Label text="Nội Dung" />
                         <Label text="Số Tiền" GridPane.rowIndex="1" />
-                        <JFXButton text="Thêm Chi Phí" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <JFXTextField fx:id="id_NoiDungChiPhi" GridPane.columnIndex="1" />
+                        <JFXButton onAction="#ThemChiPhi" text="Thêm Chi Phí" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <JFXTextField fx:id="id_SoTienChiPhi" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <JFXComboBox fx:id="id_LoaiChiPhi" prefWidth="300.0" GridPane.columnIndex="1" />
+                        <Label text="Loại Chi Phí" />
                      </children>
                   </GridPane>
                   <TableView fx:id="id_TableChiPhi">
@@ -143,6 +143,7 @@
                     <columns>
                       <TableColumn fx:id="id_CotCongViec" prefWidth="109.0" text="Công Việc" />
                       <TableColumn fx:id="id_CotTaiXe" prefWidth="81.0" text="Tài Xế" />
+                        <TableColumn fx:id="id_CotTienTaiXe" prefWidth="75.0" text="Tiền TX" />
                     </columns>
                   </TableView>
                </children>

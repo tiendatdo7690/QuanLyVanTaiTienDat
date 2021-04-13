@@ -52,4 +52,9 @@ public class LoaiChiPhiContHang implements Serializable {
     public void setChiPhiContHangSet(Set<ChiPhiContHang> chiPhiContHangSet) {
         this.chiPhiContHangSet = chiPhiContHangSet;
     }
+
+    @Override
+    public String toString() {
+        return ten;
+    }
 }
