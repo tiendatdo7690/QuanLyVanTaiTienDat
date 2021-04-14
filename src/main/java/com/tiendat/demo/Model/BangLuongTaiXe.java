@@ -8,7 +8,7 @@ import java.sql.Date;
 
 //test git 6/4/2021
 @Entity
-@Table(name = "BangLuongTaiXe")
+@Table(name = "bang_luong_tai_xe")
 public class BangLuongTaiXe implements Serializable {
 
     private static final long serialVersionUID = 7530996315938347521L;
@@ -23,16 +23,16 @@ public class BangLuongTaiXe implements Serializable {
     private String ten;
 
     @Type(type="org.hibernate.type.DateType")
-    @Column(name = "ngayBatDau")
+    @Column(name = "ngay_bat_dau")
     private Date ngayBatDau;
 
     @Type(type="org.hibernate.type.DateType")
-    @Column(name = "ngayKetThuc")
+    @Column(name = "ngay_Ket_Thuc")
     private Date ngayKetThuc;
 
     @ManyToOne(fetch = FetchType.LAZY,
             cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
-    @JoinColumn(name = "taiXe_id" , foreignKey= @ForeignKey(name = "Fk_BangLuongTaiXe_taiXe"), nullable = true)
+    @JoinColumn(name = "tai_Xe_id" , foreignKey= @ForeignKey(name = "Fk_BangLuongTaiXe_taiXe"), nullable = true)
     private TaiXe taiXe;
 
     public BangLuongTaiXe() {

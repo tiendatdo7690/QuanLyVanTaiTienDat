@@ -2,11 +2,16 @@ package com.tiendat.demo.ImplementRespository;
 
 import com.tiendat.demo.Model.CongViec_TaiXe_ContHang;
 import com.tiendat.demo.Model.CongViec_TaiXe_ContHangPK;
-import com.tiendat.demo.Respository.ContHang_TX_CVRespository;
+import com.tiendat.demo.Respository.ContHangTXCVRespository;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.transaction.Transactional;
 import java.util.Optional;
 
-public class ContHang_TX_CVRespositoryImplement implements ContHang_TX_CVRespository {
+public class ContHangTXCVRespositoryImplement implements ContHangTXCVRespository {
+
 
     @Override
     public <S extends CongViec_TaiXe_ContHang> S save(S entity) {
@@ -62,4 +67,5 @@ public class ContHang_TX_CVRespositoryImplement implements ContHang_TX_CVResposi
     public void deleteAll() {
 
     }
+
 }

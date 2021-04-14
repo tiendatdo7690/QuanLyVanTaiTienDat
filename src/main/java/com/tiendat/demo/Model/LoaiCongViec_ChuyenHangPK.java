@@ -25,4 +25,14 @@ public class LoaiCongViec_ChuyenHangPK implements Serializable {
     public void setChuyenHang(ChuyenHang chuyenHang) {
         this.chuyenHang = chuyenHang;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        return false;
+    }
+    @Override
+    public int hashCode(){
+
+        return 0;
+    }
 }

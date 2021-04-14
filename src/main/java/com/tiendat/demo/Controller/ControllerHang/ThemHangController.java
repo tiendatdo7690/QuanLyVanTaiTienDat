@@ -15,11 +15,17 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.DuplicateKeyException;
+import org.springframework.orm.jpa.JpaSystemException;
 import org.springframework.stereotype.Component;
 
 import java.net.URL;
 import java.sql.Date;
+import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
@@ -139,6 +145,16 @@ public class ThemHangController implements Initializable {
     private CongViecRespository congViecRespository = new CongViecRespositoryImplement();
 
     @Autowired
+    private ContHangTXCVRespository contHangTXCVRespository = new ContHangTXCVRespositoryImplement();
+
+    @Autowired
+    private ChiHoRespository chiHoRespository = new ChiHoRespositoryImplement();
+
+    @Autowired
+    private ChiPhiContHangRespository chiPhiContHangRespository = new ChiPhiContHangRespositoryImplement();
+
+
+    @Autowired
     private ComboBoxService<LoaiHang> loaiHangComboBoxService;
 
     private ObservableList<LoaiHang> loaiHangs;
@@ -236,6 +252,12 @@ public class ThemHangController implements Initializable {
         Cang cangLay = id_CangLay.getSelectionModel().getSelectedItem();
         LoaiHang loaiHang = id_LoaiHang.getSelectionModel().getSelectedItem();
 
+        ChuyenHang chuyenHang = id_ChuyenHang.getSelectionModel().getSelectedItem();
+        LoaiCongViec loaiCongViec = id_LoaiCongViec.getSelectionModel().getSelectedItem();
+        CongViec congViec = congViecRespository.layCVBangChuyenHangVaLoaiCV(chuyenHang,loaiCongViec);
+
+        TaiXe taiXe = id_TaiXe.getSelectionModel().getSelectedItem();
+
         ContHang contHang = new ContHang();
         contHang.setSoCont(soCont);
         contHang.setSoSeal(soSeal);
@@ -248,8 +270,43 @@ public class ThemHangController implements Initializable {
 
         dsChiHos.forEach(e->{
             e.setContHang(contHang);
+            chiHoRespository.save(e);
         });
 
+        dsChiPhiContHang.forEach(e->{
+            e.setContHang(contHang);
+            chiPhiContHangRespository.save(e);
+        });
+
+
+        System.out.println("số công việc: "+dsCongViecTX.size());
+        dsCongViecTX.forEach(e->{
+            CongViec_TaiXe_ContHang congViec_taiXe_contHang = new CongViec_TaiXe_ContHang();
+            congViec_taiXe_contHang.setCongViec(congViec);
+            congViec_taiXe_contHang.setContHang(contHang);
+            congViec_taiXe_contHang.setTaiXe(taiXe);
+
+            CongViec_TaiXe_ContHangPK congViec_taiXe_contHangPK = new CongViec_TaiXe_ContHangPK();
+            congViec_taiXe_contHangPK.setCongviecid(congViec.getId());
+            congViec_taiXe_contHangPK.setConthangid(contHang.getId());
+            congViec_taiXe_contHang.setId(congViec_taiXe_contHangPK);
+
+            if(!contHangTXCVRespository.existsById(congViec_taiXe_contHangPK))
+                 contHangTXCVRespository.save(congViec_taiXe_contHang);
+            else{
+                System.out.println("Nhập Công việc 2 lần");
+            }
+
+
+
+//            if(contHangTXCVRespository.existsById(congViec_taiXe_contHangPK)){
+//                System.out.println("Công việc thêm 2 lần");
+//            }
+//            else {
+//                contHangTXCVRespository.save(congViec_taiXe_contHang);
+//            }
+
+        });
     }
 
     public void LamMoi(){

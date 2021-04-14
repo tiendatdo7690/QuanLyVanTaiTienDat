@@ -4,33 +4,42 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "CongViec_TaiXe_ContHang")
-@IdClass(CongViec_TaiXe_ContHangPK.class)
+@Table(name = "Cong_Viec_Tai_Xe_Cont_Hang")
 public class CongViec_TaiXe_ContHang implements Serializable {
 
     private static final long serialVersionUID = 6247028557353736502L;
 
-    @Id
+    @EmbeddedId
+    private  CongViec_TaiXe_ContHangPK id;
+
+    @MapsId("conthangid")
     @ManyToOne(fetch = FetchType.LAZY,
             cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
-    @JoinColumn(name = "ContHang_Id" , foreignKey= @ForeignKey(name = "Fk_CongViec_ContHang"), nullable = true)
+    @JoinColumn(name = "cont_Hang_id" , foreignKey= @ForeignKey(name = "Fk_CongViec_ContHang"), nullable = true)
     private ContHang contHang;
 
-    @Id
     @ManyToOne(fetch = FetchType.LAZY,
             cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
-    @JoinColumn(name = "TaiXe_Id" , foreignKey= @ForeignKey(name = "Fk_CongViec_TaiXe"), nullable = true)
+    @JoinColumn(name = "tai_Xe_id" , foreignKey= @ForeignKey(name = "Fk_CongViec_TaiXe"), nullable = true)
     private TaiXe taiXe;
 
-    @Id
+    @MapsId("congviecid")
     @ManyToOne(fetch = FetchType.LAZY,
             cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
-    @JoinColumn(name = "LoaiCongViec_Id" , foreignKey= @ForeignKey(name = "Fk_CongViec_LoaiCongViec"), nullable = true)
+    @JoinColumn(name = "cong_Viec_id" , foreignKey= @ForeignKey(name = "Fk_CongViec_LoaiCongViec"), nullable = true)
     private CongViec congViec;
 
     public CongViec_TaiXe_ContHang() {
     }
 
+
+    public CongViec_TaiXe_ContHangPK getId() {
+        return id;
+    }
+
+    public void setId(CongViec_TaiXe_ContHangPK id) {
+        this.id = id;
+    }
 
     public ContHang getContHang() {
         return contHang;

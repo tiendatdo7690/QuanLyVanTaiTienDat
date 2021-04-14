@@ -26,19 +26,19 @@ public abstract class Cang implements Serializable {
     protected String ten;
 
     @Type(type="org.hibernate.type.StringNVarcharType")
-    @Column(name = "diaChi", length = 255)
+    @Column(name = "dia_Chi", length = 255)
     protected String diaChi;
 
     @Type(type="org.hibernate.type.StringNVarcharType")
-    @Column(name = "soDienThoai", length = 255)
+    @Column(name = "so_Dien_Thoai", length = 255)
     protected String soDienThoai;
 
     @Type(type="org.hibernate.type.StringNVarcharType")
-    @Column(name = "eMail", length = 255)
+    @Column(name = "e_Mail", length = 255)
     protected String eMail;
 
     @org.hibernate.annotations.Type(type="true_false")
-    @Column(name = "trangThai")
+    @Column(name = "trang_Thai")
     protected boolean trangThai;
 
 
