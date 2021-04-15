@@ -1,26 +1,41 @@
 package com.tiendat.demo.ModelView;
 
+import com.tiendat.demo.Model.CongViec;
+import com.tiendat.demo.Model.TaiXe;
+
 public class CongViecTX {
 
-    private String tenTx;
+    private CongViec congViec;
+    private TaiXe taiXe;
     private String tenCV;
-    private Long tienTX;
 
     public CongViecTX() {
     }
 
-    public CongViecTX(String tenTx, String tenCV, Long tienTX) {
-        this.tenTx = tenTx;
+    public CongViecTX(CongViec congViec, TaiXe taiXe, String tenCV) {
+        this.congViec = congViec;
+        this.taiXe = taiXe;
         this.tenCV = tenCV;
-        this.tienTX = tienTX;
     }
 
     public String getTenTx() {
-        return tenTx;
+        return taiXe.getTen();
     }
 
-    public void setTenTx(String tenTx) {
-        this.tenTx = tenTx;
+    public CongViec getCongViec() {
+        return congViec;
+    }
+
+    public void setCongViec(CongViec congViec) {
+        this.congViec = congViec;
+    }
+
+    public TaiXe getTaiXe() {
+        return taiXe;
+    }
+
+    public void setTaiXe(TaiXe taiXe) {
+        this.taiXe = taiXe;
     }
 
     public String getTenCV() {
@@ -32,10 +47,8 @@ public class CongViecTX {
     }
 
     public Long getTienTX() {
-        return tienTX;
+        return congViec.getTienCong();
     }
 
-    public void setTienTX(Long tienTX) {
-        this.tienTX = tienTX;
-    }
+
 }

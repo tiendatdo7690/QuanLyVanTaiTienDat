@@ -2,6 +2,7 @@ package com.tiendat.demo.Controller.ControllerHang;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
+import com.tiendat.demo.Exception.CV_TX_CHException;
 import com.tiendat.demo.ImplementRespository.*;
 import com.tiendat.demo.Model.*;
 import com.tiendat.demo.ModelView.CongViecTX;
@@ -153,6 +154,8 @@ public class ThemHangController implements Initializable {
     @Autowired
     private ChiPhiContHangRespository chiPhiContHangRespository = new ChiPhiContHangRespositoryImplement();
 
+    @Autowired
+    private ContHangTXCVDAO contHangTXCVDAO;
 
     @Autowired
     private ComboBoxService<LoaiHang> loaiHangComboBoxService;
@@ -228,21 +231,19 @@ public class ThemHangController implements Initializable {
         TaiXe taiXe =  id_TaiXe.getSelectionModel().getSelectedItem();
         LoaiCongViec loaiCongViec =  id_LoaiCongViec.getSelectionModel().getSelectedItem();
         ChuyenHang chuyenHang = id_ChuyenHang.getSelectionModel().getSelectedItem();
-        String tenTaiXe = taiXe.getTen();
-        String congViec = loaiCongViec.getTen();
-        Long tienTx = congViecRespository.layCVBangChuyenHangVaLoaiCV(chuyenHang,loaiCongViec).getTienCong();
-        System.out.println("Tiền TX: "+tienTx);
+        String tenCongViec = loaiCongViec.getTen();
+        CongViec congViec = congViecRespository.layCVBangChuyenHangVaLoaiCV(chuyenHang,loaiCongViec);
 
         CongViecTX congViecTX = new CongViecTX();
-        congViecTX.setTenCV(congViec);
-        congViecTX.setTenTx(tenTaiXe);
-        congViecTX.setTienTX(tienTx);
+        congViecTX.setTenCV(tenCongViec);
+        congViecTX.setCongViec(congViec);
+        congViecTX.setTaiXe(taiXe);
 
         dsCongViecTX.add(congViecTX);
     }
 
     @FXML
-    void ThemContHang(ActionEvent event) {
+    void ThemContHang(ActionEvent event) throws CV_TX_CHException {
 
         String soCont = id_SoCont.getText();
         String soSeal = id_SoSeal.getText();
@@ -279,34 +280,7 @@ public class ThemHangController implements Initializable {
         });
 
 
-        System.out.println("số công việc: "+dsCongViecTX.size());
-        dsCongViecTX.forEach(e->{
-            CongViec_TaiXe_ContHang congViec_taiXe_contHang = new CongViec_TaiXe_ContHang();
-            congViec_taiXe_contHang.setCongViec(congViec);
-            congViec_taiXe_contHang.setContHang(contHang);
-            congViec_taiXe_contHang.setTaiXe(taiXe);
-
-            CongViec_TaiXe_ContHangPK congViec_taiXe_contHangPK = new CongViec_TaiXe_ContHangPK();
-            congViec_taiXe_contHangPK.setCongviecid(congViec.getId());
-            congViec_taiXe_contHangPK.setConthangid(contHang.getId());
-            congViec_taiXe_contHang.setId(congViec_taiXe_contHangPK);
-
-            if(!contHangTXCVRespository.existsById(congViec_taiXe_contHangPK))
-                 contHangTXCVRespository.save(congViec_taiXe_contHang);
-            else{
-                System.out.println("Nhập Công việc 2 lần");
-            }
-
-
-
-//            if(contHangTXCVRespository.existsById(congViec_taiXe_contHangPK)){
-//                System.out.println("Công việc thêm 2 lần");
-//            }
-//            else {
-//                contHangTXCVRespository.save(congViec_taiXe_contHang);
-//            }
-
-        });
+        contHangTXCVDAO.saveDS(dsCongViecTX,contHang);
     }
 
     public void LamMoi(){

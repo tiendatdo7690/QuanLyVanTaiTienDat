@@ -1,7 +1,10 @@
 package com.tiendat.demo.ImplementRespository;
 
+import com.tiendat.demo.Exception.ContHangException;
 import com.tiendat.demo.Model.ContHang;
 import com.tiendat.demo.Respository.ContHangRespository;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -58,6 +61,16 @@ public class ContHangRespositoryImplement implements ContHangRespository {
 
     @Override
     public void deleteAll() {
+
+    }
+
+    @Transactional(propagation = Propagation.MANDATORY )
+    public void batLoiSaveContHang() throws ContHangException {
+
+
+    }
+
+    public void saveContHang(){
 
     }
 }
