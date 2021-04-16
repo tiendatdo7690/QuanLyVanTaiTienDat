@@ -49,12 +49,26 @@ public class TableViewService<E,C> {
     public void TaoCotXemThongTin(){
 
         TableColumn<E, Boolean> cotXemThongTin = new TableColumn<E,Boolean>("Xem Thông Tin");
+
         Callback<TableColumn<E, Boolean>, TableCell<E, Boolean>> CellXemFactory
                 = (TableColumn<E, Boolean> param) -> new ButtonCellXem();
 
         cotXemThongTin.setCellFactory(CellXemFactory);
 
         tableView.getColumns().add(cotXemThongTin);
+
+    }
+
+    public void TaoCotXoa(){
+
+        TableColumn<E, Boolean> cotXoa = new TableColumn<E,Boolean>("Xóa");
+
+        Callback<TableColumn<E, Boolean>, TableCell<E, Boolean>> CellXemFactory
+                = (TableColumn<E, Boolean> param) -> new ButtonCellXoa();
+
+        cotXoa.setCellFactory(CellXemFactory);
+
+        tableView.getColumns().add(cotXoa);
 
     }
 
@@ -85,6 +99,37 @@ public class TableViewService<E,C> {
                     } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException noSuchMethodException) {
                         noSuchMethodException.printStackTrace();
                     }
+                }
+            });
+        }
+        /** places an add button in the row only if the row is not empty. */
+        @Override protected void updateItem(Boolean item, boolean empty) {
+            super.updateItem(item, empty);
+            if (!empty) {
+                setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+                setGraphic(Button);
+            } else {
+                setGraphic(null);
+            }
+        }
+    }
+
+    public class ButtonCellXoa extends TableCell<E, Boolean> {
+
+        private javafx.scene.control.Button Button = new Button("Xóa");
+
+        public ButtonCellXoa() {
+            // TODO Auto-generated constructor stub
+            Button.setOnMousePressed(new EventHandler<MouseEvent>() {
+
+
+                @Override
+                public void handle(MouseEvent mouseEvent) {
+
+                    System.out.println("Xóa");
+                    E e = getTableRow().getItem();
+
+                    getTableView().getItems().remove(e);
                 }
             });
         }

@@ -7,37 +7,37 @@ import java.io.Serializable;
 
 
 @Entity
-@Table(name = "ChiPhiContHang")
-public class ChiPhiContHang implements Serializable {
+@Table(name = "ChiPhiContHang_ContHang")
+public class ChiPhiContHang_ContHang implements Serializable {
 
     private static final long serialVersionUID = 3311460032337133990L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", unique = true, nullable = false)
-    private Long id;
+    @EmbeddedId
+    private ChiPhiContHang_ContHangPK id;
 
     @Column(name = "tien")
     private Long tien;
 
+    @MapsId("idContHang")
     @ManyToOne(fetch = FetchType.LAZY,
             cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
     @JoinColumn(name = "contHang_id" , foreignKey= @ForeignKey(name = "Fk_ChiPhiContHang_contHang"), nullable = true)
     private ContHang contHang;
 
+    @MapsId("idChiPhiContHang")
     @ManyToOne(fetch = FetchType.LAZY,
             cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
     @JoinColumn(name = "LoaiChiPhiContHang_id" , foreignKey= @ForeignKey(name = "Fk_ChiPhiContHang_LoaiChiPhiContHang"), nullable = true)
     private LoaiChiPhiContHang loaiChiPhiContHang;
 
-    public ChiPhiContHang() {
+    public ChiPhiContHang_ContHang() {
     }
 
-    public Long getId() {
+    public ChiPhiContHang_ContHangPK getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(ChiPhiContHang_ContHangPK id) {
         this.id = id;
     }
 
@@ -64,6 +64,10 @@ public class ChiPhiContHang implements Serializable {
 
     public void setLoaiChiPhiContHang(LoaiChiPhiContHang loaiChiPhiContHang) {
         this.loaiChiPhiContHang = loaiChiPhiContHang;
+    }
+
+    public LoaiChiPhiContHang getE(){
+        return loaiChiPhiContHang;
     }
 
     public String getNoiDung(){

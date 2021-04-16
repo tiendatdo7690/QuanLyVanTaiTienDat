@@ -11,7 +11,7 @@ import java.util.List;
 
 public final class LoiChuongTrinh {
 
-    private static boolean textFieldNull(JFXTextField textField) {
+    public static boolean textFieldNull(JFXTextField textField) {
 
         String idTextField = textField.getId();
         boolean kiemtra = textField.getText().isEmpty();

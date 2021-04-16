@@ -62,12 +62,12 @@ public class ContHang implements Serializable {
     @OneToMany(fetch = FetchType.LAZY,
             cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH},
             mappedBy = "contHang")
-    private Set<ChiHo> chiHoSet = new HashSet<ChiHo>();
+    private Set<LoaiChiHo_ContHang> loaiChiHoContHangSet = new HashSet<LoaiChiHo_ContHang>();
 
     @OneToMany(fetch = FetchType.LAZY,
             cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH},
             mappedBy = "contHang")
-    private Set<ChiPhiContHang> chiPhiContHangSets = new HashSet<ChiPhiContHang>();
+    private Set<ChiPhiContHang_ContHang> chiPhiContHangContHangSets = new HashSet<ChiPhiContHang_ContHang>();
 
     public ContHang() {
     }
@@ -136,16 +136,16 @@ public class ContHang implements Serializable {
         this.xe = xe;
     }
 
-    public Set<ChiHo> getChiHoSet() {
-        return chiHoSet;
+    public Set<LoaiChiHo_ContHang> getLoaiChiHoContHangSet() {
+        return loaiChiHoContHangSet;
     }
 
-    public void setChiHoSet(Set<ChiHo> chiHoSet) {
-        this.chiHoSet = chiHoSet;
+    public void setLoaiChiHoContHangSet(Set<LoaiChiHo_ContHang> loaiChiHoContHangSet) {
+        this.loaiChiHoContHangSet = loaiChiHoContHangSet;
     }
 
-    public Set<ChiPhiContHang> getChiPhiContHangSets() {
-        return chiPhiContHangSets;
+    public Set<ChiPhiContHang_ContHang> getChiPhiContHangContHangSets() {
+        return chiPhiContHangContHangSets;
     }
 
     public Set<CongViec_TaiXe_ContHang> getCongViecTaiXeContHangSet() {
@@ -156,8 +156,8 @@ public class ContHang implements Serializable {
         this.congViecTaiXeContHangSet = congViecTaiXeContHangSet;
     }
 
-    public void setChiPhiContHangSets(Set<ChiPhiContHang> chiPhiContHangSets) {
-        this.chiPhiContHangSets = chiPhiContHangSets;
+    public void setChiPhiContHangContHangSets(Set<ChiPhiContHang_ContHang> chiPhiContHangContHangSets) {
+        this.chiPhiContHangContHangSets = chiPhiContHangContHangSets;
     }
 
 

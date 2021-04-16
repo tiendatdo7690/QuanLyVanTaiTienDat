@@ -27,7 +27,26 @@ public final class ThongBao {
 	 
 	     alert.showAndWait();
 	}
-	
+	public static void showThongBaoLoiDaCoChuyenHang(String idTextField) {
+
+		Alert alert = new Alert(AlertType.ERROR);
+		alert.setTitle("Công Việc Tài Xế Sai");
+		alert.setHeaderText(idTextField);
+		alert.setContentText("Nguyên Chuyến Hàng Không Được thêm vào chung với những Công Việc Khác!");
+
+		alert.showAndWait();
+	}
+
+	public static void showThongBaoLoiCVThem2Lan(String idTextField) {
+
+		Alert alert = new Alert(AlertType.ERROR);
+		alert.setTitle("Công Việc Tài Xế Sai");
+		alert.setHeaderText(idTextField);
+		alert.setContentText("Công Việc THêm 2 Lần!");
+
+		alert.showAndWait();
+	}
+
 	public static void showThongBaoLoiTextSo(String idTextField) {
 		
 		 Alert alert = new Alert(AlertType.ERROR);

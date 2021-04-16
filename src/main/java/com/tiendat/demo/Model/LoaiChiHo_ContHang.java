@@ -7,37 +7,37 @@ import java.io.Serializable;
 
 
 @Entity
-@Table(name = "ChiHo")
-public class ChiHo implements Serializable {
+@Table(name = "LoaiChiHo_ContHang")
+public class LoaiChiHo_ContHang implements Serializable {
 
     private static final long serialVersionUID = 1381839026279139950L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", unique = true, nullable = false)
-    private Long id;
+    @EmbeddedId
+    private LoaiChiHo_ContHangPK id;
 
     @Column(name = "tien")
     private Long tien;
 
+    @MapsId("idConHang")
     @ManyToOne(fetch = FetchType.LAZY,
             cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
     @JoinColumn(name = "contHang_id" , foreignKey= @ForeignKey(name = "Fk_ChiHo_contHang"), nullable = true)
     private ContHang contHang;
 
+    @MapsId("idLoaiChiHo")
     @ManyToOne(fetch = FetchType.LAZY,
             cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
     @JoinColumn(name = "LoaiChiHo_id" , foreignKey= @ForeignKey(name = "Fk_ChiHo_LoaiChiHo"), nullable = true)
     private LoaiChiHo loaiChiHo;
 
-    public ChiHo() {
+    public LoaiChiHo_ContHang() {
     }
 
-    public Long getId() {
+    public LoaiChiHo_ContHangPK getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(LoaiChiHo_ContHangPK id) {
         this.id = id;
     }
 
@@ -67,5 +67,9 @@ public class ChiHo implements Serializable {
 
     public String getNoiDung(){
         return loaiChiHo.getTen();
+    }
+
+    public LoaiChiHo getE(){
+        return loaiChiHo;
     }
 }

@@ -24,7 +24,7 @@ public class LoaiChiPhiContHang implements Serializable {
     @OneToMany(fetch = FetchType.LAZY,
             cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH},
             mappedBy = "loaiChiPhiContHang")
-    private Set<ChiPhiContHang> chiPhiContHangSet = new HashSet<ChiPhiContHang>();
+    private Set<ChiPhiContHang_ContHang> chiPhiContHangContHangSet = new HashSet<ChiPhiContHang_ContHang>();
 
     public LoaiChiPhiContHang() {
     }
@@ -45,12 +45,12 @@ public class LoaiChiPhiContHang implements Serializable {
         this.ten = ten;
     }
 
-    public Set<ChiPhiContHang> getChiPhiContHangSet() {
-        return chiPhiContHangSet;
+    public Set<ChiPhiContHang_ContHang> getChiPhiContHangContHangSet() {
+        return chiPhiContHangContHangSet;
     }
 
-    public void setChiPhiContHangSet(Set<ChiPhiContHang> chiPhiContHangSet) {
-        this.chiPhiContHangSet = chiPhiContHangSet;
+    public void setChiPhiContHangContHangSet(Set<ChiPhiContHang_ContHang> chiPhiContHangContHangSet) {
+        this.chiPhiContHangContHangSet = chiPhiContHangContHangSet;
     }
 
     @Override
