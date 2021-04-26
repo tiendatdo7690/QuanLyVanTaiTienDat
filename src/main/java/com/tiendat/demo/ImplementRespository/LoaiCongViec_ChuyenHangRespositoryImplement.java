@@ -1,9 +1,11 @@
 package com.tiendat.demo.ImplementRespository;
 
+import com.tiendat.demo.Model.ChuyenHang;
 import com.tiendat.demo.Model.LoaiCongViec_ChuyenHang;
 import com.tiendat.demo.Model.LoaiCongViec_ChuyenHangPK;
 import com.tiendat.demo.Respository.LoaiCongViecChuyenHangRespository;
 
+import java.util.List;
 import java.util.Optional;
 
 public class LoaiCongViec_ChuyenHangRespositoryImplement implements LoaiCongViecChuyenHangRespository {
@@ -60,5 +62,10 @@ public class LoaiCongViec_ChuyenHangRespositoryImplement implements LoaiCongViec
     @Override
     public void deleteAll() {
 
+    }
+
+    @Override
+    public List<LoaiCongViec_ChuyenHang> findAllByChuyenHang(ChuyenHang chuyenHang) {
+        return null;
     }
 }

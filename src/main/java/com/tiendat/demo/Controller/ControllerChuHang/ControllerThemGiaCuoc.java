@@ -81,6 +81,7 @@ public class ControllerThemGiaCuoc implements Initializable {
         this.chuyenHang = chuyenHang;
 
         giaCuocs = FXCollections.observableArrayList(chuyenHang.getGiaCuocSet());
+        id_TableGiaCuoc.setItems(giaCuocs);
 
         id_LabelChuyenHang.setText(chuyenHang.getTenChuyenHang());
     }

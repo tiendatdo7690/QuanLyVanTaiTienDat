@@ -76,12 +76,12 @@ public class ContHangTXCVDAO {
 
         for(CongViecTX e : dsCongViecTX){
             CongViec_TaiXe_ContHang congViec_taiXe_contHang = new CongViec_TaiXe_ContHang();
-            congViec_taiXe_contHang.setCongViec(e.getCongViec());
+            congViec_taiXe_contHang.setLoaiCongViec_chuyenHang(e.getLoaiCongViec_chuyenHang());
             congViec_taiXe_contHang.setContHang(contHang);
             congViec_taiXe_contHang.setTaiXe(e.getTaiXe());
 
             CongViec_TaiXe_ContHangPK congViec_taiXe_contHangPK = new CongViec_TaiXe_ContHangPK();
-            congViec_taiXe_contHangPK.setCongviecid(e.getCongViec().getId());
+            congViec_taiXe_contHangPK.setLoaiCongViec_ChuyenHangId(e.getLoaiCongViec_chuyenHang().getId());
             congViec_taiXe_contHangPK.setConthangid(contHang.getId());
             congViec_taiXe_contHang.setId(congViec_taiXe_contHangPK);
 

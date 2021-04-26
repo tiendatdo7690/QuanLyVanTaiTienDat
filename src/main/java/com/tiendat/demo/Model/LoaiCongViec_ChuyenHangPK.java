@@ -16,6 +16,11 @@ public class LoaiCongViec_ChuyenHangPK implements Serializable {
     public LoaiCongViec_ChuyenHangPK() {
     }
 
+    public LoaiCongViec_ChuyenHangPK(Long loaiCongViecId, Long chuyenHangId) {
+        this.loaiCongViecId = loaiCongViecId;
+        this.chuyenHangId = chuyenHangId;
+    }
+
     public Long getLoaiCongViecId() {
         return loaiCongViecId;
     }
@@ -34,7 +39,22 @@ public class LoaiCongViec_ChuyenHangPK implements Serializable {
 
     @Override
     public boolean equals(Object obj) {
-        return false;
+        if (obj == this) {
+            return true;
+        }
+
+        /* Check if o is an instance of Complex or not
+          "null instanceof [type]" also returns false */
+        if (!(obj instanceof LoaiCongViec_ChuyenHangPK)) {
+            return false;
+        }
+
+        // typecast o to Complex so that we can compare data members
+        LoaiCongViec_ChuyenHangPK c = (LoaiCongViec_ChuyenHangPK) obj;
+
+        // Compare the data members and return accordingly
+        return c.getChuyenHangId() == this.chuyenHangId
+                && c.getLoaiCongViecId() == this.loaiCongViecId;
     }
     @Override
     public int hashCode(){

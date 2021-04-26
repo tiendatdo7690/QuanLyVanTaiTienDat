@@ -10,15 +10,35 @@ public class CongViec_TaiXe_ContHangPK implements Serializable {
     @Column(name = "cont_hang_id")
     private Long conthangid;
 
-    @Column(name = "cong_Viec_id")
-    private Long congviecid;
+    @Column(name = "tai_xe_id")
+    private Long taixeid;
+
+    @Column(name = "LoaiCongViec_ChuyenHang_id")
+    private LoaiCongViec_ChuyenHangPK loaiCongViec_ChuyenHangId;
 
     public CongViec_TaiXe_ContHangPK() {
     }
 
-    public CongViec_TaiXe_ContHangPK(Long conthangid, Long congviecid) {
+    public CongViec_TaiXe_ContHangPK(Long conthangid, Long taixeid, LoaiCongViec_ChuyenHangPK loaiCongViec_ChuyenHangId) {
         this.conthangid = conthangid;
-        this.congviecid = congviecid;
+        this.taixeid = taixeid;
+        this.loaiCongViec_ChuyenHangId = loaiCongViec_ChuyenHangId;
+    }
+
+    public Long getTaixeid() {
+        return taixeid;
+    }
+
+    public void setTaixeid(Long taixeid) {
+        this.taixeid = taixeid;
+    }
+
+    public LoaiCongViec_ChuyenHangPK getLoaiCongViec_ChuyenHangId() {
+        return loaiCongViec_ChuyenHangId;
+    }
+
+    public void setLoaiCongViec_ChuyenHangId(LoaiCongViec_ChuyenHangPK loaiCongViec_ChuyenHangId) {
+        this.loaiCongViec_ChuyenHangId = loaiCongViec_ChuyenHangId;
     }
 
     public Long getConthangid() {
@@ -27,14 +47,6 @@ public class CongViec_TaiXe_ContHangPK implements Serializable {
 
     public void setConthangid(Long conthangid) {
         this.conthangid = conthangid;
-    }
-
-    public Long getCongviecid() {
-        return congviecid;
-    }
-
-    public void setCongviecid(Long congviecid) {
-        this.congviecid = congviecid;
     }
 
 
@@ -55,7 +67,7 @@ public class CongViec_TaiXe_ContHangPK implements Serializable {
         CongViec_TaiXe_ContHangPK c = (CongViec_TaiXe_ContHangPK) obj;
 
         // Compare the data members and return accordingly
-        return c.getCongviecid() == this.congviecid
+        return c.getLoaiCongViec_ChuyenHangId() == this.loaiCongViec_ChuyenHangId
                 && c.getConthangid() == this.conthangid;
     }
     @Override

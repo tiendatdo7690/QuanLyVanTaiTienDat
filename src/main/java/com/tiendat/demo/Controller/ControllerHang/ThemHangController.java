@@ -145,13 +145,18 @@ public class ThemHangController implements Initializable {
     private LoaiChiPhiContHangRespository loaiChiPhiContHangRespository = new LoaiChiPhiContHangRespositoryImplement();
 
     @Autowired
-    private CongViecRespository congViecRespository = new CongViecRespositoryImplement();
+    private CongViecTaiXeContHangRespository congViecTaiXeContHangRespository
+            = new CongViecTaiXeContHangRespositoryImplement();
 
     @Autowired
     private ContHangTXCVRespository contHangTXCVRespository = new ContHangTXCVRespositoryImplement();
 
     @Autowired
     private LoaiChiHoContHangRespository loaiChiHoContHangRespository = new LoaiChiHoContHangRespositoryImplement();
+
+    @Autowired
+    private LoaiCongViecChuyenHangRespository loaiCongViecChuyenHangRespository =
+            new LoaiCongViec_ChuyenHangRespositoryImplement();
 
     @Autowired
     private ChiPhiContHangContHangRespository chiPhiContHangContHangRespository = new ChiPhiContHangContHangRespositoryImplement();
@@ -258,11 +263,18 @@ public class ThemHangController implements Initializable {
         LoaiCongViec loaiCongViec =  id_LoaiCongViec.getSelectionModel().getSelectedItem();
         ChuyenHang chuyenHang = id_ChuyenHang.getSelectionModel().getSelectedItem();
         String tenCongViec = loaiCongViec.getTen();
-        CongViec congViec = congViecRespository.layCVBangChuyenHangVaLoaiCV(chuyenHang,loaiCongViec);
+        System.out.println("chuyenhang id:" + chuyenHang.getId() +", loai cv id:" +loaiCongViec.getId());
+
+        LoaiCongViec_ChuyenHangPK loaiCongViecChuyenHangPK = new LoaiCongViec_ChuyenHangPK();
+        loaiCongViecChuyenHangPK.setLoaiCongViecId(loaiCongViec.getId());
+        loaiCongViecChuyenHangPK.setChuyenHangId(chuyenHang.getId());
+
+        LoaiCongViec_ChuyenHang loaiCongViec_chuyenHang = loaiCongViecChuyenHangRespository.findById(
+                loaiCongViecChuyenHangPK).get();
 
         CongViecTX congViecTX = new CongViecTX();
         congViecTX.setLoaiCongViec(loaiCongViec);
-        congViecTX.setCongViec(congViec);
+        congViecTX.setLoaiCongViec_chuyenHang(loaiCongViec_chuyenHang);
         congViecTX.setTaiXe(taiXe);
 
         loaiCongViecs.remove(loaiCongViec);
@@ -290,10 +302,7 @@ public class ThemHangController implements Initializable {
 
         ChuyenHang chuyenHang = id_ChuyenHang.getSelectionModel().getSelectedItem();
         LoaiCongViec loaiCongViec = id_LoaiCongViec.getSelectionModel().getSelectedItem();
-        CongViec congViec = congViecRespository.layCVBangChuyenHangVaLoaiCV(chuyenHang,loaiCongViec);
-
         Xe xe = id_Xe.getSelectionModel().getSelectedItem();
-        TaiXe taiXe = id_TaiXe.getSelectionModel().getSelectedItem();
 
         ContHang contHang = new ContHang();
         contHang.setSoCont(soCont);
@@ -405,13 +414,13 @@ public class ThemHangController implements Initializable {
         id_TableCongViec.setItems(dsCongViecTX);
 
         loaiChiHo_contHangTableViewService.setTableView(id_TableChiHo);
-        loaiChiHo_contHangTableViewService.TaoCotXoa(loaiChiHos);
+        loaiChiHo_contHangTableViewService.TaoCotXoa(dsLoaiChiHoContHangs,loaiChiHos);
 
         chiPhiContHang_contHangTableViewService.setTableView(id_TableChiPhi);
-        chiPhiContHang_contHangTableViewService.TaoCotXoa(loaiChiPhiContHangs);
+        chiPhiContHang_contHangTableViewService.TaoCotXoa(dsChiPhiContHangContHang,loaiChiPhiContHangs);
 
         congViecTXTableViewService.setTableView(id_TableCongViec);
-        congViecTXTableViewService.TaoCotXoa(loaiCongViecs);
+        congViecTXTableViewService.TaoCotXoa(dsCongViecTX,loaiCongViecs);
 
     }
 

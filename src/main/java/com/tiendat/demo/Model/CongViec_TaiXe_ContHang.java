@@ -18,16 +18,21 @@ public class CongViec_TaiXe_ContHang implements Serializable {
     @JoinColumn(name = "cont_Hang_id" , foreignKey= @ForeignKey(name = "Fk_CongViec_ContHang"), nullable = true)
     private ContHang contHang;
 
+    @MapsId("taixeid")
     @ManyToOne(fetch = FetchType.LAZY,
             cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
     @JoinColumn(name = "tai_Xe_id" , foreignKey= @ForeignKey(name = "Fk_CongViec_TaiXe"), nullable = true)
     private TaiXe taiXe;
 
-    @MapsId("congviecid")
+    @MapsId("loaiCongViec_ChuyenHangId")
     @ManyToOne(fetch = FetchType.LAZY,
             cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
-    @JoinColumn(name = "cong_Viec_id" , foreignKey= @ForeignKey(name = "Fk_CongViec_LoaiCongViec"), nullable = true)
-    private CongViec congViec;
+//    @JoinColumn(name = "cong_Viec_id" , foreignKey= @ForeignKey(name = "Fk_CongViec_LoaiCongViec"), nullable = true)
+//    @JoinColumns({
+//            @JoinColumn(name="loaicongviec_id", referencedColumnName="loaiCongViec"),
+//            @JoinColumn(name="Chuyen_Hang_id", referencedColumnName="chuyenHang")
+//    })
+    private LoaiCongViec_ChuyenHang loaiCongViec_chuyenHang;
 
     public CongViec_TaiXe_ContHang() {
     }
@@ -57,12 +62,12 @@ public class CongViec_TaiXe_ContHang implements Serializable {
         this.taiXe = taiXe;
     }
 
-    public CongViec getCongViec() {
-        return congViec;
+    public LoaiCongViec_ChuyenHang getLoaiCongViec_chuyenHang() {
+        return loaiCongViec_chuyenHang;
     }
 
-    public void setCongViec(CongViec congViec) {
-        this.congViec = congViec;
+    public void setLoaiCongViec_chuyenHang(LoaiCongViec_ChuyenHang loaiCongViec_chuyenHang) {
+        this.loaiCongViec_chuyenHang = loaiCongViec_chuyenHang;
     }
 
     public String getTenTaiXe(){

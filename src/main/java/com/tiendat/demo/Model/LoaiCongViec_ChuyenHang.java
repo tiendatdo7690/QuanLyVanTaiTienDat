@@ -19,16 +19,15 @@ public class LoaiCongViec_ChuyenHang implements Serializable {
     @MapsId("chuyenHangId")
     @ManyToOne(fetch = FetchType.LAZY,
             cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
-    @JoinColumn(name = "ChuyenHang_Id" , foreignKey= @ForeignKey(name = "Fk_LoaiCongViecChuyenHang_ChuyenHang"), nullable = true)
+    @JoinColumn(name = "Chuyen_Hang_Id" , foreignKey= @ForeignKey(name = "Fk_LoaiCongViecChuyenHang_ChuyenHang"), nullable = true)
     private ChuyenHang chuyenHang;
 
-    @ManyToOne(fetch = FetchType.LAZY,
-            cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
-    @JoinColumn(name = "CongViec_Id" , foreignKey= @ForeignKey(name = "Fk_LoaiCongViecChuyenHang_CongViec"), nullable = true)
-    private CongViec congViec;
+    @Column(name = "tiencong")
+    private Long tienCong;
 
     public LoaiCongViec_ChuyenHang() {
     }
+
 
     public LoaiCongViec_ChuyenHangPK getId() {
         return id;
@@ -54,11 +53,19 @@ public class LoaiCongViec_ChuyenHang implements Serializable {
         this.chuyenHang = chuyenHang;
     }
 
-    public CongViec getCongViec() {
-        return congViec;
+    public Long getTienCong() {
+        return tienCong;
     }
 
-    public void setCongViec(CongViec congViec) {
-        this.congViec = congViec;
+    public void setTienCong(Long tienCong) {
+        this.tienCong = tienCong;
+    }
+
+    public String getTen(){
+        return loaiCongViec.getTen();
+    }
+
+    public Boolean getNguyenChuyen(){
+        return loaiCongViec.isNguyenChuyenHang();
     }
 }

@@ -1,21 +1,20 @@
 package com.tiendat.demo.ModelView;
 
-import com.tiendat.demo.Model.CongViec;
-import com.tiendat.demo.Model.LoaiChiPhiContHang;
 import com.tiendat.demo.Model.LoaiCongViec;
+import com.tiendat.demo.Model.LoaiCongViec_ChuyenHang;
 import com.tiendat.demo.Model.TaiXe;
 
 public class CongViecTX {
 
-    private CongViec congViec;
+    private LoaiCongViec_ChuyenHang loaiCongViec_chuyenHang;
     private TaiXe taiXe;
     private LoaiCongViec loaiCongViec;
 
     public CongViecTX() {
     }
 
-    public CongViecTX(CongViec congViec, TaiXe taiXe) {
-        this.congViec = congViec;
+    public CongViecTX(LoaiCongViec_ChuyenHang congViec, TaiXe taiXe) {
+        this.loaiCongViec_chuyenHang = congViec;
         this.taiXe = taiXe;
     }
 
@@ -31,12 +30,12 @@ public class CongViecTX {
         return taiXe.getTen();
     }
 
-    public CongViec getCongViec() {
-        return congViec;
+    public LoaiCongViec_ChuyenHang getLoaiCongViec_chuyenHang() {
+        return loaiCongViec_chuyenHang;
     }
 
-    public void setCongViec(CongViec congViec) {
-        this.congViec = congViec;
+    public void setLoaiCongViec_chuyenHang(LoaiCongViec_ChuyenHang loaiCongViec_chuyenHang) {
+        this.loaiCongViec_chuyenHang = loaiCongViec_chuyenHang;
     }
 
     public TaiXe getTaiXe() {
@@ -53,7 +52,7 @@ public class CongViecTX {
 
 
     public Long getTienTX() {
-        return congViec.getTienCong();
+        return loaiCongViec_chuyenHang.getTienCong();
     }
 
 

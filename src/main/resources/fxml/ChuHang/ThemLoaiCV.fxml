@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -15,8 +16,17 @@
       <Label fx:id="id_LabelChuyenHang" text="Chuyến Hàng" />
       <HBox spacing="10.0">
          <children>
-            <Label text="Loại CV" />
+            <Label prefWidth="50.0" text="Loại CV" />
             <JFXComboBox fx:id="id_ComboboxLoaiCV" prefWidth="300.0" />
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </HBox>
+      <HBox layoutX="20.0" layoutY="74.0" spacing="10.0">
+         <children>
+            <Label prefWidth="50.0" text="Tiền" />
+            <JFXTextField fx:id="id_Tien" prefWidth="300.0" />
          </children>
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -26,8 +36,9 @@
       <Label text="Bảng Loại CV" />
       <TableView fx:id="id_TableLoaiCV">
         <columns>
-          <TableColumn prefWidth="75.0" text="Tên" />
-          <TableColumn prefWidth="107.0" text="Nguyên Chuyến" />
+          <TableColumn fx:id="id_CotTen" prefWidth="75.0" text="Tên" />
+            <TableColumn fx:id="id_CotTien" prefWidth="75.0" text="Tiền" />
+          <TableColumn fx:id="id_CotNguyenChuyen" prefWidth="107.0" text="Nguyên Chuyến" />
         </columns>
       </TableView>
    </children>

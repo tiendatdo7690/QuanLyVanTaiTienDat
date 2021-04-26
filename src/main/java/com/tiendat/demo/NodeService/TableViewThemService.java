@@ -28,12 +28,12 @@ public class TableViewThemService<E,C> {
         this.tableView = tableView;
     }
 
-    public void TaoCotXoa(ObservableList<C> dsEComboBox){
+    public void TaoCotXoa(ObservableList<E> items,ObservableList<C> dsEComboBox){
 
         TableColumn<E, Boolean> cotXoa = new TableColumn<E,Boolean>("Xóa");
 
         Callback<TableColumn<E, Boolean>, TableCell<E, Boolean>> CellXemFactory
-                = (TableColumn<E, Boolean> param) -> new ButtonCellXoa(dsEComboBox);
+                = (TableColumn<E, Boolean> param) -> new ButtonCellXoa(items,dsEComboBox);
 
         cotXoa.setCellFactory(CellXemFactory);
 
@@ -45,7 +45,7 @@ public class TableViewThemService<E,C> {
 
         private Button button = new Button("Xóa");
 
-        public ButtonCellXoa(ObservableList<C> dsEComboBox) {
+        public ButtonCellXoa(ObservableList<E> items,ObservableList<C> dsEComboBox) {
             // TODO Auto-generated constructor stub
             button.setOnMousePressed(new EventHandler<MouseEvent>() {
 
@@ -55,7 +55,7 @@ public class TableViewThemService<E,C> {
 
                     System.out.println("Xóa");
                     E e = getTableRow().getItem();
-                    getTableView().getItems().remove(e);
+                    items.remove(e);
 
                     C c;
                     try {

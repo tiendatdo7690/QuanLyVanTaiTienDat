@@ -39,7 +39,7 @@ public class WindowService {
             method.invoke(controller, new Object[] {bienTruyenVao});
 
 
-            Scene scene = new Scene(addRelativesView,500,300);
+            Scene scene = new Scene(addRelativesView);
             this.dialog.setScene(scene);
             this.dialog.showAndWait();
         } catch (IOException e) {
