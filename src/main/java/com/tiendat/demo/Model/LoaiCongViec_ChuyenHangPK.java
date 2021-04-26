@@ -1,29 +1,35 @@
 package com.tiendat.demo.Model;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import java.io.Serializable;
 
+@Embeddable
 public class LoaiCongViec_ChuyenHangPK implements Serializable {
 
-    private LoaiCongViec loaiCongViec;
-    private ChuyenHang chuyenHang;
+    @Column(name = "Loai_Cong_Viec_id")
+    private Long loaiCongViecId;
+
+    @Column(name = "Chuyen_Hang_id")
+    private Long chuyenHangId;
 
     public LoaiCongViec_ChuyenHangPK() {
     }
 
-    public LoaiCongViec getLoaiCongViec() {
-        return loaiCongViec;
+    public Long getLoaiCongViecId() {
+        return loaiCongViecId;
     }
 
-    public void setLoaiCongViec(LoaiCongViec loaiCongViec) {
-        this.loaiCongViec = loaiCongViec;
+    public void setLoaiCongViecId(Long loaiCongViecId) {
+        this.loaiCongViecId = loaiCongViecId;
     }
 
-    public ChuyenHang getChuyenHang() {
-        return chuyenHang;
+    public Long getChuyenHangId() {
+        return chuyenHangId;
     }
 
-    public void setChuyenHang(ChuyenHang chuyenHang) {
-        this.chuyenHang = chuyenHang;
+    public void setChuyenHangId(Long chuyenHangId) {
+        this.chuyenHangId = chuyenHangId;
     }
 
     @Override

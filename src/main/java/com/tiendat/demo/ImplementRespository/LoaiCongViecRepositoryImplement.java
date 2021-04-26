@@ -69,4 +69,9 @@ public class LoaiCongViecRepositoryImplement implements LoaiCongViecRepository {
     public List<LoaiCongViec> layDSLoaiCV_ChuyenHang(ChuyenHang chuyenHang) {
         return null;
     }
+
+    @Override
+    public List<LoaiCongViec> findAllBy() {
+        return null;
+    }
 }

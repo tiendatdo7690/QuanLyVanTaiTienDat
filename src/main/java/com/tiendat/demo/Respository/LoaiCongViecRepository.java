@@ -17,4 +17,6 @@ public interface LoaiCongViecRepository extends CrudRepository<LoaiCongViec, Lon
             " where lcv_ch.chuyenHang = :chuyenHang \n")
     List<LoaiCongViec> layDSLoaiCV_ChuyenHang(@Param("chuyenHang") ChuyenHang chuyenHang);
 
+    List<LoaiCongViec> findAllBy();
+
 }

@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXTextField;
 import com.tiendat.demo.ImplementRespository.ChuyenHangRespositoryImplement;
 import com.tiendat.demo.Model.ChuHang;
 import com.tiendat.demo.Model.ChuyenHang;
+import com.tiendat.demo.NodeService.TableViewChuyenHangService;
 import com.tiendat.demo.Respository.ChuyenHangRespository;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -38,16 +39,19 @@ public class ThemChuyenHangController implements Initializable {
     private TableColumn<ChuyenHang, String> id_CotDiaChi;
 
     @FXML
-    private TableColumn<?, ?> id_CotThemTienTx;
+    private TableColumn<ChuyenHang, Boolean> id_CotThemTienTx;
 
     @FXML
-    private TableColumn<?, ?> id_CotTHemGiaCuoc;
+    private TableColumn<ChuyenHang, Boolean> id_CotTHemGiaCuoc;
 
     @FXML
-    private TableColumn<?, ?> id_CotThemLoaiCv;
+    private TableColumn<ChuyenHang, Boolean> id_CotThemLoaiCv;
 
     @Autowired
     private ChuyenHangRespository chuyenHangRespository = new ChuyenHangRespositoryImplement();
+
+    @Autowired
+    private TableViewChuyenHangService tableViewChuyenHangService;
 
     private ChuHang chuHang;
 
@@ -92,6 +96,11 @@ public class ThemChuyenHangController implements Initializable {
         id_CotTen.setCellValueFactory(new PropertyValueFactory<ChuyenHang,String>("tenChuyenHang"));
         id_CotDiaChi.setCellValueFactory(new PropertyValueFactory<ChuyenHang,String>("diaChiNoiDen"));
 
+        tableViewChuyenHangService.TaoCotThemGiaCuoc(id_CotTHemGiaCuoc,chuHang);
+        tableViewChuyenHangService.TaoCotThemTienTx(id_CotThemTienTx,chuHang);
+        tableViewChuyenHangService.TaoCotThemLoaiCV(id_CotThemLoaiCv,chuHang);
+
+        id_TblViewChuyenHang.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }
 
     public void GanGiaTriSauKhiTimKiemChuHang(ChuHang chuHang){

@@ -5,16 +5,18 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "LoaiCongViec_ChuyenHang")
-@IdClass(LoaiCongViec_ChuyenHangPK.class)
 public class LoaiCongViec_ChuyenHang implements Serializable {
 
-    @Id
+    @EmbeddedId
+    private  LoaiCongViec_ChuyenHangPK id;
+
+    @MapsId("loaiCongViecId")
     @ManyToOne(fetch = FetchType.LAZY,
             cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
     @JoinColumn(name = "LoaiCongViec_Id" , foreignKey= @ForeignKey(name = "Fk_LoaiCongViecCongViec_LoaiCongViec"), nullable = true)
     private LoaiCongViec loaiCongViec;
 
-    @Id
+    @MapsId("chuyenHangId")
     @ManyToOne(fetch = FetchType.LAZY,
             cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
     @JoinColumn(name = "ChuyenHang_Id" , foreignKey= @ForeignKey(name = "Fk_LoaiCongViecChuyenHang_ChuyenHang"), nullable = true)
@@ -26,6 +28,14 @@ public class LoaiCongViec_ChuyenHang implements Serializable {
     private CongViec congViec;
 
     public LoaiCongViec_ChuyenHang() {
+    }
+
+    public LoaiCongViec_ChuyenHangPK getId() {
+        return id;
+    }
+
+    public void setId(LoaiCongViec_ChuyenHangPK id) {
+        this.id = id;
     }
 
     public LoaiCongViec getLoaiCongViec() {

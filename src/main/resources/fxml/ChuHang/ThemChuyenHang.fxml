@@ -11,7 +11,8 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="TOP_CENTER" spacing="10.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiendat.demo.Controller.ControllerChuHang.ThemChuyenHangController">
+<VBox alignment="TOP_CENTER" spacing="10.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.tiendat.demo.Controller.ControllerChuHang.ThemChuyenHangController">
    <children>
       <Label text="Thêm Chuyến Hàng" />
       <GridPane hgap="10.0" vgap="10.0">
