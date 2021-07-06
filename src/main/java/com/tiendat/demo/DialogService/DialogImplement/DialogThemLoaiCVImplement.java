@@ -1,9 +1,7 @@
 package com.tiendat.demo.DialogService.DialogImplement;
 
-import com.tiendat.demo.Controller.ControllerChuHang.ControllerThemGiaCuoc;
-import com.tiendat.demo.Controller.ControllerChuHang.ControllerThemLoaiCV;
+import com.tiendat.demo.Controller.ControllerChuHang.ControllerThemLoaiCVChuyenHang;
 import com.tiendat.demo.DialogService.DialogInterfce.IDialogThemThuocTinhChuyenHang;
-import com.tiendat.demo.Model.ChuHang;
 import com.tiendat.demo.Model.ChuyenHang;
 import com.tiendat.demo.NodeService.WindowService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +14,7 @@ public class DialogThemLoaiCVImplement implements IDialogThemThuocTinhChuyenHang
     private WindowService windowService;
 
     @Autowired
-    private ControllerThemLoaiCV controllerThemLoaiCV;
+    private ControllerThemLoaiCVChuyenHang controllerThemLoaiCVChuyenHang;
 
     @Override
     public void ShowDialog(ChuyenHang chuyenHang) {
@@ -24,6 +22,6 @@ public class DialogThemLoaiCVImplement implements IDialogThemThuocTinhChuyenHang
         System.out.println("Them Loai CV");
 
         windowService.OpenNewWinDow("/fxml/ChuHang/ThemLoaiCV.fxml",
-                "setChuyenHang", controllerThemLoaiCV, chuyenHang);
+                "setChuyenHang", controllerThemLoaiCVChuyenHang, chuyenHang);
     }
 }

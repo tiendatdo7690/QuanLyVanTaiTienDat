@@ -1,19 +1,26 @@
 package com.tiendat.demo.Controller.ControllerHang;
 
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
-import com.tiendat.demo.Model.Cang;
-import com.tiendat.demo.Model.CangHa;
-import com.tiendat.demo.Model.CangLay;
+import com.tiendat.demo.Model.*;
 import com.tiendat.demo.NodeService.ComboBoxService;
+import com.tiendat.demo.NodeService.PaginationService;
+import com.tiendat.demo.NodeService.TableViewService;
 import com.tiendat.demo.Respository.CangRespository;
 import com.tiendat.demo.ThongBao.LoiChuongTrinh;
 import com.tiendat.demo.ThongBao.ThongBao;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.input.MouseEvent;
+import javafx.util.Callback;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -26,6 +33,8 @@ import java.util.ResourceBundle;
 public class ThemCangController implements Initializable {
 
     @FXML
+    private Pagination id_PaginationCang;
+    @FXML
     private JFXTextField id_tencang;
     @FXML
     private JFXTextField id_DiaChi;
@@ -36,9 +45,26 @@ public class ThemCangController implements Initializable {
     @FXML
     private JFXComboBox id_CBLoaiCang;
 
-    @Autowired
-    private ComboBoxService<String> stringComboBoxService;
+    private TableView<Cang> cangTableView;
 
+    private TableColumn<Cang,String> col_Ten;
+
+    private TableColumn<Cang,String> col_DiaChi;
+
+    private TableColumn<Cang,String> col_Sdt;
+
+    private TableColumn<Cang,String> col_Email;
+
+    private TableColumn<Cang,String> col_LoaiCang;
+
+    private TableColumn<Cang,Boolean> col_TrangThai;
+
+
+    private ComboBoxService<String> stringComboBoxService = new ComboBoxService<String>();
+
+    private ObservableList<Cang> cangs;
+
+    private PaginationService paginationService = new PaginationService();
     @Autowired
     private CangRespository cangRespository;
 
@@ -65,6 +91,7 @@ public class ThemCangController implements Initializable {
         String email = id_Email.getText();
         String sdt = id_Sdt.getText();
         Cang cang;
+
         if(id_CBLoaiCang.getSelectionModel().getSelectedItem() == "Cảng Lấy"){
 
             loaicang = "CangLay";
@@ -78,21 +105,20 @@ public class ThemCangController implements Initializable {
         }
 
         cang.setDiaChi(diachi);
-        cang.seteMail(email);
+        cang.setEmail(email);
         cang.setSoDienThoai(sdt);
         cang.setTen(tencang);
         cang.setTrangThai(true);
 
         cangRespository.save(cang);
+        cangs.add(cang);
+
+        paginationService.taiDSPagination(cangs,cangTableView,10);
         ThongBao.showThongBaoThanhCong("Cảng");
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-//        List<String> listLoaiCang = new ArrayList<String>();
-//        listLoaiCang.add("Cảng Lấy");
-//        listLoaiCang.add("Cảng Hạ");
 
         ObservableList<String> observableList = FXCollections.observableArrayList();
 
@@ -101,5 +127,126 @@ public class ThemCangController implements Initializable {
 
         stringComboBoxService.setComboBox(id_CBLoaiCang);
         stringComboBoxService.LoadCombo(observableList);
+
+        cangTableView = new TableView<>();
+        cangTableView.setEditable(true);
+
+        col_Ten = new TableColumn<>("Tên");
+        col_DiaChi = new TableColumn<>("Địa Chỉ");
+        col_Email = new TableColumn<>("Email");
+        col_Sdt = new TableColumn<>("Số Điện Thoại");
+        col_LoaiCang = new TableColumn<>("Loại Cảng");
+        col_TrangThai = new TableColumn<>("Trạng Thái");
+
+
+        col_Ten.setCellValueFactory(new PropertyValueFactory<Cang,String>("ten"));
+        col_DiaChi.setCellValueFactory(new PropertyValueFactory<Cang,String>("diaChi"));
+        col_Email.setCellValueFactory(new PropertyValueFactory<Cang,String>("email"));
+        col_Sdt.setCellValueFactory(new PropertyValueFactory<Cang,String>("soDienThoai"));
+        col_LoaiCang.setCellValueFactory(new PropertyValueFactory<Cang,String>("loaiCang"));
+        col_TrangThai.setCellValueFactory(new PropertyValueFactory<Cang,Boolean>("trangThai"));
+
+        col_Ten.setCellFactory(TextFieldTableCell.forTableColumn());
+        col_Ten.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Cang, String>>() {
+                                               @Override
+                                               public void handle(TableColumn.CellEditEvent<Cang, String> t) {
+                                                   Cang cang = t.getTableView().getSelectionModel().getSelectedItem();
+                                                   cang.setTen(t.getNewValue());
+                                                   cangRespository.save(cang);
+                                               }
+                                           }
+        );
+
+        col_DiaChi.setCellFactory(TextFieldTableCell.forTableColumn());
+        col_DiaChi.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Cang, String>>() {
+                                    @Override
+                                    public void handle(TableColumn.CellEditEvent<Cang, String> t) {
+                                        Cang cang = t.getTableView().getSelectionModel().getSelectedItem();
+                                        cang.setDiaChi(t.getNewValue());
+                                        cangRespository.save(cang);
+                                    }
+                                }
+        );
+
+        col_Email.setCellFactory(TextFieldTableCell.forTableColumn());
+        col_Email.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Cang, String>>() {
+                                    @Override
+                                    public void handle(TableColumn.CellEditEvent<Cang, String> t) {
+                                        Cang cang = t.getTableView().getSelectionModel().getSelectedItem();
+                                        cang.setEmail(t.getNewValue());
+                                        cangRespository.save(cang);
+                                    }
+                                }
+        );
+
+        col_Sdt.setCellFactory(TextFieldTableCell.forTableColumn());
+        col_Sdt.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Cang, String>>() {
+                                    @Override
+                                    public void handle(TableColumn.CellEditEvent<Cang, String> t) {
+                                        Cang cang = t.getTableView().getSelectionModel().getSelectedItem();
+                                        cang.setSoDienThoai(t.getNewValue());
+                                        cangRespository.save(cang);
+                                    }
+                                }
+        );
+
+
+        Callback<TableColumn<Cang, Boolean>, TableCell<Cang, Boolean>> CellTrangThaiFactory
+                = (TableColumn<Cang, Boolean> param) -> new ButtonCellTinhTrang();
+
+        col_TrangThai.setCellFactory(CellTrangThaiFactory);
+
+
+        cangTableView.getColumns().addAll(col_Ten,col_DiaChi,col_Email,col_Sdt,col_LoaiCang,col_TrangThai);
+
+        cangs = FXCollections.observableArrayList(cangRespository.findAllBy());
+        //cangTableView.setItems(cangs);
+        System.out.println(cangs);
+
+        paginationService.setPagination(id_PaginationCang);
+        paginationService.taiDSPagination(cangs,cangTableView,10);
+    }
+
+    public class ButtonCellTinhTrang extends TableCell<Cang, Boolean> {
+
+        private JFXRadioButton Button = new JFXRadioButton();
+
+        public ButtonCellTinhTrang() {
+            // TODO Auto-generated constructor stub
+
+            Button.setOnMousePressed(new EventHandler<MouseEvent>() {
+
+                @Override public void handle(MouseEvent mouseEvent) {
+
+                    Cang cang = getTableRow().getItem();
+                    boolean  tinhtrang =  cang.isTrangThai();
+
+                    cang.setTrangThai(!tinhtrang);
+
+
+                    cangRespository.save(cang);
+                }
+            });
+        }
+
+        /** places an add button in the row only if the row is not empty. */
+        @Override protected void updateItem(Boolean item, boolean empty) {
+            super.updateItem(item, empty);
+            if (!empty) {
+
+                setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+
+                if(item) {
+                    Button.setSelected(true);
+                }
+                else
+                    Button.setSelected(false);
+                setGraphic(Button);
+            } else {
+                setGraphic(null);
+            }
+        }
+
+
     }
 }

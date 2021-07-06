@@ -66,4 +66,9 @@ public class CangHaRespositoryImplement implements CangHaRepository {
     public List<CangHa> findAllBy() {
         return null;
     }
+
+    @Override
+    public CangHa findTop1ByTen(String cangHa) {
+        return null;
+    }
 }

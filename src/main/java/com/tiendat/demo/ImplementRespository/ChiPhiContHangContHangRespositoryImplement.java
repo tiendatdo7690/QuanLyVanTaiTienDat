@@ -2,8 +2,10 @@ package com.tiendat.demo.ImplementRespository;
 
 import com.tiendat.demo.Model.ChiPhiContHang_ContHang;
 import com.tiendat.demo.Model.ChiPhiContHang_ContHangPK;
+import com.tiendat.demo.Model.ContHang;
 import com.tiendat.demo.Respository.ChiPhiContHangContHangRespository;
 
+import java.util.List;
 import java.util.Optional;
 
 public class ChiPhiContHangContHangRespositoryImplement implements ChiPhiContHangContHangRespository {
@@ -60,6 +62,16 @@ public class ChiPhiContHangContHangRespositoryImplement implements ChiPhiContHan
 
     @Override
     public void deleteAll() {
+
+    }
+
+    @Override
+    public List<ChiPhiContHang_ContHang> findAllByContHang(ContHang contHang) {
+        return null;
+    }
+
+    @Override
+    public void DeleteByIdContHang(Long id) {
 
     }
 }

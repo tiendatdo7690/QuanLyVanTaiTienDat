@@ -14,21 +14,21 @@
       <HBox spacing="10.0">
          <children>
             <Label prefWidth="70.0" text="Từ Ngày" />
-            <JFXDatePicker prefWidth="200.0" />
+            <JFXDatePicker fx:id="id_TuNgay" prefWidth="200.0" />
             <Label prefWidth="70.0" text="Đến Ngày" />
-            <JFXDatePicker prefWidth="200.0" />
+            <JFXDatePicker fx:id="id_DenNgay" prefWidth="200.0" />
          </children>
       </HBox>
       <HBox spacing="10.0">
          <children>
             <Label prefWidth="70.0" text="Loại" />
-            <JFXComboBox prefWidth="200.0" />
-            <JFXButton text="Thống Kê" />
+            <JFXComboBox fx:id="id_CbLoaiThongKe" prefWidth="200.0" />
+            <JFXButton onAction="#ThongKe" text="Thống Kê" />
          </children>
       </HBox>
       <Label text="Bảng Thống Kê" />
-      <Pagination maxPageIndicatorCount="1" />
-      <Label text="Tổng Kết" />
+      <Pagination fx:id="id_PaginationThongKe" maxPageIndicatorCount="1" prefHeight="500.0" />
+      <Label fx:id="id_TongKet" text="Tổng Kết" />
    </children>
    <padding>
       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

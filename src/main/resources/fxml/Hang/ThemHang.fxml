@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
@@ -25,7 +26,7 @@
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -34,18 +35,18 @@
               </rowConstraints>
                <children>
                   <Label text="Số Cont" />
-                  <Label text="Số Seal" GridPane.rowIndex="1" />
                   <Label text="Loại Hàng" GridPane.rowIndex="2" />
                   <Label text="Cảng Lấy" GridPane.rowIndex="3" />
                   <Label text="Cảng Hạ" GridPane.rowIndex="4" />
                   <Label text="Xe" GridPane.rowIndex="5" />
                   <JFXButton onAction="#ThemContHang" text="Thêm Cont Hàng" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                   <JFXTextField fx:id="id_SoCont" prefWidth="300.0" GridPane.columnIndex="1" />
-                  <JFXTextField fx:id="id_SoSeal" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <JFXComboBox fx:id="id_LoaiHang" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <JFXComboBox fx:id="id_CangLay" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                   <JFXComboBox fx:id="id_CangHa" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                   <JFXComboBox fx:id="id_Xe" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <Label layoutX="10.0" layoutY="134.0" text="Ngày" GridPane.rowIndex="1" />
+                  <JFXDatePicker fx:id="id_Ngay" prefHeight="28.0" prefWidth="225.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
             </GridPane>
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="300.0" spacing="10.0">

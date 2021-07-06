@@ -21,6 +21,11 @@ public class CangLay extends Cang{
         super(id, ten, diaChi, soDienThoai, eMail, trangThai);
     }
 
+    @Override
+    public String getLoaiCang() {
+        return "Cảng Lấy";
+    }
+
     public Set<ContHang> getContHangHashSet() {
         return contHangHashSet;
     }

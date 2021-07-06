@@ -5,6 +5,7 @@ import com.tiendat.demo.Model.LoaiCongViec;
 import com.tiendat.demo.Respository.LoaiCongViecRepository;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 
@@ -71,7 +72,17 @@ public class LoaiCongViecRepositoryImplement implements LoaiCongViecRepository {
     }
 
     @Override
+    public List<Map<String, Object>> layDSLoaiCongViecModel(Long idChuyenHang) {
+        return null;
+    }
+
+    @Override
     public List<LoaiCongViec> findAllBy() {
+        return null;
+    }
+
+    @Override
+    public LoaiCongViec getNguyenChuyenHangCuaChuyenHang(Long id) {
         return null;
     }
 }

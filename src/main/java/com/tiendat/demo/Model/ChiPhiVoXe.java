@@ -20,6 +20,7 @@ public class ChiPhiVoXe implements Serializable {
     @Column(name = "tien")
     private Long tien;
 
+    @Column(name = "so_luong")
     private int soLuong;
 
     @Type(type="org.hibernate.type.DateType")

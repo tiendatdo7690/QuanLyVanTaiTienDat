@@ -1,9 +1,7 @@
 package com.tiendat.demo.DialogService.DialogImplement;
 
-import com.tiendat.demo.Controller.ControllerChuHang.ControllerThemLoaiCV;
 import com.tiendat.demo.Controller.ControllerChuHang.ControllerThemTienTx;
 import com.tiendat.demo.DialogService.DialogInterfce.IDialogThemThuocTinhChuyenHang;
-import com.tiendat.demo.Model.ChuHang;
 import com.tiendat.demo.Model.ChuyenHang;
 import com.tiendat.demo.NodeService.WindowService;
 import org.springframework.beans.factory.annotation.Autowired;

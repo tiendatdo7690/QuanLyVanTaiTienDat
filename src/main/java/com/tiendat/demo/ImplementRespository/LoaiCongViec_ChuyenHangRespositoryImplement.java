@@ -68,4 +68,9 @@ public class LoaiCongViec_ChuyenHangRespositoryImplement implements LoaiCongViec
     public List<LoaiCongViec_ChuyenHang> findAllByChuyenHang(ChuyenHang chuyenHang) {
         return null;
     }
+
+    @Override
+    public LoaiCongViec_ChuyenHang findByNguyenChuyenHangAndChuyenHang(Long id) {
+        return null;
+    }
 }

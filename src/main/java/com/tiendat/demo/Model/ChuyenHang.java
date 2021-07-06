@@ -43,11 +43,6 @@ public class ChuyenHang implements Serializable {
     @OneToMany(fetch = FetchType.LAZY,
             cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH},
             mappedBy = "chuyenHang")
-    private Set<TienTaiXe> tienTaiXeSet = new HashSet<TienTaiXe>(0);
-
-    @OneToMany(fetch = FetchType.LAZY,
-            cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH},
-            mappedBy = "chuyenHang")
     private Set<LoaiCongViec_ChuyenHang> loaiCongViec_chuyenHangSet = new HashSet<LoaiCongViec_ChuyenHang>(0);
 
     public ChuyenHang() {
@@ -99,14 +94,6 @@ public class ChuyenHang implements Serializable {
 
     public void setGiaCuocSet(Set<GiaCuoc> giaCuocSet) {
         this.giaCuocSet = giaCuocSet;
-    }
-
-    public Set<TienTaiXe> getTienTaiXeSet() {
-        return tienTaiXeSet;
-    }
-
-    public void setTienTaiXeSet(Set<TienTaiXe> tienTaiXeSet) {
-        this.tienTaiXeSet = tienTaiXeSet;
     }
 
     public Set<LoaiCongViec_ChuyenHang> getLoaiCongViec_chuyenHangSet() {

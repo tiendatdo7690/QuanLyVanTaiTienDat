@@ -30,16 +30,16 @@ public class ControllerMenuQuanLyChuHang implements Initializable {
 
     private TabService themChuHangTabService;
     private TabService timKiemChuHangTabService;
-    private TabService themChuyenHangTabService;
+    private TabService themLoaiCongViecTabService;
 
     @Autowired
     private ThemChuHangController themChuHangController;
 
     @Autowired
-    private ThemChuyenHangController themChuyenHangController;
+    private TimKiemChuHangController timKiemChuHangController;
 
     @Autowired
-    private TimKiemChuHangController timKiemChuHangController;
+    private ThemLoaiCongViecController themLoaiCongViecController;
 
     public void addTabThemChuHang(ActionEvent actionEvent) throws InvocationTargetException, NoSuchMethodException, IllegalAccessException, IOException {
 
@@ -65,12 +65,12 @@ public class ControllerMenuQuanLyChuHang implements Initializable {
         tabPaneService = new TabPaneService();
         themChuHangTabService = new TabService("Thêm Chủ Hàng");
         timKiemChuHangTabService = new TabService("Tìm Kiếm Chủ Hàng");
-        themChuyenHangTabService = new TabService("Thêm Chuyến Hàng");
+        themLoaiCongViecTabService = new TabService("Thêm Loại Công Việc");
     }
 
-    public void addTabThemChuyenHang(ActionEvent actionEvent) throws InvocationTargetException, NoSuchMethodException,
-            IllegalAccessException, IOException {
-        tabPaneService.addTab(springContext,controllerMainViewTest.getId_TabPane(),themChuyenHangTabService,
-                "/fxml/ChuHang/ThemChuyenHang.fxml",themChuyenHangController);
+
+    public void addTabThemLoaiCongViec(ActionEvent actionEvent) throws InvocationTargetException, NoSuchMethodException, IllegalAccessException, IOException {
+        tabPaneService.addTab(springContext,controllerMainViewTest.getId_TabPane(),themLoaiCongViecTabService,
+                "/fxml/ChuHang/ThemLoaiCongViec.fxml",themLoaiCongViecController);
     }
 }

@@ -3,7 +3,9 @@ package com.tiendat.demo.ImplementRespository;
 import com.tiendat.demo.Model.TaiXe;
 import com.tiendat.demo.Respository.TaiXeRepository;
 
+import java.sql.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public class TaiXeRespositoryImplement implements TaiXeRepository {
@@ -66,4 +68,22 @@ public class TaiXeRespositoryImplement implements TaiXeRepository {
     public List<TaiXe> findAllByTrangThaiTrue() {
         return null;
     }
+
+    @Override
+    public List<TaiXe> findAllByTenLikeAndTrangThai(String ten,Boolean tinhTrang) {
+        return null;
+    }
+
+    @Override
+    public List<Map<String, Object>> TimKiemChuyenHangTxChayTuNgayDenNgay(Long idTx, Date tungay, Date denngay) {
+        return null;
+    }
+
+
+    @Override
+    public int DemSoLuongTx() {
+        return 0;
+    }
+
+
 }

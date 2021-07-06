@@ -45,8 +45,7 @@ public class ThemTaiXeController implements Initializable {
     @FXML
     private JFXDatePicker id_NgaySinh;
 
-    @Autowired
-    private ComboBoxService<Xe> xeComboBoxService;
+    private ComboBoxService<Xe> xeComboBoxService = new ComboBoxService<Xe>();
 
     @Autowired
     private TaiXeRepository taiXeRepository = new TaiXeRespositoryImplement();
@@ -82,10 +81,14 @@ public class ThemTaiXeController implements Initializable {
         jfxTextFields.add(id_QueQuan);
         jfxTextFields.add(id_Ten);
 
-        if(LoiChuongTrinh.listTextFielNull(jfxTextFields) || LoiChuongTrinh.datePickerNull(id_NgaySinh)){
+        if(LoiChuongTrinh.listTextFielNull(jfxTextFields) || LoiChuongTrinh.datePickerNull(id_NgaySinh) ||
+                LoiChuongTrinh.ComboBoxNull(id_CBXe)){
             return;
         }
 
+        if(LoiChuongTrinh.textFieldSo(id_LuongCoBan)){
+            return;
+        }
         TaiXe taiXe = new TaiXe();
 
         String ten = id_Ten.getText();

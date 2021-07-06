@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface CangHaRepository extends CrudRepository<CangHa, Long> {
     List<CangHa> findAllBy();
+
+    CangHa findTop1ByTen(String cangHa);
 }

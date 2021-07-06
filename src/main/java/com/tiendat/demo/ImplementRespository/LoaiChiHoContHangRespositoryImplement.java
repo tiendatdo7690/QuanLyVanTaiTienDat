@@ -1,9 +1,11 @@
 package com.tiendat.demo.ImplementRespository;
 
+import com.tiendat.demo.Model.ContHang;
 import com.tiendat.demo.Model.LoaiChiHo_ContHang;
 import com.tiendat.demo.Model.LoaiChiHo_ContHangPK;
 import com.tiendat.demo.Respository.LoaiChiHoContHangRespository;
 
+import java.util.List;
 import java.util.Optional;
 
 public class LoaiChiHoContHangRespositoryImplement implements LoaiChiHoContHangRespository {
@@ -60,6 +62,16 @@ public class LoaiChiHoContHangRespositoryImplement implements LoaiChiHoContHangR
 
     @Override
     public void deleteAll() {
+
+    }
+
+    @Override
+    public List<LoaiChiHo_ContHang> findAllByContHang(ContHang contHang) {
+        return null;
+    }
+
+    @Override
+    public void DeleteByIdContHang(Long id) {
 
     }
 }

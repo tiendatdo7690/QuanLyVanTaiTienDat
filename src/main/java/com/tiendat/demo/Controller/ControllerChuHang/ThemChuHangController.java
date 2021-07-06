@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXTextField;
 import com.tiendat.demo.Model.ChuHang;
 import com.tiendat.demo.Respository.ChuHangRespository;
 import com.tiendat.demo.ImplementRespository.ChuHangRespositoryImplement;
+import com.tiendat.demo.ThongBao.LoiChuongTrinh;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -30,6 +31,11 @@ public class ThemChuHangController implements Initializable {
 
     @FXML
     void ThemChuHang(ActionEvent event) {
+        if(LoiChuongTrinh.textFieldNull(id_TFTenCty) || LoiChuongTrinh.textFieldNull(id_TFMST) ||
+                LoiChuongTrinh.textFieldNull(id_TFDiaChi)){
+            return;
+        }
+
         String tenCty = id_TFTenCty.getText();
         String mst = id_TFMST.getText();
         String diachi = id_TFDiaChi.getText();

@@ -70,4 +70,8 @@ public class ContHangTXCVRespositoryImplement implements ContHangTXCVRespository
     }
 
 
+    @Override
+    public void DeleteByIdContHang(Long idContHang) {
+
+    }
 }

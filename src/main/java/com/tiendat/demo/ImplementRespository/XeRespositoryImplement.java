@@ -1,5 +1,6 @@
 package com.tiendat.demo.ImplementRespository;
 
+import com.tiendat.demo.Model.TaiXe;
 import com.tiendat.demo.Model.Xe;
 import com.tiendat.demo.Respository.XeRespository;
 
@@ -63,7 +64,17 @@ public class XeRespositoryImplement implements XeRespository {
 
 
     @Override
+    public List<Xe> findAllByBienSoLikeAndTrangThai(String bienSo,Boolean trangThai) {
+        return null;
+    }
+
+    @Override
     public List<Xe> findAllBy() {
+        return null;
+    }
+
+    @Override
+    public List<Xe> findAllByTaiXe(TaiXe taiXe) {
         return null;
     }
 
@@ -74,6 +85,11 @@ public class XeRespositoryImplement implements XeRespository {
 
     @Override
     public List<Xe> timXeChuaCoTX() {
+        return null;
+    }
+
+    @Override
+    public Xe findTop1ByBienSo(String cangLay) {
         return null;
     }
 

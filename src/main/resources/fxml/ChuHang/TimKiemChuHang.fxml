@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<HBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiendat.demo.Controller.ControllerChuHang.TimKiemChuHangController">
+<HBox prefWidth="1500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiendat.demo.Controller.ControllerChuHang.TimKiemChuHangController">
     <children>
         <VBox alignment="TOP_CENTER" prefHeight="700.0" prefWidth="500.0" spacing="20.0">
             <children>
@@ -40,7 +40,7 @@
          </HBox.margin>
         </VBox>
 
-        <JFXTabPane prefHeight="200.0" prefWidth="700.0" tabClosingPolicy="UNAVAILABLE">
+        <JFXTabPane prefHeight="200.0" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE">
             <tabs>
                 <Tab text="Thông Chủ Hàng">
                     <content>
@@ -81,7 +81,7 @@
                 </Tab>
                 <Tab text="Thống Kê">
                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                        <AnchorPane fx:id="id_AnchaorPaneTabThongKe" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                     </content>
                 </Tab>
                 <Tab text="Thêm Chuyến Hàng">

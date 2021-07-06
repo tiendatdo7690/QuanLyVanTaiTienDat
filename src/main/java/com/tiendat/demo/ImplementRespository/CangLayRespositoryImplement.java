@@ -66,4 +66,19 @@ public class CangLayRespositoryImplement implements CangLayRepository {
     public List<CangLay> findAllBy() {
         return null;
     }
+
+    @Override
+    public CangLay findTop1ByTen(String cangLay) {
+        return null;
+    }
+
+    @Override
+    public List<String> getAllName() {
+        return null;
+    }
+
+    @Override
+    public boolean existsByTen(String ten) {
+        return false;
+    }
 }

@@ -2,10 +2,13 @@ package com.tiendat.demo.ImplementRespository;
 
 import com.tiendat.demo.Exception.ContHangException;
 import com.tiendat.demo.Model.ContHang;
+import com.tiendat.demo.Model.LoaiCongViec;
 import com.tiendat.demo.Respository.ContHangRespository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public class ContHangRespositoryImplement implements ContHangRespository {
@@ -73,4 +76,21 @@ public class ContHangRespositoryImplement implements ContHangRespository {
     public void saveContHang(){
 
     }
+
+    @Override
+    public List<ContHang> findAllBySoContLike(String soCont) {
+        return null;
+    }
+
+    @Override
+    public Map<String, Object> LayTenChuHangVaChuyenHangTheoIdContHang(Long idContHang) {
+        return null;
+    }
+
+    @Override
+    public List<Map<String, Object>> LayDsCongViecChuaDuocChonCuaContHang(Long idContHang, Long idChuHang) {
+        return null;
+    }
+
+
 }

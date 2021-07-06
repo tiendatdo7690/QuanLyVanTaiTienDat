@@ -66,4 +66,21 @@ public class LoaiChiHoRespositoryImplement implements LoaiChiHoRespository {
     public List<LoaiChiHo> findAllBy() {
         return null;
     }
+
+    @Override
+    public List<LoaiChiHo> LayDsLoaiChiHoChuaDuocChon(List<Long> dsIdLoaiChiHo) {
+        return null;
+    }
+
+    @Override
+    public List<LoaiChiHo> LayDsLoaiChiHoChuaDuocChon1(Long idContHang) {
+        return null;
+    }
+
+    @Override
+    public LoaiChiHo findTop1ByTen(String ten) {
+        return null;
+    }
+
+
 }

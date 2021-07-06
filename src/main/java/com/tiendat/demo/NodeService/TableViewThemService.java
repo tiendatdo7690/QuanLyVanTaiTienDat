@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-@Service
 public class TableViewThemService<E,C> {
 
     private TableView<E> tableView;

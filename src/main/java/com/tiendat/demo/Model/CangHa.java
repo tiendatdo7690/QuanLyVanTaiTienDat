@@ -20,9 +20,9 @@ public class CangHa  extends Cang{
         super(id, ten, diaChi, soDienThoai, eMail, trangThai);
     }
 
-    public CangHa(Long id, String ten, String diaChi, String soDienThoai, String eMail, boolean trangThai, Set<ContHang> contHangHaSet) {
-        super(id, ten, diaChi, soDienThoai, eMail, trangThai);
-        this.contHangHaSet = contHangHaSet;
+    @Override
+    public String getLoaiCang() {
+        return "Cảng Hạ";
     }
 
     public Set<ContHang> getContHangHaSet() {

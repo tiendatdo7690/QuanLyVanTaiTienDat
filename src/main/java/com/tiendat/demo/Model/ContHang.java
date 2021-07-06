@@ -24,10 +24,6 @@ public class ContHang implements Serializable {
     @Column(name = "soCont", length = 255)
     private String soCont;
 
-    @Type(type="org.hibernate.type.StringNVarcharType")
-    @Column(name = "soSeal", length = 255)
-    private String soSeal;
-
     @ManyToOne(fetch = FetchType.LAZY,
             cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
     @JoinColumn(name = "loaihang_id" , foreignKey= @ForeignKey(name = "Fk_loaihang_contHang"), nullable = true)
@@ -36,7 +32,7 @@ public class ContHang implements Serializable {
 
 
     @Type(type="org.hibernate.type.DateType")
-    @Column(name = "ngayKetThuc")
+    @Column(name = "ngay")
     private Date ngay;
 
     @ManyToOne(fetch = FetchType.LAZY,
@@ -94,14 +90,6 @@ public class ContHang implements Serializable {
 
     public void setSoCont(String soCont) {
         this.soCont = soCont;
-    }
-
-    public String getSoSeal() {
-        return soSeal;
-    }
-
-    public void setSoSeal(String soSeal) {
-        this.soSeal = soSeal;
     }
 
     public LoaiHang getLoaiHang() {

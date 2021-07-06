@@ -28,11 +28,6 @@ public class TienThuongTX implements Serializable {
     @Column(name = "ngay")
     private Date ngay;
 
-    @ManyToOne(fetch = FetchType.LAZY,
-            cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
-    @JoinColumn(name = "bangLuongTaiXe_id" , foreignKey= @ForeignKey(name = "Fk_bangLuongTaiXe_TienThuongTX"), nullable = true)
-    private BangLuongTaiXe bangLuongTaiXe;
-
     public TienThuongTX() {
     }
 
@@ -68,11 +63,4 @@ public class TienThuongTX implements Serializable {
         this.ngay = ngay;
     }
 
-    public BangLuongTaiXe getBangLuongTaiXe() {
-        return bangLuongTaiXe;
-    }
-
-    public void setBangLuongTaiXe(BangLuongTaiXe bangLuongTaiXe) {
-        this.bangLuongTaiXe = bangLuongTaiXe;
-    }
 }

@@ -1,6 +1,7 @@
 package com.tiendat.demo.Controller.ControllerHang;
 
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 import com.tiendat.demo.Exception.CV_TX_CHException;
 import com.tiendat.demo.Exception.ChiHo_ContHangException;
@@ -8,12 +9,15 @@ import com.tiendat.demo.Exception.ChiPhiContHang_ContHangException;
 import com.tiendat.demo.ImplementRespository.*;
 import com.tiendat.demo.Model.*;
 import com.tiendat.demo.ModelView.CongViecTX;
+import com.tiendat.demo.ModelView.LoaiCongViecModel;
 import com.tiendat.demo.NodeService.ComboBoxService;
 import com.tiendat.demo.NodeService.TableViewService;
 import com.tiendat.demo.NodeService.TableViewThemService;
 import com.tiendat.demo.Respository.*;
 import com.tiendat.demo.ThongBao.LoiChuongTrinh;
 import com.tiendat.demo.ThongBao.ThongBao;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -30,6 +34,7 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 //Ngày 11/4 Thêm Hàng
@@ -45,13 +50,13 @@ public class ThemHangController implements Initializable {
     private JFXTextField id_SoCont;
 
     @FXML
-    private JFXTextField id_SoSeal;
+    private JFXDatePicker id_Ngay;
 
     @FXML
     private JFXComboBox<LoaiHang> id_LoaiHang;
 
     @FXML
-    private JFXComboBox<CangLay> id_CangLay;
+    private JFXComboBox<String> id_CangLay;
 
     @FXML
     private JFXComboBox<CangHa> id_CangHa;
@@ -93,7 +98,7 @@ public class ThemHangController implements Initializable {
     private JFXComboBox<TaiXe> id_TaiXe;
 
     @FXML
-    private JFXComboBox<LoaiCongViec> id_LoaiCongViec;
+    private JFXComboBox<LoaiCongViecModel> id_LoaiCongViec;
 
     @FXML
     private JFXComboBox<ChuHang> id_ChuHang;
@@ -164,62 +169,57 @@ public class ThemHangController implements Initializable {
     @Autowired
     private ContHangTXCVDAO contHangTXCVDAO;
 
-    @Autowired
-    private ComboBoxService<LoaiHang> loaiHangComboBoxService;
+    private ComboBoxService<LoaiHang> loaiHangComboBoxService = new ComboBoxService<LoaiHang>();
 
     private ObservableList<LoaiHang> loaiHangs;
 
-    @Autowired
-    private ComboBoxService<CangLay> cangLayComboBoxService;
+    private ComboBoxService<CangLay> cangLayComboBoxService = new ComboBoxService<CangLay>();
 
-    private ObservableList<CangLay> cangLays;
+    private ObservableList<String> cangLays;
+    private List<String> listCangLays;
 
-    @Autowired
-    private ComboBoxService<CangHa> cangHaComboBoxService;
+    private ComboBoxService<CangHa> cangHaComboBoxService = new ComboBoxService<CangHa>();
 
     private ObservableList<CangHa> cangHas;
 
-    @Autowired
-    private ComboBoxService<TaiXe> taiXeComboBoxService;
+    private ComboBoxService<TaiXe> taiXeComboBoxService = new ComboBoxService<TaiXe>();
 
     private ObservableList<TaiXe> taiXes;
 
-    @Autowired
-    private ComboBoxService<Xe> xeComboBoxService;
+    private ComboBoxService<Xe> xeComboBoxService = new ComboBoxService<Xe>();
 
     private ObservableList<Xe> xes;
 
-    @Autowired
-    private ComboBoxService<ChuHang> chuHangComboBoxService;
+    private ComboBoxService<ChuHang> chuHangComboBoxService = new ComboBoxService<ChuHang>();
 
     private ObservableList<ChuHang> chuHangs;
 
-    @Autowired
-    private ComboBoxService<ChuyenHang> chuyenHangComboBoxService;
+    private ComboBoxService<ChuyenHang> chuyenHangComboBoxService = new ComboBoxService<ChuyenHang>();
 
     private ObservableList<ChuyenHang> chuyenHangs;
 
-    @Autowired
-    private ComboBoxService<LoaiCongViec> loaiCongViecComboBoxService;
 
-    private ObservableList<LoaiCongViec> loaiCongViecs;
+    private ComboBoxService<LoaiCongViecModel> loaiCongViecComboBoxService = new ComboBoxService<LoaiCongViecModel>();
 
-    @Autowired
-    private ComboBoxService<LoaiChiHo> loaiChiHoComboBoxService;
+    private ObservableList<LoaiCongViecModel> loaiCongViecs;
+
+
+    private ComboBoxService<LoaiChiHo> loaiChiHoComboBoxService = new ComboBoxService<LoaiChiHo>();
 
     private ObservableList<LoaiChiHo> loaiChiHos;
 
-    @Autowired
-    private ComboBoxService<LoaiChiPhiContHang> loaiChiPhiContHangComboBoxService;
 
-    @Autowired
-    private TableViewThemService<LoaiChiHo_ContHang,LoaiChiHo> loaiChiHo_contHangTableViewService;
+    private ComboBoxService<LoaiChiPhiContHang> loaiChiPhiContHangComboBoxService =
+            new ComboBoxService<LoaiChiPhiContHang>();
 
-    @Autowired
-    private TableViewThemService<ChiPhiContHang_ContHang,LoaiChiPhiContHang> chiPhiContHang_contHangTableViewService;
+    private TableViewThemService<LoaiChiHo_ContHang,LoaiChiHo> loaiChiHo_contHangTableViewService =
+    new TableViewThemService<LoaiChiHo_ContHang,LoaiChiHo>();
 
-    @Autowired
-    private TableViewThemService<CongViecTX,LoaiCongViec> congViecTXTableViewService;
+    private TableViewThemService<ChiPhiContHang_ContHang,LoaiChiPhiContHang> chiPhiContHang_contHangTableViewService =
+            new TableViewThemService<ChiPhiContHang_ContHang,LoaiChiPhiContHang>();
+
+    private TableViewThemService<CongViecTX,LoaiCongViecModel> congViecTXTableViewService =
+            new TableViewThemService<CongViecTX,LoaiCongViecModel>();
 
 
     private ObservableList<LoaiChiPhiContHang> loaiChiPhiContHangs;
@@ -228,6 +228,7 @@ public class ThemHangController implements Initializable {
     private ObservableList<LoaiChiHo_ContHang> dsLoaiChiHoContHangs;
     private ObservableList<ChiPhiContHang_ContHang> dsChiPhiContHangContHang;
     private ObservableList<CongViecTX> dsCongViecTX;
+    private CangLay cangLaySelectFromCombo;
 
     @FXML
     void ThemChiHo(ActionEvent event) {
@@ -237,6 +238,10 @@ public class ThemHangController implements Initializable {
         }
 
         if(LoiChuongTrinh.ComboBoxNull(id_LoaiChiHo)){
+            return;
+        }
+
+        if(LoiChuongTrinh.textFieldSo(id_TienChiHo)){
             return;
         }
 
@@ -260,13 +265,13 @@ public class ThemHangController implements Initializable {
         }
 
         TaiXe taiXe =  id_TaiXe.getSelectionModel().getSelectedItem();
-        LoaiCongViec loaiCongViec =  id_LoaiCongViec.getSelectionModel().getSelectedItem();
+        LoaiCongViecModel loaiCongViec =  id_LoaiCongViec.getSelectionModel().getSelectedItem();
         ChuyenHang chuyenHang = id_ChuyenHang.getSelectionModel().getSelectedItem();
         String tenCongViec = loaiCongViec.getTen();
-        System.out.println("chuyenhang id:" + chuyenHang.getId() +", loai cv id:" +loaiCongViec.getId());
+        System.out.println("chuyenhang id:" + chuyenHang.getId() +", loai cv id:" +loaiCongViec.getIdLoaiCongViec());
 
         LoaiCongViec_ChuyenHangPK loaiCongViecChuyenHangPK = new LoaiCongViec_ChuyenHangPK();
-        loaiCongViecChuyenHangPK.setLoaiCongViecId(loaiCongViec.getId());
+        loaiCongViecChuyenHangPK.setLoaiCongViecId(loaiCongViec.getIdLoaiCongViec());
         loaiCongViecChuyenHangPK.setChuyenHangId(chuyenHang.getId());
 
         LoaiCongViec_ChuyenHang loaiCongViec_chuyenHang = loaiCongViecChuyenHangRespository.findById(
@@ -284,29 +289,34 @@ public class ThemHangController implements Initializable {
     @FXML
     void ThemContHang(ActionEvent event) {
 
+        String tenCang = id_CangLay.getSelectionModel().getSelectedItem();
         List<JFXTextField> jfxTextFieldList = new ArrayList<JFXTextField>();
         jfxTextFieldList.add(id_SoCont);
-        jfxTextFieldList.add(id_SoSeal);
 
-        if(LoiChuongTrinh.listTextFielNull(jfxTextFieldList) ){
+        if(LoiChuongTrinh.listTextFielNull(jfxTextFieldList) || LoiChuongTrinh.ComboBoxNull(id_CangHa) ||
+                LoiChuongTrinh.ComboBoxNull(id_CangLay) || LoiChuongTrinh.ComboBoxNull(id_Xe) ||
+                LoiChuongTrinh.ComboBoxNull(id_LoaiHang)){
            return;
         }
+        if(!cangLayRepository.existsByTen(tenCang)){
+            System.out.println("Khong Tim Thay Cang");
+            return;
+        }
+
 
         String soCont = id_SoCont.getText();
-        String soSeal = id_SoSeal.getText();
-        Date ngay = Date.valueOf(LocalDate.now());
+        Date ngay = Date.valueOf(id_Ngay.getValue());
 
         Cang cangHa = id_CangHa.getSelectionModel().getSelectedItem();
-        Cang cangLay = id_CangLay.getSelectionModel().getSelectedItem();
+        Cang cangLay = cangLayRepository.findTop1ByTen(tenCang); //id_CangLay.getSelectionModel().getSelectedItem();
         LoaiHang loaiHang = id_LoaiHang.getSelectionModel().getSelectedItem();
 
         ChuyenHang chuyenHang = id_ChuyenHang.getSelectionModel().getSelectedItem();
-        LoaiCongViec loaiCongViec = id_LoaiCongViec.getSelectionModel().getSelectedItem();
+        LoaiCongViecModel loaiCongViec = id_LoaiCongViec.getSelectionModel().getSelectedItem();
         Xe xe = id_Xe.getSelectionModel().getSelectedItem();
 
         ContHang contHang = new ContHang();
         contHang.setSoCont(soCont);
-        contHang.setSoSeal(soSeal);
         contHang.setNgay(ngay);
         contHang.setCangHa(cangHa);
         contHang.setCangLay(cangLay);
@@ -337,8 +347,11 @@ public class ThemHangController implements Initializable {
     }
 
     private boolean KiemTraDsCongViec() {
+        int soLuongCv = dsCongViecTX.size();
+
         for (CongViecTX congViecTX : dsCongViecTX){
-            if(congViecTX.getLoaiCongViec().isNguyenChuyenHang())
+            Character isNguyenChuyen = congViecTX.getLoaiCongViec().getNguyenChuyen();
+            if(isNguyenChuyen.toString().equals("T") && (soLuongCv != 1))
                 return false;
         }
         return true;
@@ -355,9 +368,11 @@ public class ThemHangController implements Initializable {
         loaiHangComboBoxService.setComboBox(id_LoaiHang);
         loaiHangComboBoxService.LoadCombo(loaiHangs);
 
-        cangLays = FXCollections.observableArrayList(cangLayRepository.findAllBy());
-        cangLayComboBoxService.setComboBox(id_CangLay);
-        cangLayComboBoxService.LoadCombo(cangLays);
+        listCangLays = cangLayRepository.getAllName();
+        cangLays = FXCollections.observableArrayList(listCangLays);
+        id_CangLay.setItems(cangLays);
+        //cangLayComboBoxService.setComboBox(id_CangLay);
+        //cangLayComboBoxService.LoadCombo(cangLays);
 
         cangHas = FXCollections.observableArrayList(cangHaRepository.findAllBy());
         cangHaComboBoxService.setComboBox(id_CangHa);
@@ -422,6 +437,21 @@ public class ThemHangController implements Initializable {
         congViecTXTableViewService.setTableView(id_TableCongViec);
         congViecTXTableViewService.TaoCotXoa(dsCongViecTX,loaiCongViecs);
 
+        id_CangLay.setEditable(true);
+
+        id_CangLay.getEditor().textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable,
+                                String oldValue, String newValue) {
+
+                cangLays.clear();
+                listCangLays.forEach(e->{
+                    if(e.trim().toLowerCase().contains(newValue.toLowerCase()))
+                        cangLays.add(e);
+                });
+                id_CangLay.show();
+            }
+        });
     }
 
     public void LoadCBChuyenHang(ActionEvent actionEvent) {
@@ -441,10 +471,18 @@ public class ThemHangController implements Initializable {
         ChuyenHang chuyenHang = id_ChuyenHang.getSelectionModel().getSelectedItem();
 
         loaiCongViecs.clear();
-        loaiCongViecs.addAll(loaiCongViecRepository.layDSLoaiCV_ChuyenHang(chuyenHang));
+        loaiCongViecs.addAll(ChuyenThanhDsLoaiCongViec(
+                loaiCongViecRepository.layDSLoaiCongViecModel(chuyenHang.getId())));
         dsCongViecTX.clear();
     }
 
+    private List<LoaiCongViecModel> ChuyenThanhDsLoaiCongViec(List<Map<String, Object>> list){
+        List<LoaiCongViecModel> loaiCongViecModels = new ArrayList<LoaiCongViecModel>();
+        for (Map<String, Object> x : list){
+            loaiCongViecModels.add(new LoaiCongViecModel(x));
+        }
+        return loaiCongViecModels;
+    }
     public void ThemChiPhi(ActionEvent actionEvent) {
 
         if(LoiChuongTrinh.textFieldNull(id_SoTienChiPhi)){
@@ -452,6 +490,10 @@ public class ThemHangController implements Initializable {
         }
 
         if(LoiChuongTrinh.ComboBoxNull(id_LoaiChiPhi)){
+            return;
+        }
+
+        if(LoiChuongTrinh.textFieldSo(id_SoTienChiPhi)){
             return;
         }
 
@@ -468,7 +510,6 @@ public class ThemHangController implements Initializable {
     }
     private void XoaDuLieuNhapCu(){
         id_SoCont.setText("");
-        id_SoSeal.setText("");
         id_SoTienChiPhi.setText("");
         id_TienChiHo.setText("");
 

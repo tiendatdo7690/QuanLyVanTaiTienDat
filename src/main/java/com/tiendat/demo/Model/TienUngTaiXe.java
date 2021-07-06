@@ -24,21 +24,18 @@ public class TienUngTaiXe implements Serializable {
     @Column(name = "tien")
     private Long tien;
 
+    @Type(type="org.hibernate.type.StringNVarcharType")
+    @Column(name = "hinhthuc", length = 255)
+    private String hinhThuc;
+
     @ManyToOne(fetch = FetchType.LAZY,
             cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
-    @JoinColumn(name = "bangLuongTaiXe_id" , foreignKey= @ForeignKey(name = "Fk_bangLuongTaiXe_TienUngTaiXe"), nullable = true)
-    private BangLuongTaiXe bangLuongTaiXe;
+    @JoinColumn(name = "taixe_id" , foreignKey= @ForeignKey(name = "Fk_TaiXe_TienUngTaiXe"), nullable = true)
+    private TaiXe taiXe;
 
     public TienUngTaiXe() {
     }
 
-    public BangLuongTaiXe getBangLuongTaiXe() {
-        return bangLuongTaiXe;
-    }
-
-    public void setBangLuongTaiXe(BangLuongTaiXe bangLuongTaiXe) {
-        this.bangLuongTaiXe = bangLuongTaiXe;
-    }
 
     public Long getId() {
         return id;
@@ -62,5 +59,21 @@ public class TienUngTaiXe implements Serializable {
 
     public void setTien(Long tien) {
         this.tien = tien;
+    }
+
+    public String getHinhThuc() {
+        return hinhThuc;
+    }
+
+    public void setHinhThuc(String hinhThuc) {
+        this.hinhThuc = hinhThuc;
+    }
+
+    public TaiXe getTaiXe() {
+        return taiXe;
+    }
+
+    public void setTaiXe(TaiXe taiXe) {
+        this.taiXe = taiXe;
     }
 }

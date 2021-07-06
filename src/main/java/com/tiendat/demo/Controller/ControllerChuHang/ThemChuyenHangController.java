@@ -4,16 +4,20 @@ import com.jfoenix.controls.JFXTextField;
 import com.tiendat.demo.ImplementRespository.ChuyenHangRespositoryImplement;
 import com.tiendat.demo.Model.ChuHang;
 import com.tiendat.demo.Model.ChuyenHang;
+import com.tiendat.demo.Model.LoaiChiHo;
 import com.tiendat.demo.NodeService.TableViewChuyenHangService;
 import com.tiendat.demo.Respository.ChuyenHangRespository;
+import com.tiendat.demo.ThongBao.LoiChuongTrinh;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -70,6 +74,9 @@ public class ThemChuyenHangController implements Initializable {
 
 
         if(this.chuHang != null) {
+            if(LoiChuongTrinh.textFieldNull(id_TenChuyenHang) || LoiChuongTrinh.textFieldNull(id_DiaChiDen)){
+                return;
+            }
             String tenChuyenHang = id_TenChuyenHang.getText();
             String diaChi = id_DiaChiDen.getText();
 
@@ -93,8 +100,32 @@ public class ThemChuyenHangController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        id_TblViewChuyenHang.setEditable(true);
         id_CotTen.setCellValueFactory(new PropertyValueFactory<ChuyenHang,String>("tenChuyenHang"));
         id_CotDiaChi.setCellValueFactory(new PropertyValueFactory<ChuyenHang,String>("diaChiNoiDen"));
+
+        id_CotTen.setCellFactory(TextFieldTableCell.forTableColumn());
+        id_CotTen.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<ChuyenHang, String>>() {
+                                               @Override
+                                               public void handle(TableColumn.CellEditEvent<ChuyenHang, String> t) {
+                                                   ChuyenHang chuyenHang = t.getTableView().getSelectionModel().getSelectedItem();
+                                                   chuyenHang.setTenChuyenHang(t.getNewValue());
+                                                   chuyenHangRespository.save(chuyenHang);
+                                               }
+                                           }
+        );
+
+        id_CotDiaChi.setCellFactory(TextFieldTableCell.forTableColumn());
+        id_CotDiaChi.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<ChuyenHang, String>>() {
+                                      @Override
+                                      public void handle(TableColumn.CellEditEvent<ChuyenHang, String> t) {
+                                          ChuyenHang chuyenHang = t.getTableView().getSelectionModel().getSelectedItem();
+                                          chuyenHang.setDiaChiNoiDen(t.getNewValue());
+                                          chuyenHangRespository.save(chuyenHang);
+                                      }
+                                  }
+        );
+
 
         tableViewChuyenHangService.TaoCotThemGiaCuoc(id_CotTHemGiaCuoc,chuHang);
         tableViewChuyenHangService.TaoCotThemTienTx(id_CotThemTienTx,chuHang);

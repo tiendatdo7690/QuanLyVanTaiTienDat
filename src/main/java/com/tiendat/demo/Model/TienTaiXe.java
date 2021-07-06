@@ -26,8 +26,8 @@ public class TienTaiXe implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY,
             cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
-    @JoinColumn(name = "chuyenHang_id" , foreignKey= @ForeignKey(name = "Fk_chuyenHang_TienTaiXe"), nullable = true)
-    private ChuyenHang chuyenHang;
+    //@JoinColumn(name = "Loai_CongViec_Chuyen_Hang_id" , foreignKey= @ForeignKey(name = "Fk_LoaiCongViec_ChuyenHang_TienTaiXe"), nullable = true)
+    private LoaiCongViec_ChuyenHang loaiCongViec_ChuyenHang;
 
     public TienTaiXe() {
     }
@@ -56,11 +56,11 @@ public class TienTaiXe implements Serializable {
         this.ngay = ngay;
     }
 
-    public ChuyenHang getChuyenHang() {
-        return chuyenHang;
+    public LoaiCongViec_ChuyenHang getLoaiCongViec_chuyenHang() {
+        return loaiCongViec_ChuyenHang;
     }
 
-    public void setChuyenHang(ChuyenHang chuyenHang) {
-        this.chuyenHang = chuyenHang;
+    public void setLoaiCongViec_chuyenHang(LoaiCongViec_ChuyenHang loaiCongViec_chuyenHang) {
+        this.loaiCongViec_ChuyenHang = loaiCongViec_chuyenHang;
     }
 }

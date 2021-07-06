@@ -15,23 +15,24 @@
       <HBox>
          <children>
             <Label prefWidth="100.0" text="Tiền" />
-            <JFXTextField prefWidth="300.0" />
+            <JFXTextField fx:id="id_TFTien" prefWidth="300.0" />
          </children>
       </HBox>
       <HBox>
          <children>
             <Label prefWidth="100.0" text="Loại Chi Phí" />
-            <JFXComboBox prefWidth="300.0" />
+            <JFXComboBox fx:id="id_CBLoaiChiPhi" prefWidth="300.0" />
          </children>
       </HBox>
-      <JFXButton text="Thêm" />
+      <JFXButton onAction="#ThemChiPhi" text="Thêm" />
       <Label text="Bảng Chi Phí" />
-      <TableView>
+      <TableView fx:id="id_TableChiPhi">
         <columns>
-          <TableColumn prefWidth="134.0" text="Tên Loại Chi Phí" />
-          <TableColumn prefWidth="104.0" text="Số Tiền" />
+          <TableColumn fx:id="id_ColTenChiPhi" prefWidth="134.0" text="Tên Loại Chi Phí" />
+          <TableColumn fx:id="id_ColTien" prefWidth="104.0" text="Số Tiền" />
         </columns>
       </TableView>
+      <JFXButton onAction="#CapNhatChiPhi" text="Cập Nhật Chi Phí" />
    </children>
    <padding>
       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

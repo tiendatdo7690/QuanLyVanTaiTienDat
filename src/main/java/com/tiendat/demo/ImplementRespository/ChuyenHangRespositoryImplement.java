@@ -70,4 +70,9 @@ public class ChuyenHangRespositoryImplement implements ChuyenHangRespository {
     public List<ChuyenHang> findByChuHang(ChuHang chuHang) {
         return null;
     }
+
+    @Override
+    public ChuyenHang findTop1ByChuHangAndTenChuyenHang(ChuHang idChuHang, String tenChuyenHang) {
+        return null;
+    }
 }

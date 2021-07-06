@@ -35,7 +35,7 @@ public abstract class Cang implements Serializable {
 
     @Type(type="org.hibernate.type.StringNVarcharType")
     @Column(name = "e_Mail", length = 255)
-    protected String eMail;
+    protected String email;
 
     @org.hibernate.annotations.Type(type="true_false")
     @Column(name = "trang_Thai")
@@ -51,9 +51,10 @@ public abstract class Cang implements Serializable {
         this.ten = ten;
         this.diaChi = diaChi;
         this.soDienThoai = soDienThoai;
-        this.eMail = eMail;
+        this.email = eMail;
         this.trangThai = trangThai;
     }
+
 
     public boolean isTrangThai() {
         return trangThai;
@@ -95,14 +96,15 @@ public abstract class Cang implements Serializable {
         this.soDienThoai = soDienThoai;
     }
 
-    public String geteMail() {
-        return eMail;
+    public String getEmail() {
+        return email;
     }
 
-    public void seteMail(String eMail) {
-        this.eMail = eMail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
+    public abstract String getLoaiCang();
 
     @Override
     public String toString() {

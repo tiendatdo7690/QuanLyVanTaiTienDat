@@ -7,6 +7,7 @@ import com.tiendat.demo.ImplementRespository.ChuHangRespositoryImplement;
 import com.tiendat.demo.Model.ChuHang;
 import com.tiendat.demo.NodeService.*;
 import com.tiendat.demo.Respository.ChuHangRespository;
+import com.tiendat.demo.ThongBao.ThongBao;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -33,6 +34,9 @@ public class TimKiemChuHangController implements Initializable {
     @FXML
     private AnchorPane id_AnchaorPaneTabThemChuyenHang;
 
+    @FXML
+    private AnchorPane id_AnchaorPaneTabThongKe;
+
     private TabPaneService tabPaneService;
 
     @FXML
@@ -56,14 +60,15 @@ public class TimKiemChuHangController implements Initializable {
     @Autowired
     private ConfigurableApplicationContext springContext;
 
-    @Autowired
-    private ComboBoxService<String> comboBoxServiceLoaiTimKiem;
 
-    @Autowired
-    private TableViewService<ChuHang,TimKiemChuHangController> tableviewTimKiemChuHang;
+    private ComboBoxService<String> comboBoxServiceLoaiTimKiem = new ComboBoxService<String>();
 
-    @Autowired
-    private PaginationService timKiemChuHangPaginationService;
+    private TableViewService<ChuHang,TimKiemChuHangController> tableviewTimKiemChuHang
+            = new TableViewService<ChuHang,TimKiemChuHangController>();
+
+    
+    private PaginationService timKiemChuHangPaginationService = new PaginationService();
+
     ObservableList<String> observableList = FXCollections.observableArrayList();
 
     @Autowired
@@ -72,11 +77,16 @@ public class TimKiemChuHangController implements Initializable {
     @Autowired
     private ThemChuyenHangController themChuyenHangController;
 
+    @Autowired
+    private ThongKeChuHangController thongKeChuHangController;
+
     private ChuHang chuHang = null;
 
     public ChuHang getChuHang() {
         return chuHang;
     }
+
+    private TableView<ChuHang> chuHangTableView;
 
     public void setChuHang(ChuHang chuHang) {
         this.chuHang = chuHang;
@@ -103,15 +113,19 @@ public class TimKiemChuHangController implements Initializable {
             e.printStackTrace();
         }
 
-        if(tableviewTimKiemChuHang.getTableView().getColumns().size() == 0) {
-
-            tableviewTimKiemChuHang.setController(this);
-            tableviewTimKiemChuHang.TaoCot("ten", "Tên", String.class);
-            tableviewTimKiemChuHang.TaoCotXemThongTin();
+        try {
+            tabPaneService.addContentInTab(springContext,id_AnchaorPaneTabThongKe,"/fxml/ChuHang/ThongKeChuHang.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
+        chuHangTableView = new TableView<ChuHang>();
+        tableviewTimKiemChuHang.setTableView(chuHangTableView);
+        tableviewTimKiemChuHang.setController(this);
+        tableviewTimKiemChuHang.TaoCot("ten", "Tên", String.class);
+        tableviewTimKiemChuHang.TaoCotXemThongTin();
+
         timKiemChuHangPaginationService.setPagination(id_PaginationTimChuHang);
-
-
 
     }
 
@@ -123,10 +137,25 @@ public class TimKiemChuHangController implements Initializable {
         id_TFDiaChi.setText(this.chuHang.getDiaChi());
         id_TFMST.setText(this.chuHang.getMaSoThue());
         id_RadioHoatDong.setSelected(this.chuHang.isTrangThai());
-
+        thongKeChuHangController.setChuHang(chuHang);
         themChuyenHangController.GanGiaTriSauKhiTimKiemChuHang(this.chuHang);
     }
     public void SuaThongTin(ActionEvent actionEvent) {
+
+        if(chuHang == null){
+            ThongBao.showThongBao("Thông Tin Chủ Hàng", "Cập Nhật Dữ Liệu","Chưa Chọn Chủ Hàng");
+            return;
+        }
+
+        chuHang.setTen(id_TFTenChuHang.getText());
+        chuHang.setMaSoThue(id_TFMST.getText());
+        chuHang.setDiaChi(id_TFDiaChi.getText());
+        chuHang.setTrangThai(id_RadioHoatDong.isSelected());
+
+        chuHangRespository.save(chuHang);
+        ThongBao.showThongBao("Thông Tin Chủ Hàng", "Cập Nhật Dữ Liệu","Thành Công");
+
+
     }
 
     public void TimChuHang(ActionEvent actionEvent) {

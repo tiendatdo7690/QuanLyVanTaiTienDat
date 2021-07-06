@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface LoaiHangRespository extends CrudRepository<LoaiHang, Long> {
     List<LoaiHang> findAllBy();
+
 }

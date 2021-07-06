@@ -3,6 +3,7 @@ package com.tiendat.demo.ImplementRespository;
 import com.tiendat.demo.Model.Cang;
 import com.tiendat.demo.Respository.CangRespository;
 
+import java.util.List;
 import java.util.Optional;
 
 public class CangRespositoryImplement implements CangRespository {
@@ -59,5 +60,10 @@ public class CangRespositoryImplement implements CangRespository {
     @Override
     public void deleteAll() {
 
+    }
+
+    @Override
+    public List<Cang> findAllBy() {
+        return null;
     }
 }

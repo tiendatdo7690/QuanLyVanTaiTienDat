@@ -3,7 +3,9 @@ package com.tiendat.demo.ImplementRespository;
 import com.tiendat.demo.Model.ChuHang;
 import com.tiendat.demo.Respository.ChuHangRespository;
 
+import java.sql.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public class ChuHangRespositoryImplement implements ChuHangRespository {
@@ -77,4 +79,25 @@ public class ChuHangRespositoryImplement implements ChuHangRespository {
     public List<ChuHang> findAllByTrangThaiTrue() {
         return null;
     }
+
+    @Override
+    public List<Map<String, Object>> ThongKeChuHangTheoNgay(Long idChuHang, Date tungay, Date denngay) {
+        return null;
+    }
+
+    @Override
+    public List<Map<String, Object>> LayDsChiHoTheoContHang(Long idContHang) {
+        return null;
+    }
+
+    @Override
+    public ChuHang LayChuHangTuContHang(Long idContHang) {
+        return null;
+    }
+
+    @Override
+    public List<Map<String, Object>> LayDsCongViecCuaContHang(Long idContHang) {
+        return null;
+    }
+
 }

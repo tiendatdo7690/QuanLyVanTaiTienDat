@@ -66,4 +66,9 @@ public class LoaiChiPhiContHangRespositoryImplement implements LoaiChiPhiContHan
     public List<LoaiChiPhiContHang> findAllBy() {
         return null;
     }
+
+    @Override
+    public List<LoaiChiPhiContHang> LayDsLoaiChiPhiContHangChuaDuocChon(List<Long> idloaiChiPhiContHangs1) {
+        return null;
+    }
 }

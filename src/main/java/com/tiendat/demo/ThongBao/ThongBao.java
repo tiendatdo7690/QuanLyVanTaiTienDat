@@ -8,6 +8,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
@@ -15,6 +16,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+
+import java.util.Optional;
 
 public final class ThongBao {
 
@@ -65,6 +68,29 @@ public final class ThongBao {
 	     alert.setContentText("Thêm Dữ Liệu Thành Công!!");
 	 
 	     alert.showAndWait();
+	}
+
+	public static void showThongBao(String tieuDe,String loaiDuLieu,
+									String noiDung) {
+
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle(tieuDe);
+		alert.setHeaderText(loaiDuLieu);
+		alert.setContentText(noiDung);
+
+		alert.showAndWait();
+	}
+
+	public static Optional<ButtonType> ShowConfirm(String tieuDe, String loaiDuLieu,
+												   String noiDung) {
+
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle(tieuDe);
+		alert.setHeaderText(loaiDuLieu);
+		alert.setContentText(noiDung);
+
+		return  alert.showAndWait();
+
 	}
 	
 	public static String showThongBaoTuChoi() {
