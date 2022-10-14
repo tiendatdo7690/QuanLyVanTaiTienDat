@@ -53,7 +53,7 @@ public class TableViewThemService<E,C> {
                 public void handle(MouseEvent mouseEvent) {
 
                     System.out.println("Xóa");
-                    E e = getTableRow().getItem();
+                    E e = (E) getTableRow().getItem();
                     items.remove(e);
 
                     C c;

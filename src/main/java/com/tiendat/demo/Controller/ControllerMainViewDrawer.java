@@ -76,7 +76,7 @@ public class ControllerMainViewDrawer implements Initializable {
         drawersStack.setPrefWidth(1000);
         drawersStack.setPrefHeight(1300);
         drawersStack.setContent(id_TabPane);
-        drawersStack.setViewOrder(1);
+//        drawersStack.setViewOrder(1);
        // drawersStack.getStyleClass().add("blue-400");
 
         id_VBox.getChildren().add(drawersStack);

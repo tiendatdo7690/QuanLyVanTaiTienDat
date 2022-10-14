@@ -34,6 +34,7 @@ import org.springframework.stereotype.Component;
 import java.net.URL;
 import java.sql.Date;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 @Component
 public class ControllerThemTienTx implements Initializable {
@@ -167,8 +168,15 @@ public class ControllerThemTienTx implements Initializable {
         tableViewService.TaoCotXoaDatabase();
     }
 
+    //9/10/2022 xóa phần tử trong cb sau khi thực hiện xóa
     public void XoaDatabase(TienTaiXe e){
             tienTaiXeRespository.deleteById(e.getId());
             tienTaiXes.remove(e);
+            Set<TienTaiXe> dsTienTxcuaCB = id_CBLoaiCV.getSelectionModel().getSelectedItem().getTienTaiXeSet();
+            dsTienTxcuaCB.forEach( x ->{
+                if(x.getId() == e.getId()){
+                    dsTienTxcuaCB.remove(x);
+                }
+            });
     }
 }

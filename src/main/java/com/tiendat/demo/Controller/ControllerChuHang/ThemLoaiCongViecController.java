@@ -110,7 +110,7 @@ public class ThemLoaiCongViecController implements Initializable {
                 @Override public void handle(MouseEvent mouseEvent) {
 
 
-                    LoaiCongViec loaiCongViec = getTableRow().getItem();
+                    LoaiCongViec loaiCongViec = (LoaiCongViec) getTableRow().getItem();
                     //tableview_CongViecView.getSelectionModel().select(i);
                     boolean tinhtrang = !loaiCongViec.isNguyenChuyenHang();
                     loaiCongViec.setNguyenChuyenHang(tinhtrang);

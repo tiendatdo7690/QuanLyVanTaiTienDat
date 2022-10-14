@@ -92,7 +92,7 @@ public class ThemCangController implements Initializable {
         String sdt = id_Sdt.getText();
         Cang cang;
 
-        if(id_CBLoaiCang.getSelectionModel().getSelectedItem() == "Cảng Lấy"){
+        if(id_CBLoaiCang.getSelectionModel().getSelectedItem().equals("Cảng Lấy")){
 
             loaicang = "CangLay";
             cang = new CangLay();
@@ -218,7 +218,7 @@ public class ThemCangController implements Initializable {
 
                 @Override public void handle(MouseEvent mouseEvent) {
 
-                    Cang cang = getTableRow().getItem();
+                    Cang cang = (Cang) getTableRow().getItem();
                     boolean  tinhtrang =  cang.isTrangThai();
 
                     cang.setTrangThai(!tinhtrang);

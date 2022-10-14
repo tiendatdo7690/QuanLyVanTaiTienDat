@@ -87,7 +87,7 @@ public class TableViewChuyenHangService {
                 @Override
                 public void handle(MouseEvent mouseEvent) {
 
-                    ChuyenHang chuyenHang = getTableRow().getItem();
+                    ChuyenHang chuyenHang = (ChuyenHang) getTableRow().getItem();
                     themThuocTinhChuyenHang.ShowDialog(chuyenHang);
 
 

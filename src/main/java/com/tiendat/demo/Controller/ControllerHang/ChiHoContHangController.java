@@ -136,6 +136,7 @@ public class ChiHoContHangController implements Initializable {
         return contHang;
     }
 
+    //11/10/2022 thêm kiểm tra idloaichiho1 == 0 thì add tất cả
     public void setContHang(ContHang contHang) {
         this.contHang = contHang;
         dsLoaiChiHoContHangs.clear();
@@ -148,7 +149,12 @@ public class ChiHoContHangController implements Initializable {
             idloaiChiHos1.add(e.getLoaiChiHo().getId());
         });
 
-        loaiChiHos.addAll(loaiChiHoRespository.LayDsLoaiChiHoChuaDuocChon(idloaiChiHos1));
+        if(idloaiChiHos1.size() == 0){
+            loaiChiHos.addAll(loaiChiHoRespository.findAllBy());
+        }
+        else {
+            loaiChiHos.addAll(loaiChiHoRespository.LayDsLoaiChiHoChuaDuocChon(idloaiChiHos1));
+        }
 
     }
 }

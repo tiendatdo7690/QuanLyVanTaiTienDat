@@ -234,7 +234,7 @@ public class TableViewService<E,C> {
                 @Override
                 public void handle(MouseEvent mouseEvent) {
 
-                    E e = getTableRow().getItem();
+                    E e = (E) getTableRow().getItem();
                     try {
                         Method getMethod = controller.getClass().getMethod("GanGiaTri", new Class[] {e.getClass()});
                         getMethod.invoke(controller, new Object[] {e});
@@ -269,7 +269,7 @@ public class TableViewService<E,C> {
                 public void handle(MouseEvent mouseEvent) {
 
                     System.out.println("Xóa");
-                    E e = getTableRow().getItem();
+                    E e = (E) getTableRow().getItem();
                     getTableView().getItems().remove(e);
                 }
             });
@@ -298,7 +298,7 @@ public class TableViewService<E,C> {
                 @Override
                 public void handle(MouseEvent mouseEvent) {
 
-                    E e = getTableRow().getItem();
+                    E e = (E) getTableRow().getItem();
                     try {
                         Method getMethod = controller.getClass().getMethod("XoaDatabase", new Class[] {e.getClass()});
                         getMethod.invoke(controller, new Object[] {e});

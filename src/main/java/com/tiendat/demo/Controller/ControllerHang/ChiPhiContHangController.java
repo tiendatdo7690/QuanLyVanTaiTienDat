@@ -131,7 +131,9 @@ public class ChiPhiContHangController implements Initializable {
         return contHang;
     }
 
+    //11/10/2022 thêm kiểm tra idloaiChiPhiContHangs1 == 0 thì add tất cả
     public void setContHang(ContHang contHang) {
+
         this.contHang = contHang;
 
         dsChiPhiContHang.clear();
@@ -139,14 +141,19 @@ public class ChiPhiContHangController implements Initializable {
         dsChiPhiContHang.addAll(chiPhiContHangContHangRespository.
                 findAllByContHang(contHang));
 
-        List<Long> idloaiChiPhiContHangs1 = new ArrayList<>();
+        List<Long> idloaiChiPhiContHangs1 = new ArrayList<Long>(0);
         dsChiPhiContHang.forEach(e -> {
             idloaiChiPhiContHangs1.add(e.getLoaiChiPhiContHang().getId());
         });
 
-        loaiChiPhiContHangs.addAll(loaiChiPhiContHangRespository.
-                LayDsLoaiChiPhiContHangChuaDuocChon(idloaiChiPhiContHangs1));
-
+        if(idloaiChiPhiContHangs1.size() == 0) {
+            loaiChiPhiContHangs.addAll(loaiChiPhiContHangRespository.
+                    findAllBy());
+        }
+        else {
+            loaiChiPhiContHangs.addAll(loaiChiPhiContHangRespository.
+                    LayDsLoaiChiPhiContHangChuaDuocChon(idloaiChiPhiContHangs1));
+        }
 
     }
 }

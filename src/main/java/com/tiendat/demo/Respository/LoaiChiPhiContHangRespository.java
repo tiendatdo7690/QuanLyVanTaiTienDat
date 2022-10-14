@@ -16,5 +16,7 @@ public interface LoaiChiPhiContHangRespository extends CrudRepository<LoaiChiPhi
     List<LoaiChiPhiContHang> LayDsLoaiChiPhiContHangChuaDuocChon(
             @Param("dsIdLoaiChiPhi") List<Long> idloaiChiPhiContHangs1);
 
+
+
     //List<LoaiChiPhiContHang> findAllByContH
 }

@@ -34,10 +34,7 @@ public class DemoApplication extends Application{
 
     @Override
     public void start(Stage stage) throws Exception {
-        //rootNode.getStylesheets().add("dangnhap.css");
-//        stage.setTitle("Quản Lý Nhân Viên");
-//        stage.getIcons().add(new Image("/LOGO.png"));
-//        rootNode.getStylesheets().add("dangnhap.css");
+
         Scene scene = new Scene(rootNode);
         ObservableList<String> stylesheets = scene.getStylesheets();
         stylesheets.addAll(DrawerDemo.class.getResource("/css/jfoenix-components.css").toExternalForm(),

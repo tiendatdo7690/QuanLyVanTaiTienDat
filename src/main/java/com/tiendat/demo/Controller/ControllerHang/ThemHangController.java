@@ -444,11 +444,15 @@ public class ThemHangController implements Initializable {
             public void changed(ObservableValue<? extends String> observable,
                                 String oldValue, String newValue) {
 
-                cangLays.clear();
+                System.out.println("New Value " + newValue);
+                System.out.println("DS Cảng LẤy " + id_CangLay.getItems());
                 listCangLays.forEach(e->{
-                    if(e.trim().toLowerCase().contains(newValue.toLowerCase()))
+                    if(!e.trim().toLowerCase().contains(newValue.trim().toLowerCase()))
+                        cangLays.remove(e);
+                    else if(!cangLays.contains(e))
                         cangLays.add(e);
                 });
+
                 id_CangLay.show();
             }
         });
@@ -464,15 +468,18 @@ public class ThemHangController implements Initializable {
         id_LoaiCongViec.setDisable(true);
     }
 
+    //ngày 10/07/2022 thay đổi kiểm tra null Chuyến hàng và dsCVModel
     public void LoadCBLoaiCongViec(ActionEvent actionEvent) {
 
         id_LoaiCongViec.setDisable(false);
-
+        List<Map<String, Object>> dsCVModel = null;
         ChuyenHang chuyenHang = id_ChuyenHang.getSelectionModel().getSelectedItem();
+        if(chuyenHang != null)
+            dsCVModel =  loaiCongViecRepository.layDSLoaiCongViecModel(chuyenHang.getId());
 
         loaiCongViecs.clear();
-        loaiCongViecs.addAll(ChuyenThanhDsLoaiCongViec(
-                loaiCongViecRepository.layDSLoaiCongViecModel(chuyenHang.getId())));
+        if(dsCVModel != null)
+            loaiCongViecs.addAll(ChuyenThanhDsLoaiCongViec(dsCVModel));
         dsCongViecTX.clear();
     }
 

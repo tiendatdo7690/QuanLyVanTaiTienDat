@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class LoaiCongViecModel {
 
-    public static final String Id_LoaiCongViec = "id";
+    public static final String Id_LoaiCongViec = "idLoaiCongViec";
     public static final String Nguyen_Chuyen = "nguyenchuyen";
     public static final String Ten = "ten";
 

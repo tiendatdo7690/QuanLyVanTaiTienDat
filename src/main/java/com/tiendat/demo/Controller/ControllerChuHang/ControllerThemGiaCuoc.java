@@ -119,8 +119,15 @@ public class ControllerThemGiaCuoc implements Initializable {
         tableViewService.setTableView(id_TableGiaCuoc);
         tableViewService.TaoCotXoaDatabase();
     }
+    //09/10/2022 THÊM XÓA PHẦN TỬ CẦN XÓA TRONG DS BẢNG DỮ LỆU HIỂN THỊ
     public void XoaDatabase(GiaCuoc e){
         giaCuocRespository.deleteById(e.getId());
         giaCuocs.remove(e);
+       for(GiaCuoc giacuoc : chuyenHang.getGiaCuocSet()){
+            if(giacuoc.getId() ==  e.getId()){
+                chuyenHang.getGiaCuocSet().remove(giacuoc);
+                return;
+            }
+       }
     }
 }

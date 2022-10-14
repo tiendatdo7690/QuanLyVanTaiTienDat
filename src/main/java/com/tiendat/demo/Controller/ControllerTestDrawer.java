@@ -78,8 +78,8 @@ public class ControllerTestDrawer implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        anchorpane4.setViewOrder(1);
-        anchorpane5.setViewOrder(1);
+//        anchorpane4.setViewOrder(1);
+//        anchorpane5.setViewOrder(1);
         anchorpane1 = new AnchorPane();
         anchorpane1.getStyleClass().add("green-400");
         drawer1.setDirection(JFXDrawer.DrawerDirection.TOP);
